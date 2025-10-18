@@ -1,31 +1,13 @@
+# Technical Configuration Only
+# Site-specific settings (branding, SEO, analytics) are now in:
+# - src/content/assessments/site-settings.yaml
+# - src/content/adhd/site-settings.yaml
+# - src/content/autism/site-settings.yaml
+
 site:
-  name: AstroWind
   site: 'https://nd-assessment-site.netlify.app'
   base: '/'
   trailingSlash: false
-
-  googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
-
-# Default SEO metadata
-metadata:
-  title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
-  robots:
-    index: true
-    follow: true
-  openGraph:
-    site_name: AstroWind
-    images:
-      - url: '~/assets/images/default.png'
-        width: 1200
-        height: 628
-    type: website
-  twitter:
-    handle: '@arthelokyo'
-    site: '@arthelokyo'
-    cardType: summary_large_image
 
 i18n:
   language: en
@@ -62,11 +44,6 @@ apps:
 
     isRelatedPostsEnabled: true
     relatedPostsCount: 4
-
-analytics:
-  vendors:
-    googleAnalytics:
-      id: null # or "G-XXXXXXXXXX"
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"

@@ -87,6 +87,75 @@ collections:
               - label: Business Info
                 name: business_info
                 widget: text
+          - label: "SEO Settings"
+            name: seo
+            widget: object
+            collapsed: false
+            fields:
+              - label: "Default Page Title"
+                name: title_default
+                widget: string
+                hint: "Used as fallback when page doesn't specify a title"
+
+              - label: "Title Template"
+                name: title_template
+                widget: string
+                default: "%s — Together Assessments"
+                hint: "How page titles are formatted. %s is replaced with the page title"
+
+              - label: "Default Meta Description"
+                name: description
+                widget: text
+                hint: "Default description for search engines (150-160 characters recommended)"
+
+              - label: "Default Social Share Image"
+                name: og_image
+                widget: image
+                required: false
+                hint: "Used when sharing on social media (1200x628px recommended)"
+
+              - label: "Google Site Verification ID"
+                name: google_verification_id
+                widget: string
+                required: false
+                hint: "Get this from Google Search Console. Leave empty if not using"
+
+              - label: "Search Engine Visibility"
+                name: robots_index
+                widget: boolean
+                default: false
+                hint: "⚠️ Allow search engines to index your site. Keep FALSE until ready for public search"
+
+              - label: "Search Engine Link Following"
+                name: robots_follow
+                widget: boolean
+                default: true
+                hint: "Allow search engines to follow links on your site"
+
+          - label: "Analytics"
+            name: analytics
+            widget: object
+            collapsed: true
+            required: false
+            fields:
+              - label: "Google Analytics 4 Measurement ID"
+                name: ga4_id
+                widget: string
+                required: false
+                pattern: ['^G-[A-Z0-9]+$|^$', "Must be a valid GA4 ID (e.g., G-XXXXXXXXXX) or empty"]
+                hint: "Your Google Analytics 4 measurement ID. Leave empty to disable analytics"
+
+          - label: "Branding"
+            name: branding
+            widget: object
+            collapsed: true
+            required: false
+            fields:
+              - label: "Favicon Mask Icon Colour"
+                name: mask_icon_colour
+                widget: string
+                default: "#8D46E7"
+                hint: "Colour for Safari pinned tab icon. Include the hash symbol (e.g., #8D46E7)"
   - name: home_page
     label: Home Page
     delete: false

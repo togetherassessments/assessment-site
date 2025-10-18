@@ -1,13 +1,8 @@
 ---
+import { getSiteSettings } from '~/utils/site-settings';
 import { GoogleAnalytics } from '@astrolib/analytics';
-import { ANALYTICS } from 'astrowind:config';
+
+const settings = getSiteSettings();
 ---
 
-{
-  ANALYTICS?.vendors?.googleAnalytics?.id ? (
-    <GoogleAnalytics
-      id={String(ANALYTICS.vendors.googleAnalytics.id)}
-      partytown={ANALYTICS?.vendors?.googleAnalytics?.partytown}
-    />
-  ) : null
-}
+{settings.analytics?.ga4_id ? <GoogleAnalytics id={String(settings.analytics.ga4_id)} partytown={true} /> : null}

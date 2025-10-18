@@ -12,3 +12,13 @@ logo:
 footer:
   title: Together Autism
   business_info: Sole trader, trading as Together Autism. North Lincolnshire and surrounding areas.
+
+seo:
+  title_default: "Together Autism Assessments"
+  title_template: "%s — Together Autism Assessments"
+  description: "Autism assessments for adults in the UK. Professional neurodiversity assessment services for North Lincolnshire and surrounding areas."
+  robots_index: false
+  robots_follow: true
+
+analytics:
+  ga4_id: ""

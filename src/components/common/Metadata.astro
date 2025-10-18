@@ -1,18 +1,22 @@
 ---
 import merge from 'lodash.merge';
-import { AstroSeo } from '@astrolib/seo';
-
-import type { Props as AstroSeoProps } from '@astrolib/seo';
-
-import { SITE, METADATA, I18N } from 'astrowind:config';
-import type { MetaData } from '~/types';
+import { getSiteSettings } from '~/utils/site-settings';
+import type { MetaData, ProcessedOpenGraph } from '~/types';
 import { getCanonical } from '~/utils/permalinks';
-
 import { adaptOpenGraphImages } from '~/utils/images';
 
 export interface Props extends MetaData {
   dontUseTitleTemplate?: boolean;
 }
+
+const settings = getSiteSettings();
+
+// SEO defaults from site-settings
+const defaultTitle = settings.seo?.title_default || settings.site.name;
+const titleTemplate = settings.seo?.title_template || `%s — ${settings.site.name}`;
+const defaultDescription = settings.seo?.description || '';
+const robotsIndex = settings.seo?.robots_index ?? false;
+const robotsFollow = settings.seo?.robots_follow ?? true;
 
 const {
   title,
@@ -22,40 +26,44 @@ const {
   description,
   openGraph = {},
   twitter = {},
+  facebook,
+  mobileAlternate,
+  languageAlternates,
+  additionalMetaTags,
+  additionalLinkTags,
 } = Astro.props;
 
-const seoProps: AstroSeoProps = merge(
+// Merge default SEO config with page-specific overrides
+const seoConfig = merge(
   {
-    title: '',
-    titleTemplate: '%s',
+    title: defaultTitle,
+    titleTemplate: titleTemplate,
+    noindex: !robotsIndex,
+    nofollow: !robotsFollow,
+    description: defaultDescription,
     canonical: canonical,
-    noindex: true,
-    nofollow: true,
-    description: undefined,
     openGraph: {
       url: canonical,
-      site_name: SITE?.name,
-      images: [],
-      locale: I18N?.language || 'en',
+      site_name: settings.site.name,
       type: 'website',
+      locale: 'en_GB',
+      ...(settings.seo?.og_image && {
+        images: [
+          {
+            url: settings.seo.og_image,
+            width: 1200,
+            height: 628,
+          },
+        ],
+      }),
     },
     twitter: {
-      cardType: openGraph?.images?.length ? 'summary_large_image' : 'summary',
+      cardType: 'summary_large_image',
     },
-  },
-  {
-    title: METADATA?.title?.default,
-    titleTemplate: METADATA?.title?.template,
-    noindex: typeof METADATA?.robots?.index !== 'undefined' ? !METADATA.robots.index : undefined,
-    nofollow: typeof METADATA?.robots?.follow !== 'undefined' ? !METADATA.robots.follow : undefined,
-    description: METADATA?.description,
-    openGraph: METADATA?.openGraph,
-    twitter: METADATA?.twitter,
   },
   {
     title: title,
     titleTemplate: ignoreTitleTemplate ? '%s' : undefined,
-    canonical: canonical,
     noindex: typeof robots?.index !== 'undefined' ? !robots.index : undefined,
     nofollow: typeof robots?.follow !== 'undefined' ? !robots.follow : undefined,
     description: description,
@@ -63,6 +71,226 @@ const seoProps: AstroSeoProps = merge(
     twitter: twitter,
   }
 );
+
+// Process Open Graph images
+const processedOpenGraph = (await adaptOpenGraphImages(seoConfig.openGraph, Astro.site)) as
+  | ProcessedOpenGraph
+  | undefined;
+
+// Format title
+const formattedTitle = seoConfig.titleTemplate
+  ? seoConfig.titleTemplate.replace('%s', seoConfig.title || defaultTitle)
+  : seoConfig.title || defaultTitle;
+
+// Build robots content
+let robotsContent: string[] = [];
+if (typeof seoConfig.noindex !== 'undefined') {
+  robotsContent.push(seoConfig.noindex ? 'noindex' : 'index');
+}
+if (typeof seoConfig.nofollow !== 'undefined') {
+  robotsContent.push(seoConfig.nofollow ? 'nofollow' : 'follow');
+}
+
+// Add extended robots directives if provided
+if (robots?.nosnippet) robotsContent.push('nosnippet');
+if (typeof robots?.maxSnippet === 'number') robotsContent.push(`max-snippet:${robots.maxSnippet}`);
+if (robots?.maxImagePreview) robotsContent.push(`max-image-preview:${robots.maxImagePreview}`);
+if (robots?.noarchive) robotsContent.push('noarchive');
+if (robots?.unavailableAfter) robotsContent.push(`unavailable_after:${robots.unavailableAfter}`);
+if (robots?.noimageindex) robotsContent.push('noimageindex');
+if (robots?.notranslate) robotsContent.push('notranslate');
 ---
 
-<AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }} />
+<!-- Title -->
+<title>{formattedTitle}</title>
+
+<!-- Description -->
+{seoConfig.description && <meta name="description" content={seoConfig.description} />}
+
+<!-- Robots -->
+{robotsContent.length > 0 && <meta name="robots" content={robotsContent.join(',')} />}
+
+<!-- Canonical -->
+{seoConfig.canonical && <link rel="canonical" href={seoConfig.canonical} />}
+
+<!-- Mobile Alternate -->
+{mobileAlternate && <link rel="alternate" media={mobileAlternate.media} href={mobileAlternate.href} />}
+
+<!-- Language Alternates (hreflang) -->
+{languageAlternates?.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)}
+
+<!-- Open Graph -->
+{
+  processedOpenGraph && (
+    <>
+      {processedOpenGraph.title && <meta property="og:title" content={processedOpenGraph.title} />}
+      {processedOpenGraph.description && <meta property="og:description" content={processedOpenGraph.description} />}
+      {processedOpenGraph.url && <meta property="og:url" content={processedOpenGraph.url} />}
+      {processedOpenGraph.type && <meta property="og:type" content={processedOpenGraph.type} />}
+      {processedOpenGraph.site_name && <meta property="og:site_name" content={processedOpenGraph.site_name} />}
+      {processedOpenGraph.locale && <meta property="og:locale" content={processedOpenGraph.locale} />}
+
+      {/* Open Graph Images */}
+      {processedOpenGraph.images?.map((image) => (
+        <>
+          <meta property="og:image" content={image.url} />
+          {image.alt && <meta property="og:image:alt" content={image.alt} />}
+          {image.secureUrl && <meta property="og:image:secure_url" content={image.secureUrl} />}
+          {image.type && <meta property="og:image:type" content={image.type} />}
+          {image.width && <meta property="og:image:width" content={String(image.width)} />}
+          {image.height && <meta property="og:image:height" content={String(image.height)} />}
+        </>
+      ))}
+
+      {/* Open Graph Videos */}
+      {processedOpenGraph.videos?.map((video) => (
+        <>
+          <meta property="og:video" content={video.url} />
+          {video.alt && <meta property="og:video:alt" content={video.alt} />}
+          {video.secureUrl && <meta property="og:video:secure_url" content={video.secureUrl} />}
+          {video.type && <meta property="og:video:type" content={video.type} />}
+          {video.width && <meta property="og:video:width" content={String(video.width)} />}
+          {video.height && <meta property="og:video:height" content={String(video.height)} />}
+        </>
+      ))}
+
+      {/* Open Graph Profile */}
+      {processedOpenGraph.profile && (
+        <>
+          {processedOpenGraph.profile.firstName && (
+            <meta property="og:profile:first_name" content={processedOpenGraph.profile.firstName} />
+          )}
+          {processedOpenGraph.profile.lastName && (
+            <meta property="og:profile:last_name" content={processedOpenGraph.profile.lastName} />
+          )}
+          {processedOpenGraph.profile.username && (
+            <meta property="og:profile:username" content={processedOpenGraph.profile.username} />
+          )}
+          {processedOpenGraph.profile.gender && (
+            <meta property="og:profile:gender" content={processedOpenGraph.profile.gender} />
+          )}
+        </>
+      )}
+
+      {/* Open Graph Article */}
+      {processedOpenGraph.article && (
+        <>
+          {processedOpenGraph.article.publishedTime && (
+            <meta property="og:article:published_time" content={processedOpenGraph.article.publishedTime} />
+          )}
+          {processedOpenGraph.article.modifiedTime && (
+            <meta property="og:article:modified_time" content={processedOpenGraph.article.modifiedTime} />
+          )}
+          {processedOpenGraph.article.expirationTime && (
+            <meta property="og:article:expiration_time" content={processedOpenGraph.article.expirationTime} />
+          )}
+          {processedOpenGraph.article.authors?.map((author: string) => (
+            <meta property="og:article:author" content={author} />
+          ))}
+          {processedOpenGraph.article.section && (
+            <meta property="og:article:section" content={processedOpenGraph.article.section} />
+          )}
+          {processedOpenGraph.article.tags?.map((tag: string) => (
+            <meta property="og:article:tag" content={tag} />
+          ))}
+        </>
+      )}
+
+      {/* Open Graph Book */}
+      {processedOpenGraph.book && (
+        <>
+          {processedOpenGraph.book.authors?.map((author: string) => (
+            <meta property="og:book:author" content={author} />
+          ))}
+          {processedOpenGraph.book.isbn && <meta property="og:book:isbn" content={processedOpenGraph.book.isbn} />}
+          {processedOpenGraph.book.releaseDate && (
+            <meta property="og:book:release_date" content={processedOpenGraph.book.releaseDate} />
+          )}
+          {processedOpenGraph.book.tags?.map((tag: string) => (
+            <meta property="og:book:tag" content={tag} />
+          ))}
+        </>
+      )}
+
+      {/* Open Graph Video */}
+      {processedOpenGraph.video && (
+        <>
+          {processedOpenGraph.video.actors?.map((actor) => (
+            <>
+              <meta property="og:video:actor" content={actor.profile} />
+              {actor.role && <meta property="og:video:actor:role" content={actor.role} />}
+            </>
+          ))}
+          {processedOpenGraph.video.directors?.map((director: string) => (
+            <meta property="og:video:director" content={director} />
+          ))}
+          {processedOpenGraph.video.writers?.map((writer: string) => (
+            <meta property="og:video:writer" content={writer} />
+          ))}
+          {processedOpenGraph.video.duration && (
+            <meta property="og:video:duration" content={String(processedOpenGraph.video.duration)} />
+          )}
+          {processedOpenGraph.video.releaseDate && (
+            <meta property="og:video:release_date" content={processedOpenGraph.video.releaseDate} />
+          )}
+          {processedOpenGraph.video.tags?.map((tag: string) => (
+            <meta property="og:video:tag" content={tag} />
+          ))}
+          {processedOpenGraph.video.series && (
+            <meta property="og:video:series" content={processedOpenGraph.video.series} />
+          )}
+        </>
+      )}
+    </>
+  )
+}
+
+<!-- Facebook App ID -->
+{facebook?.appId && <meta property="fb:app_id" content={facebook.appId} />}
+
+<!-- Twitter Cards -->
+{
+  seoConfig.twitter && (
+    <>
+      {seoConfig.twitter.cardType && <meta name="twitter:card" content={seoConfig.twitter.cardType} />}
+      {seoConfig.twitter.site && <meta name="twitter:site" content={seoConfig.twitter.site} />}
+      {seoConfig.twitter.handle && <meta name="twitter:creator" content={seoConfig.twitter.handle} />}
+    </>
+  )
+}
+
+<!-- Google Site Verification -->
+{
+  settings.seo?.google_verification_id && (
+    <meta name="google-site-verification" content={settings.seo.google_verification_id} />
+  )
+}
+
+<!-- Additional Meta Tags -->
+{
+  additionalMetaTags?.map((tag) => {
+    if ('name' in tag && tag.name) {
+      return <meta name={tag.name} content={tag.content} />;
+    } else if ('property' in tag && tag.property) {
+      return <meta property={tag.property} content={tag.content} />;
+    } else if ('httpEquiv' in tag && tag.httpEquiv) {
+      return <meta http-equiv={tag.httpEquiv} content={tag.content} />;
+    }
+  })
+}
+
+<!-- Additional Link Tags -->
+{
+  additionalLinkTags?.map((tag) => (
+    <link
+      rel={tag.rel}
+      href={tag.href}
+      {...(tag.sizes && { sizes: tag.sizes })}
+      {...(tag.media && { media: tag.media })}
+      {...(tag.type && { type: tag.type })}
+      {...(tag.color && { color: tag.color })}
+      {...(tag.as && { as: tag.as })}
+      {...(tag.crossOrigin && { crossorigin: tag.crossOrigin })}
+    />
+  ))
+}

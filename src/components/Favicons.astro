@@ -1,10 +1,43 @@
 ---
-import favIcon from '~/assets/favicons/favicon.ico';
-import favIconSvg from '~/assets/favicons/favicon.svg';
-import appleTouchIcon from '~/assets/favicons/apple-touch-icon.png';
+import { getSiteSettings } from '~/utils/site-settings';
+
+const WEBSITE_ID = import.meta.env.WEBSITE_ID || process.env.WEBSITE_ID;
+const settings = getSiteSettings();
+
+// Site-specific favicon imports using switch statement
+// Vite requires static import paths - cannot use template literals
+let favIcon: string;
+let favIconSvg: { src: string };
+let appleTouchIcon: { src: string };
+
+switch (WEBSITE_ID) {
+  case 'assessments':
+    favIcon = (await import('~/assets/images/assessments/favicons/favicon.ico')).default;
+    favIconSvg = (await import('~/assets/images/assessments/favicons/favicon.svg')) as unknown as { src: string };
+    appleTouchIcon = (await import('~/assets/images/assessments/favicons/apple-touch-icon.png')) as unknown as {
+      src: string;
+    };
+    break;
+  case 'adhd':
+    favIcon = (await import('~/assets/images/adhd/favicons/favicon.ico')).default;
+    favIconSvg = (await import('~/assets/images/adhd/favicons/favicon.svg')) as unknown as { src: string };
+    appleTouchIcon = (await import('~/assets/images/adhd/favicons/apple-touch-icon.png')) as unknown as { src: string };
+    break;
+  case 'autism':
+    favIcon = (await import('~/assets/images/autism/favicons/favicon.ico')).default;
+    favIconSvg = (await import('~/assets/images/autism/favicons/favicon.svg')) as unknown as { src: string };
+    appleTouchIcon = (await import('~/assets/images/autism/favicons/apple-touch-icon.png')) as unknown as {
+      src: string;
+    };
+    break;
+  default:
+    throw new Error(`❌ Invalid WEBSITE_ID: ${WEBSITE_ID}. Must be 'assessments', 'adhd', or 'autism'.`);
+}
+
+const maskColour = settings.branding?.mask_icon_colour || '#8D46E7';
 ---
 
 <link rel="shortcut icon" href={favIcon} />
 <link rel="icon" type="image/svg+xml" href={favIconSvg.src} />
-<link rel="mask-icon" href={favIconSvg.src} color="#8D46E7" />
+<link rel="mask-icon" href={favIconSvg.src} color={maskColour} />
 <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon.src} />

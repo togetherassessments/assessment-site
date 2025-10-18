@@ -12,3 +12,13 @@ logo:
 footer:
   title: Together Assessments
   business_info: Sole trader, trading as Together Assessments. North Lincolnshire and surrounding areas.
+
+seo:
+  title_default: "Together Assessments"
+  title_template: "%s — Together Assessments"
+  description: "Professional neurodiversity assessments for adults in the UK. ADHD and autism assessments for North Lincolnshire and surrounding areas."
+  robots_index: false
+  robots_follow: true
+
+analytics:
+  ga4_id: ""

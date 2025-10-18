@@ -69,15 +69,20 @@ Each site has its own:
 
 ### Key Implementation Files
 
-| File                                  | Purpose             | Implementation                                                     |
-| ------------------------------------- | ------------------- | ------------------------------------------------------------------ |
-| `src/env.d.ts`                        | Environment types   | Defines `WEBSITE_ID` type as `'assessments' \| 'adhd' \| 'autism'` |
-| `src/content/config.ts`               | Content collections | Uses `process.env.WEBSITE_ID` to load site-specific content paths  |
-| `src/components/Logo.astro`           | Dynamic logos       | Uses `import.meta.glob()` + WEBSITE_ID to load correct logo        |
-| `src/navigation.ts`                   | Dynamic navigation  | Filters "Together" menu to show other 2 sites                      |
-| `src/components/widgets/Footer.astro` | Site settings       | Loads site-specific `site-settings.yaml`                           |
-| `src/pages/index.astro`               | Homepage            | Loads site-specific `home-page/content.yaml`                       |
-| `src/pages/contact.astro`             | Contact page        | Uses site-specific email from settings                             |
+| File                                    | Purpose                | Implementation                                                                |
+| --------------------------------------- | ---------------------- | ----------------------------------------------------------------------------- |
+| `src/env.d.ts`                          | Environment types      | Defines `WEBSITE_ID` type as `'assessments' \| 'adhd' \| 'autism'`            |
+| `src/utils/site-settings.ts`            | Site settings utility  | Loads and caches site-specific `site-settings.yaml` via `getSiteSettings()`   |
+| `src/content/config.ts`                 | Content collections    | Uses `process.env.WEBSITE_ID` to load site-specific content paths             |
+| `src/components/Logo.astro`             | Dynamic logos          | Uses `import.meta.glob()` + WEBSITE_ID to load correct logo                   |
+| `src/components/Favicons.astro`         | Site-specific favicons | Uses switch statement with static imports for each site's favicons            |
+| `src/components/common/Metadata.astro`  | SEO meta tags          | Loads SEO defaults from `getSiteSettings()`, generates all meta tags manually |
+| `src/components/common/Analytics.astro` | Analytics integration  | Loads Google Analytics ID from `getSiteSettings()`                            |
+| `src/navigation.ts`                     | Dynamic navigation     | Filters "Together" menu to show other 2 sites                                 |
+| `src/components/widgets/Footer.astro`   | Footer content         | Loads site-specific footer settings from `getSiteSettings()`                  |
+| `src/pages/index.astro`                 | Homepage               | Loads site-specific `home-page/content.yaml`                                  |
+| `src/pages/contact.astro`               | Contact page           | Uses site-specific email from `getSiteSettings()`                             |
+| `src/pages/rss.xml.ts`                  | RSS feed generation    | Uses site name and description from `getSiteSettings()`                       |
 
 ### Dynamic Together Menu
 
@@ -201,17 +206,25 @@ The architecture enforces correctness at build time:
 
 The site uses a multi-layered configuration system with **site-specific** content:
 
-1. **src/config.yaml** - Framework-level configuration (AstroWind defaults, shared across all sites)
-   - Site metadata and SEO defaults
-   - Blog system settings
-   - Analytics configuration
-   - UI theme settings
+1. **src/config.yaml** - Technical configuration only (shared across all sites)
+   - Site base URL and trailing slash settings
+   - Blog system configuration (pagination, permalinks, etc.)
+   - UI theme settings (light/dark mode)
+   - Internationalisation settings (language, text direction)
    - **IMPORTANT**: This file OVERRIDES `astro.config.ts` settings
+   - **Changed**: No longer contains site-specific metadata, SEO, or analytics (moved to site-settings.yaml)
 
-2. **Site-specific content configuration** - Loaded based on `WEBSITE_ID`:
-   - `src/content/{WEBSITE_ID}/site-settings.yaml` - Company information (name, email, ICO registration), logo settings, footer information
+2. **Site-specific settings** - Loaded based on `WEBSITE_ID`:
+   - `src/content/{WEBSITE_ID}/site-settings.yaml` - **Primary site configuration**:
+     - Site identity (name, email, ICO registration, waitlist status)
+     - SEO settings (title templates, descriptions, robots directives, OG images, Google verification)
+     - Analytics (Google Analytics 4 ID)
+     - Branding (mask icon colour for Safari)
+     - Logo settings (light/dark variants, alt text)
+     - Footer content (title, business information)
    - `src/content/{WEBSITE_ID}/home-page/content.yaml` - Homepage-specific content including hero section, CTAs, section titles, and how-it-works steps
    - Where `{WEBSITE_ID}` is one of: `assessments`, `adhd`, `autism`
+   - **Access via**: `getSiteSettings()` utility function from `src/utils/site-settings.ts`
 
 3. **astro.config.ts** - Astro build configuration, integrations, and markdown plugins (shared across all sites)
 
@@ -238,8 +251,17 @@ src/
 ├── assets/
 │   ├── images/                    # Site-specific images (MULTI-SITE)
 │   │   ├── assessments/           # Together Assessments images
+│   │   │   ├── favicons/          # Site-specific favicons (favicon.ico, favicon.svg, apple-touch-icon.png)
+│   │   │   ├── logos/
+│   │   │   └── [other images]
 │   │   ├── adhd/                  # Together ADHD images
+│   │   │   ├── favicons/          # Site-specific favicons
+│   │   │   ├── logos/
+│   │   │   └── [other images]
 │   │   └── autism/                # Together Autism images
+│   │       ├── favicons/          # Site-specific favicons
+│   │       ├── logos/
+│   │       └── [other images]
 │   └── styles/                    # Global styles (tailwind.css)
 ├── components/
 │   ├── blog/                      # Blog-specific components
@@ -295,6 +317,7 @@ src/
 │   ├── images-optimization.ts
 │   ├── permalinks.ts              # URL generation
 │   ├── frontmatter.ts             # Frontmatter processing
+│   ├── site-settings.ts           # Site settings loader with caching (getSiteSettings())
 │   └── utils.ts                   # General utilities
 ├── navigation.ts                  # Navigation (dynamic Together menu)
 ├── config.yaml                    # Site configuration (shared)
@@ -772,26 +795,42 @@ For environment variable configuration, see [Environment Variables](#environment
 
 ### SEO Configuration
 
-Default SEO metadata in `src/config.yaml`:
+**Changed**: SEO metadata is now **site-specific** and configured in `src/content/{WEBSITE_ID}/site-settings.yaml`:
 
-- Title template: `%s — AstroWind`
-- Default description
-- OpenGraph settings (site_name, default image, type)
-- Twitter Card settings (handle, cardType)
-- Robots: index/follow defaults
+```yaml
+seo:
+  title_default: 'Together Assessments'
+  title_template: '%s — Together Assessments'
+  description: 'Professional neurodiversity assessments...'
+  og_image: '~/assets/images/assessments/og-image.png' # Optional
+  google_verification_id: 'abc123...' # Optional
+  robots_index: false
+  robots_follow: true
+```
 
-Individual pages can override via frontmatter or page metadata.
+**Implementation**:
+
+- `src/components/common/Metadata.astro` generates all meta tags manually (no longer uses @astrolib/seo)
+- Loads defaults from `getSiteSettings()` utility
+- Supports full Open Graph protocol (images, videos, articles, books)
+- Supports Twitter Cards
+- Supports extended robots directives (nosnippet, maxSnippet, maxImagePreview, etc.)
+- Individual pages can override via frontmatter or page metadata
 
 ### Analytics
 
-Google Analytics support configured in `src/config.yaml`:
+**Changed**: Google Analytics is now **site-specific** and configured in `src/content/{WEBSITE_ID}/site-settings.yaml`:
 
 ```yaml
 analytics:
-  vendors:
-    googleAnalytics:
-      id: null # Set to "G-XXXXXXXXXX" to enable
+  ga4_id: 'G-XXXXXXXXXX' # Or empty string to disable
 ```
+
+**Implementation**:
+
+- `src/components/common/Analytics.astro` loads GA4 ID from `getSiteSettings()`
+- Uses `@astrolib/analytics` for Google Analytics 4
+- Runs with Partytown for performance (web worker isolation)
 
 ### Internationalization (i18n)
 

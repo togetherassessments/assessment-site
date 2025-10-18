@@ -63,11 +63,45 @@ export interface MetaData {
 
   openGraph?: MetaDataOpenGraph;
   twitter?: MetaDataTwitter;
+  facebook?: {
+    appId?: string;
+  };
+  mobileAlternate?: {
+    media: string;
+    href: string;
+  };
+  languageAlternates?: Array<{
+    hreflang: string;
+    href: string;
+  }>;
+  additionalMetaTags?: Array<{
+    name?: string;
+    property?: string;
+    httpEquiv?: string;
+    content: string;
+  }>;
+  additionalLinkTags?: Array<{
+    rel: string;
+    href: string;
+    sizes?: string;
+    media?: string;
+    type?: string;
+    color?: string;
+    as?: string;
+    crossOrigin?: string;
+  }>;
 }
 
 export interface MetaDataRobots {
   index?: boolean;
   follow?: boolean;
+  nosnippet?: boolean;
+  maxSnippet?: number;
+  maxImagePreview?: string;
+  noarchive?: boolean;
+  unavailableAfter?: string;
+  noimageindex?: boolean;
+  notranslate?: boolean;
 }
 
 export interface MetaDataImage {
@@ -88,6 +122,74 @@ export interface MetaDataTwitter {
   handle?: string;
   site?: string;
   cardType?: string;
+}
+
+export interface OpenGraph {
+  images?: Array<{
+    url?: string;
+    width?: number;
+    height?: number;
+    alt?: string;
+    secureUrl?: string;
+    type?: string;
+  }>;
+}
+
+export interface ProcessedOpenGraph {
+  title?: string;
+  description?: string;
+  url?: string;
+  type?: string;
+  site_name?: string;
+  locale?: string;
+  images?: Array<{
+    url: string;
+    alt?: string;
+    secureUrl?: string;
+    type?: string;
+    width?: number;
+    height?: number;
+  }>;
+  videos?: Array<{
+    url: string;
+    alt?: string;
+    secureUrl?: string;
+    type?: string;
+    width?: number;
+    height?: number;
+  }>;
+  profile?: {
+    firstName?: string;
+    lastName?: string;
+    username?: string;
+    gender?: string;
+  };
+  article?: {
+    publishedTime?: string;
+    modifiedTime?: string;
+    expirationTime?: string;
+    authors?: string[];
+    section?: string;
+    tags?: string[];
+  };
+  book?: {
+    authors?: string[];
+    isbn?: string;
+    releaseDate?: string;
+    tags?: string[];
+  };
+  video?: {
+    actors?: Array<{
+      profile: string;
+      role?: string;
+    }>;
+    directors?: string[];
+    writers?: string[];
+    duration?: number;
+    releaseDate?: string;
+    tags?: string[];
+    series?: string;
+  };
 }
 
 export interface Image {

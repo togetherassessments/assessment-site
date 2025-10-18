@@ -1,9 +1,12 @@
 import rss from '@astrojs/rss';
 import type { APIContext } from 'astro';
 
-import { SITE, METADATA, APP_BLOG } from 'astrowind:config';
+import { getSiteSettings } from '~/utils/site-settings';
+import { APP_BLOG } from 'astrowind:config';
 import { fetchPosts } from '~/utils/blog';
 import { getPermalink } from '~/utils/permalinks';
+
+const settings = getSiteSettings();
 
 export async function GET(context: APIContext) {
   if (!APP_BLOG.isEnabled) {
@@ -16,9 +19,9 @@ export async function GET(context: APIContext) {
   const posts = await fetchPosts();
 
   return rss({
-    title: `${SITE.name}'s Blog`,
-    description: METADATA?.description || '',
-    site: context.site ?? SITE.site,
+    title: `${settings.site.name}'s Blog`,
+    description: settings.seo?.description || '',
+    site: context.site ?? import.meta.env.SITE,
 
     items: posts.map((post) => ({
       link: getPermalink(post.permalink, 'post'),
@@ -26,7 +29,5 @@ export async function GET(context: APIContext) {
       description: post.excerpt,
       pubDate: post.publishDate,
     })),
-
-    trailingSlash: SITE.trailingSlash,
   });
 }
