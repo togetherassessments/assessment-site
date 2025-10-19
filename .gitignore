@@ -41,5 +41,8 @@ temp/
 # Generated files
 public/admin/config.yml
 
+# Lighthouse reports
+lighthouse-reports/
+
 # Windows reserved device names
 nul

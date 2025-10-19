@@ -1,9 +1,13 @@
 {
+  "$schema": "https://raw.githubusercontent.com/GoogleChrome/lighthouse/main/core/config/config.schema.json",
   "ci": {
     "collect": {
       "staticDistDir": "./dist",
-      "url": ["/", "/blog/", "/about/"],
-      "numberOfRuns": 1
+      "numberOfRuns": 3,
+      "settings": {
+        "onlyCategories": ["performance", "accessibility", "best-practices", "seo"],
+        "skipAudits": ["uses-http2"]
+      }
     },
     "assert": {
       "preset": "lighthouse:recommended",
@@ -15,7 +19,8 @@
       }
     },
     "upload": {
-      "target": "temporary-public-storage"
+      "target": "filesystem",
+      "outputDir": "./lighthouse-reports"
     }
   }
 }
