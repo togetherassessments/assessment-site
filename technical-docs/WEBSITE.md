@@ -166,7 +166,7 @@ Example: `src/content/assessments/home-page/content.yaml`
 **Note:** Homepage also displays:
 
 - First 4 published FAQ items (from FAQs Page / FAQ Items)
-- All published service items (from Services Page / Service Items)
+- All published service items (from Services Page / Service Items) with automatically generated descriptive link text ("Learn more about [Service Title]")
 - Latest blog posts (from Blog Posts)
 - Trust badges (from Site Settings / Trust Badges)
 
@@ -238,7 +238,7 @@ Individual service offerings:
 
 Example: `src/content/assessments/services-page/services/`
 
-**Note:** Services also appear on the homepage in a preview section.
+**Note:** Services also appear on the homepage in a preview section. The service card link text is automatically generated as "Learn more about [Service Title]" for better SEO and accessibility (programmatically generated in `src/pages/index.astro:162`).
 
 ---
 
@@ -736,4 +736,4 @@ This prevents race conditions and ensures quality control before content goes li
 
 ---
 
-**Last Updated:** 2025-01-17
+**Last Updated:** 2025-10-19

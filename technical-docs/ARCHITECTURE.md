@@ -226,7 +226,9 @@ The site uses a multi-layered configuration system with **site-specific** conten
    - Where `{WEBSITE_ID}` is one of: `assessments`, `adhd`, `autism`
    - **Access via**: `getSiteSettings()` utility function from `src/utils/site-settings.ts`
 
-3. **astro.config.ts** - Astro build configuration, integrations, and markdown plugins (shared across all sites)
+3. **astro.config.ts** - Astro build configuration, integrations, markdown plugins, and asset inlining (shared across all sites)
+   - `build.inlineStylesheets: 'auto'` - Automatically inlines small stylesheets and related assets
+   - `vite.build.assetsInlineLimit: 4096` - Inlines JavaScript/CSS assets smaller than 4KB as base64 data URIs (reduces HTTP requests for tiny files)
 
 4. **vendor/integration/** - Custom AstroWind integration that processes config.yaml and makes it available via virtual module `astrowind:config`
 
@@ -654,6 +656,13 @@ apps:
 - Supports hybrid and server modes
 - Blog requires `prerender = true` for SSR
 
+**Asset Inlining** (`astro.config.ts`):
+
+- `build.inlineStylesheets: 'auto'` - Automatically inlines small stylesheets and scripts
+- `vite.build.assetsInlineLimit: 4096` - Assets smaller than 4KB are inlined as base64 data URIs
+- **Benefit**: Reduces HTTP requests for tiny JavaScript/CSS files while keeping larger bundles cached separately
+- **Example**: Small utility scripts (<4KB) embedded directly in HTML, larger bundles loaded separately
+
 ### Build Output
 
 **Location**: `dist/` directory
@@ -661,6 +670,7 @@ apps:
 - Optimised HTML, CSS, JavaScript
 - Compressed images (WebP, multiple sizes)
 - Minified assets
+- Small assets (<4KB) inlined as base64 data URIs
 - Generated sitemap and RSS feed
 
 ### Deployment (Multi-Site)
@@ -848,4 +858,4 @@ i18n:
 
 ---
 
-**Last Updated**: 2025-01-19
+**Last Updated**: 2025-10-19
