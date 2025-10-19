@@ -313,7 +313,8 @@ src/
 │   └── rss.xml.ts
 ├── scripts/                       # Client-side JavaScript modules
 │   ├── tts-player.ts              # TTS player class (Web Speech API integration)
-│   └── tts-init.ts                # TTS initialization module (lazy-loaded)
+│   ├── tts-init.ts                # TTS initialization module (lazy-loaded)
+│   └── accessibility-panel-init.ts # Accessibility panel interaction handlers (lazy-loaded)
 ├── utils/                         # Helper functions (shared)
 │   ├── blog.ts                    # Blog utilities
 │   ├── images.ts                  # Image processing
@@ -847,4 +848,4 @@ i18n:
 
 ---
 
-**Last Updated**: 2025-10-19
+**Last Updated**: 2025-01-19

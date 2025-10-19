@@ -670,10 +670,10 @@ const settings = DEFAULT_SETTINGS;
     let accessibilityFontsLoading = false;
 
     // Lazy load accessibility fonts (OpenDyslexic and Fast Sans)
-    function loadAccessibilityFonts() {
+    async function loadAccessibilityFonts() {
       // Only load once
       if (accessibilityFontsLoaded || accessibilityFontsLoading) {
-        return Promise.resolve();
+        return;
       }
 
       accessibilityFontsLoading = true;
@@ -683,7 +683,7 @@ const settings = DEFAULT_SETTINGS;
         console.warn('CSS Font Loading API not supported');
         accessibilityFontsLoaded = true;
         accessibilityFontsLoading = false;
-        return Promise.resolve();
+        return;
       }
 
       // Create FontFace objects
@@ -700,24 +700,20 @@ const settings = DEFAULT_SETTINGS;
       );
 
       // Load fonts
-      return Promise.all([openDyslexic.load(), fastSans.load()])
-        .then((fonts) => {
-          fonts.forEach((font) => {
-            document.fonts.add(font);
-          });
-          accessibilityFontsLoaded = true;
-          accessibilityFontsLoading = false;
-          console.log('✓ Accessibility fonts loaded');
-        })
-        .catch((error) => {
-          console.warn('Failed to load accessibility fonts:', error);
-          accessibilityFontsLoaded = true;
-          accessibilityFontsLoading = false;
+      try {
+        const fonts = await Promise.all([openDyslexic.load(), fastSans.load()]);
+        fonts.forEach((font) => {
+          document.fonts.add(font);
         });
+        accessibilityFontsLoaded = true;
+        accessibilityFontsLoading = false;
+        console.log('✓ Accessibility fonts loaded');
+      } catch (error) {
+        console.warn('Failed to load accessibility fonts:', error);
+        accessibilityFontsLoaded = true;
+        accessibilityFontsLoading = false;
+      }
     }
-
-    // TTS initialization function is defined in separate non-inline script
-    // and exposed globally as window.initializeTTSIfNeeded
 
     // Local copy of AccessibilitySettings utilities (inline scripts can't use imports)
     const DEFAULT_SETTINGS = {
@@ -750,44 +746,150 @@ const settings = DEFAULT_SETTINGS;
       return DEFAULT_SETTINGS;
     }
 
-    // Initialize settings from localStorage
-    let currentSettings = getSettings();
+    function applyFont(font) {
+      const fonts = {
+        sylexiad: 'Sylexiad Sans Medium, ui-sans-serif, system-ui, -apple-system',
+        opendyslexic: 'OpenDyslexic3, ui-sans-serif, system-ui, -apple-system',
+        fast: 'Fast Sans, ui-sans-serif, system-ui, -apple-system',
+      };
+      document.documentElement.style.setProperty('--aw-font-sans', fonts[font]);
+    }
 
-    // Reading ruler state
-    let readingRulerElement = null;
-    let rulerHandleElement = null;
-    let readingRulerEnabled = false;
+    function applyFontPreviews() {
+      const previews = {
+        sylexiad: document.querySelector('.font-preview-sylexiad'),
+        opendyslexic: document.querySelector('.font-preview-opendyslexic'),
+        fast: document.querySelector('.font-preview-fast'),
+      };
 
-    // Drag state
-    let isDraggingRuler = false;
-    let dragStartY = 0;
-    let rulerStartTop = 0;
+      if (previews.sylexiad) {
+        previews.sylexiad.style.fontFamily = "'Sylexiad Sans Medium', sans-serif";
+      }
+
+      if (accessibilityFontsLoaded) {
+        if (previews.opendyslexic) {
+          previews.opendyslexic.style.fontFamily = "'OpenDyslexic3', sans-serif";
+          previews.opendyslexic.classList.add('fonts-loaded');
+        }
+        if (previews.fast) {
+          previews.fast.style.fontFamily = "'Fast Sans', sans-serif";
+          previews.fast.classList.add('fonts-loaded');
+        }
+      }
+    }
+
+    function applyTheme(theme) {
+      if (theme === 'system') {
+        localStorage.removeItem('theme');
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.classList.toggle('dark', systemTheme === 'dark');
+      } else {
+        localStorage.setItem('theme', theme);
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+      }
+    }
+
+    function applyTextSize(size) {
+      document.body.classList.remove('text-size-xs', 'text-size-sm', 'text-size-base', 'text-size-lg', 'text-size-xl');
+      if (size && size !== 'base') {
+        document.body.classList.add(`text-size-${size}`);
+      }
+    }
+
+    function applyLineHeight(lineHeight) {
+      document.body.classList.remove('line-height-compact', 'line-height-normal', 'line-height-relaxed');
+      if (lineHeight && lineHeight !== 'normal') {
+        document.body.classList.add(`line-height-${lineHeight}`);
+      }
+    }
+
+    // Placeholder for reading ruler (will be replaced by lazy-loaded module)
+    // This is a no-op initially; the lazy-loaded module will replace it
+    function applyReadingRuler(_enabled) {
+      // Reading ruler functionality is loaded lazily when the panel opens
+      // The lazy-loaded module will override this function
+      // For now, just store the preference (it will be applied when module loads)
+    }
+
+    function updateUI(settings) {
+      const fontRadio = document.querySelector(`input[name="font"][value="${settings.font}"]`);
+      if (fontRadio) fontRadio.checked = true;
+
+      const themeRadio = document.querySelector(`input[name="theme"][value="${settings.theme}"]`);
+      if (themeRadio) themeRadio.checked = true;
+
+      document.querySelectorAll('.accessibility-size-btn').forEach((btn) => {
+        const button = btn;
+        const size = button.dataset.textSize;
+        if (size === settings.textSize) {
+          button.classList.add('active');
+          button.setAttribute('aria-pressed', 'true');
+        } else {
+          button.classList.remove('active');
+          button.setAttribute('aria-pressed', 'false');
+        }
+      });
+
+      const labels = {
+        xs: 'Extra Small',
+        sm: 'Small',
+        base: 'Normal',
+        lg: 'Large',
+        xl: 'Extra Large',
+      };
+      const label = document.getElementById('text-size-label');
+      if (label) label.textContent = labels[settings.textSize] || 'Normal';
+
+      const lineHeightRadio = document.querySelector(`input[name="lineHeight"][value="${settings.lineHeight}"]`);
+      if (lineHeightRadio) lineHeightRadio.checked = true;
+
+      const rulerCheckbox = document.getElementById('reading-ruler');
+      if (rulerCheckbox) rulerCheckbox.checked = settings.readingRuler;
+    }
+
+    function applySettings(settings) {
+      applyFont(settings.font);
+      applyTheme(settings.theme);
+      applyTextSize(settings.textSize);
+      applyLineHeight(settings.lineHeight);
+      applyReadingRuler(settings.readingRuler);
+    }
+
+    // Expose utility functions globally for lazy-loaded module
+    window.accessibilityPanelUtils = {
+      getSettings,
+      saveSettings,
+      resetSettings,
+      applySettings,
+      applyFont,
+      applyTheme,
+      applyTextSize,
+      applyLineHeight,
+      applyReadingRuler,
+      loadAccessibilityFonts,
+      applyFontPreviews,
+    };
 
     // Main initialization function - called on initial load AND after each navigation
     function initializeAccessibilityPanel() {
-      // Reload settings from localStorage (in case they changed)
-      currentSettings = getSettings();
+      const currentSettings = getSettings();
 
       // Check if user has saved OpenDyslexic or Fast Sans preference
       const isDeferredFont = currentSettings.font === 'opendyslexic' || currentSettings.font === 'fast';
 
       if (isDeferredFont) {
-        // Load fonts first, then apply settings
         loadAccessibilityFonts().then(() => {
           applySettings(currentSettings);
           updateUI(currentSettings);
         });
       } else {
-        // No need to load fonts, apply settings immediately
         applySettings(currentSettings);
         updateUI(currentSettings);
       }
     }
 
-    // === TOGGLE BUTTON EVENT DELEGATION ===
-    // Handle clicks on any button with [data-accessibility-toggle]
-    // This supports multiple toggle buttons (mobile + desktop) without duplicate IDs
-    // Using event delegation on document level to persist across page navigations
+    // Minimal toggle handler for opening the panel
+    // The lazy-loaded module will handle all other interactions
     document.addEventListener('click', (e) => {
       const target = e.target.closest('[data-accessibility-toggle]');
       if (!target) return;
@@ -804,7 +906,6 @@ const settings = DEFAULT_SETTINGS;
         panel?.classList.add('open');
         allToggleButtons.forEach((btn) => btn.setAttribute('aria-expanded', 'true'));
         document.body.classList.add('accessibility-panel-open');
-        setupFocusTrap();
 
         // Load fonts when panel opens (will only load once)
         loadAccessibilityFonts().then(() => {
@@ -815,635 +916,18 @@ const settings = DEFAULT_SETTINGS;
         if (typeof window.initializeTTSIfNeeded === 'function') {
           window.initializeTTSIfNeeded();
         }
-      }
-    });
 
-    // === EVENT DELEGATION FOR ALL INTERACTIVE ELEMENTS ===
-    // Use event delegation on document level to persist across Astro view transitions
-
-    // Font selection - delegated
-    document.addEventListener('change', (e) => {
-      const target = e.target;
-      if (target.matches && target.matches('input[name="font"]')) {
-        currentSettings.font = target.value;
-        saveSettings(currentSettings);
-        applyFont(currentSettings.font);
-      }
-    });
-
-    // Theme selection - delegated
-    document.addEventListener('change', (e) => {
-      const target = e.target;
-      if (target.matches && target.matches('input[name="theme"]')) {
-        currentSettings.theme = target.value;
-        saveSettings(currentSettings);
-        applyTheme(currentSettings.theme);
-      }
-    });
-
-    // Text size buttons - delegated
-    document.addEventListener('click', (e) => {
-      const button = e.target.closest('.accessibility-size-btn');
-      if (!button) return;
-
-      const size = button.dataset.textSize;
-      if (!size) return;
-
-      currentSettings.textSize = size;
-      saveSettings(currentSettings);
-
-      // Update active state
-      document.querySelectorAll('.accessibility-size-btn').forEach((b) => {
-        b.classList.remove('active');
-        b.setAttribute('aria-pressed', 'false');
-      });
-      button.classList.add('active');
-      button.setAttribute('aria-pressed', 'true');
-
-      // Update label
-      const labels = {
-        xs: 'Extra Small',
-        sm: 'Small',
-        base: 'Normal',
-        lg: 'Large',
-        xl: 'Extra Large',
-      };
-      const label = document.getElementById('text-size-label');
-      if (label) label.textContent = labels[size] || 'Normal';
-
-      // Apply the text size
-      applyTextSize(size);
-
-      // Update ruler height if ruler is enabled
-      if (readingRulerEnabled) {
-        updateRulerHeight();
-      }
-    });
-
-    // Line height - delegated
-    document.addEventListener('change', (e) => {
-      const target = e.target;
-      if (target.matches && target.matches('input[name="lineHeight"]')) {
-        currentSettings.lineHeight = target.value;
-        saveSettings(currentSettings);
-        applyLineHeight(currentSettings.lineHeight);
-
-        // Update ruler height if ruler is enabled
-        if (readingRulerEnabled) {
-          updateRulerHeight();
+        // Trigger lazy-loading of interaction handlers
+        if (typeof window.initializeAccessibilityPanelInteractions === 'function') {
+          window.initializeAccessibilityPanelInteractions();
         }
       }
     });
-
-    // Reading ruler - delegated
-    document.addEventListener('change', (e) => {
-      const target = e.target;
-      if (target.id === 'reading-ruler') {
-        currentSettings.readingRuler = target.checked;
-        saveSettings(currentSettings);
-        applyReadingRuler(currentSettings.readingRuler); // Actually apply the change
-      }
-    });
-
-    // Reset button - delegated
-    document.addEventListener('click', (e) => {
-      const target = e.target.closest('#reset-settings');
-      if (!target) return;
-
-      currentSettings = resetSettings();
-      applySettings(currentSettings);
-
-      // Update UI to reflect reset
-      location.reload(); // Simple way to reset all UI elements
-    });
-
-    // Close button - delegated
-    document.addEventListener('click', (e) => {
-      const target = e.target.closest('#accessibility-close');
-      if (!target) return;
-      closePanel();
-    });
-
-    // Close on backdrop click - delegated
-    document.addEventListener('click', (e) => {
-      const target = e.target.closest('#accessibility-backdrop');
-      if (!target) return;
-      closePanel();
-    });
-
-    // Close on Escape key - using event delegation
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        const panel = document.getElementById('accessibility-panel');
-        if (panel?.classList.contains('open')) {
-          closePanel();
-        }
-      }
-    });
-
-    // Keyboard shortcut: Ctrl+Shift+A (or Cmd+Shift+A on Mac) - using event delegation
-    document.addEventListener('keydown', (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'A') {
-        e.preventDefault();
-        const panel = document.getElementById('accessibility-panel');
-        const allToggleButtons = document.querySelectorAll('[data-accessibility-toggle]');
-
-        if (panel?.classList.contains('open')) {
-          closePanel();
-        } else {
-          panel?.classList.add('open');
-          allToggleButtons.forEach((btn) => btn.setAttribute('aria-expanded', 'true'));
-          document.body.classList.add('accessibility-panel-open');
-          setupFocusTrap();
-        }
-      }
-    });
-
-    // Focus trap implementation
-    const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-    let firstFocusableElement = null;
-    let lastFocusableElement = null;
-
-    function setupFocusTrap() {
-      const panel = document.getElementById('accessibility-panel');
-      if (!panel) return;
-
-      const focusableContent = panel.querySelectorAll(focusableElements);
-      firstFocusableElement = focusableContent[0];
-      lastFocusableElement = focusableContent[focusableContent.length - 1];
-
-      // Focus first element when panel opens
-      if (firstFocusableElement) firstFocusableElement.focus();
-    }
-
-    // Trap focus within panel - using event delegation
-    document.addEventListener('keydown', (e) => {
-      const panel = document.getElementById('accessibility-panel');
-      if (!panel || !panel.classList.contains('open')) return;
-
-      if (e.key === 'Tab') {
-        if (e.shiftKey) {
-          // Shift+Tab: going backwards
-          if (document.activeElement === firstFocusableElement) {
-            e.preventDefault();
-            if (lastFocusableElement) lastFocusableElement.focus();
-          }
-        } else {
-          // Tab: going forwards
-          if (document.activeElement === lastFocusableElement) {
-            e.preventDefault();
-            if (firstFocusableElement) firstFocusableElement.focus();
-          }
-        }
-      }
-    });
-
-    function closePanel() {
-      const panelElement = document.getElementById('accessibility-panel');
-      const allToggleButtons = document.querySelectorAll('[data-accessibility-toggle]');
-
-      if (panelElement) panelElement.classList.remove('open');
-      allToggleButtons.forEach((btn) => btn.setAttribute('aria-expanded', 'false'));
-      document.body.classList.remove('accessibility-panel-open');
-    }
-
-    function updateUI(settings) {
-      // Update font radio buttons
-      const fontRadio = document.querySelector(`input[name="font"][value="${settings.font}"]`);
-      if (fontRadio) fontRadio.checked = true;
-
-      // Update theme radio buttons
-      const themeRadio = document.querySelector(`input[name="theme"][value="${settings.theme}"]`);
-      if (themeRadio) themeRadio.checked = true;
-
-      // Update text size buttons
-      document.querySelectorAll('.accessibility-size-btn').forEach((btn) => {
-        const button = btn;
-        const size = button.dataset.textSize;
-        if (size === settings.textSize) {
-          button.classList.add('active');
-          button.setAttribute('aria-pressed', 'true');
-        } else {
-          button.classList.remove('active');
-          button.setAttribute('aria-pressed', 'false');
-        }
-      });
-
-      // Update text size label
-      const labels = {
-        xs: 'Extra Small',
-        sm: 'Small',
-        base: 'Normal',
-        lg: 'Large',
-        xl: 'Extra Large',
-      };
-      const label = document.getElementById('text-size-label');
-      if (label) label.textContent = labels[settings.textSize] || 'Normal';
-
-      // Update line height radio buttons
-      const lineHeightRadio = document.querySelector(`input[name="lineHeight"][value="${settings.lineHeight}"]`);
-      if (lineHeightRadio) lineHeightRadio.checked = true;
-
-      // Update reading ruler checkbox
-      const rulerCheckbox = document.getElementById('reading-ruler');
-      if (rulerCheckbox) rulerCheckbox.checked = settings.readingRuler;
-    }
-
-    function applySettings(settings) {
-      applyFont(settings.font);
-      applyTheme(settings.theme);
-      applyTextSize(settings.textSize);
-      applyLineHeight(settings.lineHeight);
-      applyReadingRuler(settings.readingRuler); // Apply reading ruler
-    }
-
-    function applyFont(font) {
-      // Copy existing ToggleFont logic
-      const fonts = {
-        sylexiad: 'Sylexiad Sans Medium, ui-sans-serif, system-ui, -apple-system',
-        opendyslexic: 'OpenDyslexic3, ui-sans-serif, system-ui, -apple-system',
-        fast: 'Fast Sans, ui-sans-serif, system-ui, -apple-system',
-      };
-
-      document.documentElement.style.setProperty('--aw-font-sans', fonts[font]);
-    }
-
-    function applyFontPreviews() {
-      const previews = {
-        sylexiad: document.querySelector('.font-preview-sylexiad'),
-        opendyslexic: document.querySelector('.font-preview-opendyslexic'),
-        fast: document.querySelector('.font-preview-fast'),
-      };
-
-      // Sylexiad is always available (preloaded)
-      if (previews.sylexiad) {
-        previews.sylexiad.style.fontFamily = "'Sylexiad Sans Medium', sans-serif";
-      }
-
-      // Only apply OpenDyslexic/Fast Sans if fonts are loaded
-      if (accessibilityFontsLoaded) {
-        if (previews.opendyslexic) {
-          previews.opendyslexic.style.fontFamily = "'OpenDyslexic3', sans-serif";
-          previews.opendyslexic.classList.add('fonts-loaded'); // Fade in (instant if cached)
-        }
-        if (previews.fast) {
-          previews.fast.style.fontFamily = "'Fast Sans', sans-serif";
-          previews.fast.classList.add('fonts-loaded'); // Fade in (instant if cached)
-        }
-      }
-    }
-
-    function applyTheme(theme) {
-      // Copy existing ToggleTheme logic
-      if (theme === 'system') {
-        localStorage.removeItem('theme');
-        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-        document.documentElement.classList.toggle('dark', systemTheme === 'dark');
-      } else {
-        localStorage.setItem('theme', theme);
-        document.documentElement.classList.toggle('dark', theme === 'dark');
-      }
-    }
-
-    function applyTextSize(size) {
-      // Remove all text-size-* classes from body
-      document.body.classList.remove('text-size-xs', 'text-size-sm', 'text-size-base', 'text-size-lg', 'text-size-xl');
-
-      // Add new text-size class
-      if (size && size !== 'base') {
-        document.body.classList.add(`text-size-${size}`);
-      }
-      // Note: base is default (no class needed, uses :root value)
-    }
-
-    function applyLineHeight(lineHeight) {
-      const body = document.body;
-
-      // Remove all line height classes
-      body.classList.remove('line-height-compact', 'line-height-normal', 'line-height-relaxed');
-
-      // Add selected line height class
-      if (lineHeight && lineHeight !== 'normal') {
-        body.classList.add(`line-height-${lineHeight}`);
-      }
-      // Note: normal is default (no class needed, uses :root value)
-    }
-
-    /**
-     * Create reading ruler with draggable handle
-     */
-    function createReadingRuler() {
-      if (readingRulerElement) return; // Already exists
-
-      // Create container
-      const container = document.createElement('div');
-      container.className = 'reading-ruler-container';
-
-      // Create draggable handle
-      const handle = document.createElement('div');
-      handle.className = 'reading-ruler-handle';
-      handle.setAttribute('aria-label', 'Drag to reposition reading ruler');
-      handle.setAttribute('role', 'slider');
-      handle.setAttribute('aria-orientation', 'vertical');
-      handle.setAttribute('tabindex', '0');
-
-      // Add Tabler icon (arrows-move-vertical)
-      handle.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 7l0 14"></path>
-          <path d="M9 18l3 3l3 -3"></path>
-          <path d="M9 6l3 -3l3 3"></path>
-        </svg>
-      `;
-
-      // Create highlight bar
-      const highlight = document.createElement('div');
-      highlight.className = 'reading-ruler-highlight';
-
-      // Assemble
-      container.appendChild(handle);
-      container.appendChild(highlight);
-      document.body.appendChild(container);
-
-      // Store references
-      readingRulerElement = container;
-      rulerHandleElement = handle;
-
-      // Set initial height based on current line height and text size settings
-      updateRulerHeight();
-
-      // Position in middle of viewport initially
-      const initialTop = (window.innerHeight - parseFloat(container.style.height || container.offsetHeight)) / 2;
-      positionRuler(initialTop);
-
-      // Setup drag handlers
-      setupDragHandlers();
-    }
-
-    /**
-     * Remove reading ruler element
-     */
-    function removeReadingRuler() {
-      if (readingRulerElement) {
-        readingRulerElement.remove();
-        readingRulerElement = null;
-        rulerHandleElement = null;
-      }
-    }
-
-    /**
-     * Get current text size scale factor
-     */
-    function getTextSizeScale() {
-      const body = document.body;
-      if (body.classList.contains('text-size-xs')) return 0.875;
-      if (body.classList.contains('text-size-sm')) return 0.9375;
-      if (body.classList.contains('text-size-lg')) return 1.125;
-      if (body.classList.contains('text-size-xl')) return 1.25;
-      return 1; // base
-    }
-
-    /**
-     * Update ruler height based on line height and text size settings
-     */
-    function updateRulerHeight() {
-      if (!readingRulerElement) return;
-
-      // Get current line height scale from body class
-      const body = document.body;
-      let lineHeightScale = 1.5; // Default (normal)
-
-      if (body.classList.contains('line-height-compact')) {
-        lineHeightScale = 1.2;
-      } else if (body.classList.contains('line-height-relaxed')) {
-        lineHeightScale = 2.0;
-      }
-
-      // Get current text size scale
-      const textSizeScale = getTextSizeScale();
-
-      // Calculate final height: base font size (16px) × text size scale × line height scale × 1.2 (20% larger)
-      const heightInEm = textSizeScale * lineHeightScale * 1.2;
-
-      // Set the height
-      readingRulerElement.style.height = `${heightInEm}em`;
-    }
-
-    /**
-     * Position ruler at specific Y coordinate (viewport-relative)
-     */
-    function positionRuler(topPosition) {
-      if (!readingRulerElement) return;
-
-      // Get ruler height in pixels
-      const rulerHeight = readingRulerElement.offsetHeight;
-
-      // Constrain to viewport
-      const minY = 0;
-      const maxY = window.innerHeight - rulerHeight;
-      const constrainedTop = Math.max(minY, Math.min(maxY, topPosition));
-
-      // Update position
-      readingRulerElement.style.top = `${constrainedTop}px`;
-    }
-
-    /**
-     * Setup drag handlers for ruler handle
-     */
-    function setupDragHandlers() {
-      if (!rulerHandleElement) return;
-
-      // Mouse drag start
-      const handleMouseDown = (e) => {
-        isDraggingRuler = true;
-        dragStartY = e.clientY;
-        rulerStartTop = readingRulerElement.offsetTop;
-        rulerHandleElement.classList.add('dragging');
-        e.preventDefault(); // Prevent text selection
-      };
-
-      // Touch drag start
-      const handleTouchStart = (e) => {
-        if (e.touches.length !== 1) return;
-        isDraggingRuler = true;
-        dragStartY = e.touches[0].clientY;
-        rulerStartTop = readingRulerElement.offsetTop;
-        rulerHandleElement.classList.add('dragging');
-        e.preventDefault(); // Prevent text selection and scrolling
-      };
-
-      // Mouse drag move
-      const handleMouseMove = (e) => {
-        if (!isDraggingRuler) return;
-        const deltaY = e.clientY - dragStartY;
-        const newTop = rulerStartTop + deltaY;
-        positionRuler(newTop);
-      };
-
-      // Touch drag move
-      const handleTouchMove = (e) => {
-        if (!isDraggingRuler || e.touches.length !== 1) return;
-        const deltaY = e.touches[0].clientY - dragStartY;
-        const newTop = rulerStartTop + deltaY;
-        positionRuler(newTop);
-        e.preventDefault(); // Prevent scrolling while dragging
-      };
-
-      // Mouse drag end
-      const handleMouseUp = () => {
-        if (!isDraggingRuler) return;
-        isDraggingRuler = false;
-        rulerHandleElement?.classList.remove('dragging');
-      };
-
-      // Touch drag end
-      const handleTouchEnd = () => {
-        if (!isDraggingRuler) return;
-        isDraggingRuler = false;
-        rulerHandleElement?.classList.remove('dragging');
-      };
-
-      // Keyboard support for accessibility
-      const handleKeyDown = (e) => {
-        if (!rulerHandleElement) return;
-
-        const step = 10; // pixels to move per keypress
-        let newTop = readingRulerElement.offsetTop;
-
-        if (e.key === 'ArrowUp') {
-          newTop -= step;
-          positionRuler(newTop);
-          e.preventDefault();
-        } else if (e.key === 'ArrowDown') {
-          newTop += step;
-          positionRuler(newTop);
-          e.preventDefault();
-        }
-      };
-
-      // Attach event listeners
-      rulerHandleElement.addEventListener('mousedown', handleMouseDown);
-      rulerHandleElement.addEventListener('touchstart', handleTouchStart, { passive: false });
-      rulerHandleElement.addEventListener('keydown', handleKeyDown);
-
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('touchmove', handleTouchMove, { passive: false });
-      document.addEventListener('mouseup', handleMouseUp);
-      document.addEventListener('touchend', handleTouchEnd);
-
-      // Store handler references for cleanup
-      rulerHandleElement._handlers = {
-        mousedown: handleMouseDown,
-        touchstart: handleTouchStart,
-        keydown: handleKeyDown,
-        mousemove: handleMouseMove,
-        touchmove: handleTouchMove,
-        mouseup: handleMouseUp,
-        touchend: handleTouchEnd,
-      };
-    }
-
-    /**
-     * Remove drag handlers
-     */
-    function removeDragHandlers() {
-      if (!rulerHandleElement || !rulerHandleElement._handlers) return;
-
-      const handlers = rulerHandleElement._handlers;
-
-      rulerHandleElement.removeEventListener('mousedown', handlers.mousedown);
-      rulerHandleElement.removeEventListener('touchstart', handlers.touchstart);
-      rulerHandleElement.removeEventListener('keydown', handlers.keydown);
-
-      document.removeEventListener('mousemove', handlers.mousemove);
-      document.removeEventListener('touchmove', handlers.touchmove);
-      document.removeEventListener('mouseup', handlers.mouseup);
-      document.removeEventListener('touchend', handlers.touchend);
-
-      delete rulerHandleElement._handlers;
-    }
-
-    /**
-     * Enable reading ruler
-     */
-    function enableReadingRuler() {
-      if (readingRulerEnabled) return; // Already enabled
-      createReadingRuler();
-      document.body.classList.add('reading-ruler-active');
-
-      // Add padding to mobile nav menu items directly via inline styles
-      // This ensures the padding is applied even when Tailwind utilities have higher specificity
-      const mobileNavs = document.querySelectorAll('#header nav');
-      mobileNavs.forEach((nav) => {
-        nav.style.paddingLeft = '40px';
-      });
-
-      readingRulerEnabled = true;
-    }
-
-    /**
-     * Disable reading ruler
-     */
-    function disableReadingRuler() {
-      if (!readingRulerEnabled) return; // Already disabled
-
-      // Remove drag handlers
-      removeDragHandlers();
-
-      // Remove ruler element
-      removeReadingRuler();
-
-      // Remove body padding
-      document.body.classList.remove('reading-ruler-active');
-
-      // Remove inline padding from mobile nav menu items
-      const mobileNavs = document.querySelectorAll('#header nav');
-      mobileNavs.forEach((nav) => {
-        nav.style.paddingLeft = '';
-      });
-
-      // Reset drag state
-      isDraggingRuler = false;
-      dragStartY = 0;
-      rulerStartTop = 0;
-
-      readingRulerEnabled = false;
-    }
-
-    /**
-     * Apply reading ruler setting
-     */
-    function applyReadingRuler(enabled) {
-      if (enabled) {
-        enableReadingRuler();
-      } else {
-        disableReadingRuler();
-      }
-    }
 
     // === INITIAL LOAD ===
-    // Run on initial page load
     initializeAccessibilityPanel();
 
     // === ASTRO VIEW TRANSITIONS ===
-    // Cleanup reading ruler during page transitions
-    document.addEventListener('astro:before-swap', () => {
-      // Clean up ruler element and event listeners during page transition
-      if (readingRulerEnabled) {
-        // Remove drag handlers
-        removeDragHandlers();
-        // Remove ruler element
-        removeReadingRuler();
-        // Reset drag state
-        isDraggingRuler = false;
-        dragStartY = 0;
-        rulerStartTop = 0;
-        // Reset flag so it can be recreated on next page if setting is enabled
-        readingRulerEnabled = false;
-      }
-    });
-
-    // Re-initialize after each client-side navigation (Astro View Transitions)
     document.addEventListener('astro:page-load', () => {
       initializeAccessibilityPanel();
     });
@@ -1473,4 +957,57 @@ const settings = DEFAULT_SETTINGS;
       ttsInitialized = false; // Allow retry on error
     }
   };
+
+  // Accessibility Panel interaction initialization - separate non-inline script so Vite can process imports
+  let accessibilityPanelInitialized = false;
+
+  // Make function available globally for triggering on first interaction
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (window as any).initializeAccessibilityPanelInteractions = async function () {
+    if (accessibilityPanelInitialized) {
+      return;
+    }
+
+    accessibilityPanelInitialized = true;
+
+    try {
+      const { initialize } = await import('~/scripts/accessibility-panel-init');
+      initialize();
+    } catch (error) {
+      console.error('Failed to initialize accessibility panel interactions:', error);
+      accessibilityPanelInitialized = false; // Allow retry on error
+    }
+  };
+
+  // Initialize interactions on first accessibility panel interaction
+  // Trigger on accessibility button click or keyboard shortcut
+  document.addEventListener(
+    'click',
+    (e: MouseEvent) => {
+      const target = (e.target as HTMLElement).closest('[data-accessibility-toggle]');
+      if (target) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        if (typeof (window as any).initializeAccessibilityPanelInteractions === 'function') {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (window as any).initializeAccessibilityPanelInteractions();
+        }
+      }
+    },
+    { once: false, capture: true }
+  );
+
+  // Also trigger on Ctrl+Shift+A keyboard shortcut
+  document.addEventListener(
+    'keydown',
+    (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'A') {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        if (typeof (window as any).initializeAccessibilityPanelInteractions === 'function') {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (window as any).initializeAccessibilityPanelInteractions();
+        }
+      }
+    },
+    { once: false, capture: true }
+  );
 </script>

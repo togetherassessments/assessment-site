@@ -253,9 +253,11 @@ Button that resets all accessibility settings to their default values:
 
 2. **`src/components/common/AccessibilityPanel.astro`** - Main panel component
    - Slide-in panel with backdrop overlay
-   - Focus trap for keyboard navigation
+   - Focus trap for keyboard navigation (lazy-loaded)
+   - Minimal inline script (~150 lines) for immediate settings application
    - Event delegation to handle all toggle buttons
    - Persistent settings via localStorage
+   - **Performance optimization**: Lazy-loads interaction handlers (~650 lines) from `src/scripts/accessibility-panel-init.ts` on first panel open
 
 3. **`src/components/common/AccessibilitySettings.ts`** - TypeScript utility
    - Defines settings interface and types
@@ -278,21 +280,41 @@ interface AccessibilitySettings {
 
 Settings persist across sessions and are automatically applied on page load.
 
+**Lazy Loading Architecture**:
+
+The AccessibilityPanel uses a two-tier lazy loading approach to optimize performance:
+
+1. **Critical inline script** (~150 lines, `AccessibilityPanel.astro:666-936`):
+   - Settings utilities (getSettings, saveSettings, resetSettings)
+   - Apply functions (applyFont, applyTheme, applyTextSize, applyLineHeight)
+   - Initial settings application on page load
+   - Panel toggle handler (opens/closes panel immediately)
+   - Font loading trigger
+
+2. **Lazy-loaded interaction module** (`src/scripts/accessibility-panel-init.ts`, ~650 lines):
+   - All event handlers for user interactions (font selection, theme selection, text size, line height, reading ruler)
+   - Close button and Escape key handlers
+   - Keyboard shortcut (Ctrl+Shift+A) handler
+   - Focus trap implementation
+   - Reading ruler drag-and-drop functionality
+   - Reset button handler
+   - Loaded automatically when user first opens the accessibility panel
+
 **Event Delegation Pattern**:
 
-The panel uses event delegation to handle multiple toggle buttons without duplicate IDs:
+The panel uses event delegation to handle multiple toggle buttons without duplicate IDs. The inline script handles the panel toggle for immediate response, while the lazy-loaded module handles all other interactions:
 
 ```javascript
-// Listen for clicks on ANY button with [data-accessibility-toggle]
+// Inline script - panel toggle (immediate response)
 document.addEventListener('click', (e) => {
   const target = e.target.closest('[data-accessibility-toggle]');
   if (!target) return;
 
-  // Toggle panel and sync aria-expanded on ALL buttons
-  const allToggleButtons = document.querySelectorAll('[data-accessibility-toggle]');
-  allToggleButtons.forEach((btn) => {
-    btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-  });
+  // Open panel and trigger lazy-load
+  panel?.classList.add('open');
+  if (typeof window.initializeAccessibilityPanelInteractions === 'function') {
+    window.initializeAccessibilityPanelInteractions(); // Lazy-loads event handlers
+  }
 });
 ```
 
@@ -1319,4 +1341,4 @@ Information not conveyed by colour alone:
 
 ---
 
-**Last Updated**: 2025-10-19
+**Last Updated**: 2025-01-19

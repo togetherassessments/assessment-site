@@ -384,3 +384,51 @@ export interface Content extends Omit<Headline, 'classes'>, Widget {
 }
 
 export interface Contact extends Omit<Headline, 'classes'>, Form, Widget {}
+
+// Global window extensions for accessibility features
+declare global {
+  interface Window {
+    accessibilityPanelUtils: {
+      getSettings: () => {
+        font: string;
+        theme: string;
+        textSize: string;
+        lineHeight: string;
+        readingRuler: boolean;
+      };
+      saveSettings: (settings: {
+        font: string;
+        theme: string;
+        textSize: string;
+        lineHeight: string;
+        readingRuler: boolean;
+      }) => void;
+      resetSettings: () => {
+        font: string;
+        theme: string;
+        textSize: string;
+        lineHeight: string;
+        readingRuler: boolean;
+      };
+      applySettings: (settings: {
+        font: string;
+        theme: string;
+        textSize: string;
+        lineHeight: string;
+        readingRuler: boolean;
+      }) => void;
+      applyFont: (font: string) => void;
+      applyTheme: (theme: string) => void;
+      applyTextSize: (size: string) => void;
+      applyLineHeight: (lineHeight: string) => void;
+      applyReadingRuler: (enabled: boolean) => void;
+      loadAccessibilityFonts: () => Promise<void>;
+      applyFontPreviews: () => void;
+      removeDragHandlers: () => void;
+      removeReadingRuler: () => void;
+      updateReadingRulerState: (enabled: boolean) => void;
+    };
+    initializeTTSIfNeeded?: () => Promise<void>;
+    initializeAccessibilityPanelInteractions?: () => Promise<void>;
+  }
+}
