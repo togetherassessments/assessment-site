@@ -716,6 +716,9 @@ const settings = DEFAULT_SETTINGS;
         });
     }
 
+    // TTS initialization function is defined in separate non-inline script
+    // and exposed globally as window.initializeTTSIfNeeded
+
     // Local copy of AccessibilitySettings utilities (inline scripts can't use imports)
     const DEFAULT_SETTINGS = {
       font: 'sylexiad',
@@ -807,6 +810,11 @@ const settings = DEFAULT_SETTINGS;
         loadAccessibilityFonts().then(() => {
           applyFontPreviews();
         });
+
+        // Initialize TTS when panel opens (will only initialize once)
+        if (typeof window.initializeTTSIfNeeded === 'function') {
+          window.initializeTTSIfNeeded();
+        }
       }
     });
 
@@ -1440,4 +1448,29 @@ const settings = DEFAULT_SETTINGS;
       initializeAccessibilityPanel();
     });
   })();
+</script>
+
+<script>
+  // TTS initialization - separate non-inline script so Vite can process imports
+  // This script is processed by Vite, allowing proper dynamic imports
+
+  let ttsInitialized = false;
+
+  // Make function available globally for the inline script
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (window as any).initializeTTSIfNeeded = async function () {
+    if (ttsInitialized) {
+      return;
+    }
+
+    ttsInitialized = true;
+
+    try {
+      const { initialize } = await import('~/scripts/tts-init');
+      initialize();
+    } catch (error) {
+      console.error('Failed to initialize TTS:', error);
+      ttsInitialized = false; // Allow retry on error
+    }
+  };
 </script>

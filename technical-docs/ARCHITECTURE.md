@@ -311,6 +311,9 @@ src/
 │   ├── credits.astro
 │   ├── 404.astro
 │   └── rss.xml.ts
+├── scripts/                       # Client-side JavaScript modules
+│   ├── tts-player.ts              # TTS player class (Web Speech API integration)
+│   └── tts-init.ts                # TTS initialization module (lazy-loaded)
 ├── utils/                         # Helper functions (shared)
 │   ├── blog.ts                    # Blog utilities
 │   ├── images.ts                  # Image processing
@@ -844,4 +847,4 @@ i18n:
 
 ---
 
-**Last Updated**: 2025-01-12
+**Last Updated**: 2025-10-19

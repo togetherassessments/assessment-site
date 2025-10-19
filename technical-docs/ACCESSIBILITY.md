@@ -214,10 +214,13 @@ This blacklist approach ensures all visible content is read, including links, he
 
 **Implementation**:
 
-- **Player UI**: `src/components/common/TTSPlayer.astro` (collapsible player component with tab, controls, and styles)
+- **Player UI**: `src/components/common/TTSPlayer.astro` (pure UI component with HTML/CSS only - no JavaScript)
+- **TTS Initialization**: `src/scripts/tts-init.ts` (lazy-loaded initialization module with event handlers and pre-loading logic)
 - **TTS Logic**: `src/scripts/tts-player.ts` (TypeScript class handling Web Speech API, content extraction, voice selection, state management)
-- **Integration**: `src/components/common/AccessibilityPanel.astro:186-195` ("Listen to This Page" button in accessibility panel)
+- **Integration**: `src/components/common/AccessibilityPanel.astro:1453-1476` (lazy loads tts-init.ts when panel opens)
 - **Layout**: Player component included in `src/components/widgets/Header.astro` and page layouts
+
+**Performance optimization**: The TTS system uses lazy loading to remove JavaScript from the initial page load. The initialization module (`tts-init.ts`, ~270 lines) is only loaded when the user opens the accessibility panel for the first time. This removes TTS from Lighthouse's network dependency tree while maintaining mobile compatibility.
 
 **Hover consistency**:
 
@@ -741,9 +744,18 @@ The site implements a comprehensive text-to-speech (TTS) system allowing users t
    - Play/pause/stop/minimize/close controls
    - Status text updates ("Listening to Page", "Playing")
    - CSS styling for collapsed/expanded states
-   - Lazy loading script (only loads when user clicks "Listen to This Page")
+   - **No JavaScript** - Pure UI component (HTML/CSS only)
 
-2. **`src/scripts/tts-player.ts`** - Core TTS logic (TypeScript class)
+2. **`src/scripts/tts-init.ts`** - Initialization module (lazy-loaded)
+   - Event listeners for [data-tts-toggle] buttons and tab interactions
+   - Module loading and state management (idle/loading/ready/error)
+   - `preloadTTSModule()` function for mobile compatibility
+   - Button state updates (loading spinner, disabled states)
+   - Astro view transition handlers (astro:page-load, astro:before-preparation)
+   - `initializePlayerState()` function to reset UI on navigation
+   - Only loaded when accessibility panel opens for the first time
+
+3. **`src/scripts/tts-player.ts`** - Core TTS logic (TypeScript class)
    - Web Speech API integration (`speechSynthesis`, `SpeechSynthesisUtterance`)
    - Content extraction with TreeWalker
    - Voice selection and loading
@@ -751,12 +763,14 @@ The site implements a comprehensive text-to-speech (TTS) system allowing users t
    - DOM element querying with getter pattern (prevents stale references)
    - Event handlers (onstart, onend, onpause, onresume, onerror)
 
-3. **`src/components/common/AccessibilityPanel.astro`** - Integration point
-   - "Listen to This Page" button with `data-tts-toggle` attribute (lines 186-195)
-   - Click handler for lazy loading and TTS player initialization
-   - Voice pre-loading when accessibility panel opens
+4. **`src/components/common/AccessibilityPanel.astro`** - Integration point
+   - "Listen to This Page" button with `data-tts-toggle` attribute (lines 203-227)
+   - Lazy loading logic in separate `<script>` tag (lines 1453-1476)
+   - Exposes `window.initializeTTSIfNeeded()` function globally
+   - Inline script calls initialization when panel opens (line 815-817)
+   - Pre-loads tts-init.ts module on first panel open
 
-4. **Layout Integration**:
+5. **Layout Integration**:
    - Player component included in `src/components/widgets/Header.astro`
    - Included in page layouts to ensure availability site-wide
 
@@ -843,11 +857,11 @@ Each filtered and deduplicated voice is scored:
 
 **Astro View Transitions Compatibility**:
 
-Location: `src/components/common/TTSPlayer.astro:395-407` and `src/scripts/tts-player.ts:10-18`
+Location: `src/scripts/tts-init.ts:230-253` and `src/scripts/tts-player.ts:316-323`
 
 The TTS system handles Astro's view transitions by:
 
-1. **Using getter pattern for DOM references** (prevents stale elements):
+1. **Using getter pattern for DOM references** in tts-player.ts (prevents stale elements):
 
    ```typescript
    private get playerElement(): HTMLElement {
@@ -857,18 +871,32 @@ The TTS system handles Astro's view transitions by:
    }
    ```
 
-2. **Reinitializing on navigation**:
+2. **Document-level event delegation** in tts-init.ts (persists across navigations):
+   - Event listeners attached to `document`, not individual elements
+   - Listeners survive page transitions and continue working on new pages
+
+3. **Reinitializing on navigation** (astro:page-load handler in tts-init.ts):
 
    ```javascript
    document.addEventListener('astro:page-load', () => {
-     initializePlayerState();
-     if (ttsPlayerInstance) {
-       ttsPlayerInstance.updateContent();
+     initializePlayerState(); // Reset UI state
+     if (ttsPlayerLoaded && ttsPlayerInstance) {
+       ttsPlayerInstance.updateContent(); // Update content for new page
      }
    });
    ```
 
-3. **Resetting player state**: Player closes and stops playback on navigation
+4. **Pausing on navigation start** (astro:before-preparation handler):
+
+   ```javascript
+   document.addEventListener('astro:before-preparation', () => {
+     if (ttsPlayerInstance?.isPlaying()) {
+       ttsPlayerInstance.pause(); // Pause playback before navigation
+     }
+   });
+   ```
+
+5. **Resetting player state**: Player closes and stops playback on navigation
 
 **Accessibility Features**:
 
@@ -1291,4 +1319,4 @@ Information not conveyed by colour alone:
 
 ---
 
-**Last Updated**: 2025-01-19
+**Last Updated**: 2025-10-19
