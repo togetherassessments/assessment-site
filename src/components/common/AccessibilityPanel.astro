@@ -378,18 +378,21 @@ const settings = DEFAULT_SETTINGS;
     cursor: pointer;
   }
 
-  /* Font preview styles - fonts loaded asynchronously via DeferredFontLoader */
-  .font-preview-sylexiad {
-    font-family: 'Sylexiad Sans Medium', sans-serif;
-  }
-
-  .font-preview-opendyslexic {
-    font-family: 'OpenDyslexic3', sans-serif;
-  }
-
+  /* Font preview styles - fonts applied dynamically via JavaScript to prevent CLS and network blocking */
+  /* Hide font previews until fonts load to prevent flash of system font on slow connections */
+  .font-preview-opendyslexic,
   .font-preview-fast {
-    font-family: 'Fast Sans', sans-serif;
+    opacity: 0;
+    transition: opacity 0.3s ease-in;
   }
+
+  /* Show previews when fonts are loaded (instant if cached, fade-in if loading) */
+  .font-preview-opendyslexic.fonts-loaded,
+  .font-preview-fast.fonts-loaded {
+    opacity: 1;
+  }
+
+  /* Sylexiad is always preloaded, no need to hide */
 
   /* Button Groups */
   .accessibility-button-group {
@@ -662,6 +665,57 @@ const settings = DEFAULT_SETTINGS;
 
 <script is:inline>
   (function () {
+    // Font loading state
+    let accessibilityFontsLoaded = false;
+    let accessibilityFontsLoading = false;
+
+    // Lazy load accessibility fonts (OpenDyslexic and Fast Sans)
+    function loadAccessibilityFonts() {
+      // Only load once
+      if (accessibilityFontsLoaded || accessibilityFontsLoading) {
+        return Promise.resolve();
+      }
+
+      accessibilityFontsLoading = true;
+
+      // Check if browser supports CSS Font Loading API
+      if (!('fonts' in document)) {
+        console.warn('CSS Font Loading API not supported');
+        accessibilityFontsLoaded = true;
+        accessibilityFontsLoading = false;
+        return Promise.resolve();
+      }
+
+      // Create FontFace objects
+      const openDyslexic = new FontFace(
+        'OpenDyslexic3',
+        'url(/fonts/OpenDyslexic3-Regular.woff2) format("woff2"), url(/fonts/OpenDyslexic3-Regular.woff) format("woff"), url(/fonts/OpenDyslexic3-Regular.ttf) format("truetype")',
+        { weight: '400', style: 'normal', display: 'swap' }
+      );
+
+      const fastSans = new FontFace(
+        'Fast Sans',
+        'url(/fonts/Fast_Sans.woff2) format("woff2"), url(/fonts/Fast_Sans.woff) format("woff"), url(/fonts/Fast_Sans.ttf) format("truetype")',
+        { weight: '400', style: 'normal', display: 'swap' }
+      );
+
+      // Load fonts
+      return Promise.all([openDyslexic.load(), fastSans.load()])
+        .then((fonts) => {
+          fonts.forEach((font) => {
+            document.fonts.add(font);
+          });
+          accessibilityFontsLoaded = true;
+          accessibilityFontsLoading = false;
+          console.log('✓ Accessibility fonts loaded');
+        })
+        .catch((error) => {
+          console.warn('Failed to load accessibility fonts:', error);
+          accessibilityFontsLoaded = true;
+          accessibilityFontsLoading = false;
+        });
+    }
+
     // Local copy of AccessibilitySettings utilities (inline scripts can't use imports)
     const DEFAULT_SETTINGS = {
       font: 'sylexiad',
@@ -711,11 +765,20 @@ const settings = DEFAULT_SETTINGS;
       // Reload settings from localStorage (in case they changed)
       currentSettings = getSettings();
 
-      // Apply settings on load
-      applySettings(currentSettings);
+      // Check if user has saved OpenDyslexic or Fast Sans preference
+      const isDeferredFont = currentSettings.font === 'opendyslexic' || currentSettings.font === 'fast';
 
-      // Update UI to match loaded settings
-      updateUI(currentSettings);
+      if (isDeferredFont) {
+        // Load fonts first, then apply settings
+        loadAccessibilityFonts().then(() => {
+          applySettings(currentSettings);
+          updateUI(currentSettings);
+        });
+      } else {
+        // No need to load fonts, apply settings immediately
+        applySettings(currentSettings);
+        updateUI(currentSettings);
+      }
     }
 
     // === TOGGLE BUTTON EVENT DELEGATION ===
@@ -739,6 +802,11 @@ const settings = DEFAULT_SETTINGS;
         allToggleButtons.forEach((btn) => btn.setAttribute('aria-expanded', 'true'));
         document.body.classList.add('accessibility-panel-open');
         setupFocusTrap();
+
+        // Load fonts when panel opens (will only load once)
+        loadAccessibilityFonts().then(() => {
+          applyFontPreviews();
+        });
       }
     });
 
@@ -990,6 +1058,31 @@ const settings = DEFAULT_SETTINGS;
       };
 
       document.documentElement.style.setProperty('--aw-font-sans', fonts[font]);
+    }
+
+    function applyFontPreviews() {
+      const previews = {
+        sylexiad: document.querySelector('.font-preview-sylexiad'),
+        opendyslexic: document.querySelector('.font-preview-opendyslexic'),
+        fast: document.querySelector('.font-preview-fast'),
+      };
+
+      // Sylexiad is always available (preloaded)
+      if (previews.sylexiad) {
+        previews.sylexiad.style.fontFamily = "'Sylexiad Sans Medium', sans-serif";
+      }
+
+      // Only apply OpenDyslexic/Fast Sans if fonts are loaded
+      if (accessibilityFontsLoaded) {
+        if (previews.opendyslexic) {
+          previews.opendyslexic.style.fontFamily = "'OpenDyslexic3', sans-serif";
+          previews.opendyslexic.classList.add('fonts-loaded'); // Fade in (instant if cached)
+        }
+        if (previews.fast) {
+          previews.fast.style.fontFamily = "'Fast Sans', sans-serif";
+          previews.fast.classList.add('fonts-loaded'); // Fade in (instant if cached)
+        }
+      }
     }
 
     function applyTheme(theme) {
