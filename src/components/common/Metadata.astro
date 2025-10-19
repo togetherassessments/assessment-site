@@ -43,6 +43,8 @@ const seoConfig = merge(
     description: defaultDescription,
     canonical: canonical,
     openGraph: {
+      title: defaultTitle,
+      description: defaultDescription,
       url: canonical,
       site_name: settings.site.name,
       type: 'website',
@@ -67,7 +69,7 @@ const seoConfig = merge(
     noindex: typeof robots?.index !== 'undefined' ? !robots.index : undefined,
     nofollow: typeof robots?.follow !== 'undefined' ? !robots.follow : undefined,
     description: description,
-    openGraph: { url: canonical, ...openGraph },
+    openGraph: { title: title, description: description, url: canonical, ...openGraph },
     twitter: twitter,
   }
 );
