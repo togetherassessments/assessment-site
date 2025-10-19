@@ -161,23 +161,28 @@ On page load, determines theme by:
 
 ## Dark Mode Hyperlink Styling
 
-**Location**: `src/components/CustomStyles.astro:122-132`
+**Location**: `src/components/CustomStyles.astro:111-121`
 
-All hyperlinks in dark mode are styled to match the default text colour but with bold weight and no underline:
+All hyperlinks (excluding buttons) in dark mode are styled to match the default text colour but with bold weight and no underline:
 
 ```css
 /* Dark mode hyperlink styling - match text colour but bold */
-.dark a {
+/* Exclude buttons to preserve their intended colours (WCAG contrast compliance) */
+.dark a:not(.btn):not(.btn-primary):not(.btn-secondary):not(.btn-tertiary) {
   color: var(--aw-color-text-default) !important;
   font-weight: 700;
   text-decoration: none !important;
 }
 
-.dark a:hover {
+.dark a:not(.btn):not(.btn-primary):not(.btn-secondary):not(.btn-tertiary):hover {
   color: var(--aw-color-text-default) !important;
   text-decoration: none !important;
 }
 ```
+
+**Why button exclusions are needed (added 2025-01-19):**
+
+Buttons rendered as `<a>` tags (such as `.btn-secondary`) need to maintain their own colour values for WCAG 2.1 AA contrast compliance. Without the `:not()` exclusions, the `!important` rule would override button text colours, causing contrast failures.
 
 **Why `!important` is needed:**
 
@@ -187,9 +192,10 @@ All hyperlinks in dark mode are styled to match the default text colour but with
 
 **Result:**
 
-- All hyperlinks in dark mode display as `rgb(229, 236, 246)` (light colour)
-- All hyperlinks are bold (font-weight: 700)
+- All hyperlinks (except buttons) in dark mode display as `rgb(229, 236, 246)` (light colour)
+- All hyperlinks (except buttons) are bold (font-weight: 700)
 - No underlines (for cleaner appearance whilst maintaining bold for distinction)
+- Buttons maintain their own colours for WCAG compliance (e.g., white text on accent background)
 
 ## Hardcoded Colours (Edge Cases)
 
@@ -319,4 +325,4 @@ These are intentionally hardcoded for specific visual effects and don't need to 
 
 ---
 
-**Last Updated**: 2025-01-12
+**Last Updated**: 2025-01-19

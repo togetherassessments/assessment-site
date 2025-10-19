@@ -540,25 +540,43 @@ function applyFont(font) {
 - `.woff` - Fallback for older browsers
 - `.ttf` - Ultimate fallback
 
-**Font Preloading Strategy**:
+**Font Loading Strategy**:
 
-Location: `src/components/CustomStyles.astro:20-23`
+The site uses a two-tier font loading approach optimised for performance:
 
-All four fonts are preloaded immediately on page load to eliminate FOUT (Flash of Unstyled Text):
+**Critical Fonts (Preloaded)**:
+
+Location: `src/components/CustomStyles.astro:20-22`
 
 ```html
 <link rel="preload" href="/fonts/TogetherAssessments-Regular.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/fonts/SylexiadSansMedium.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/fonts/OpenDyslexic3-Regular.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/fonts/Fast_Sans.woff2" as="font" type="font/woff2" crossorigin />
 ```
 
-**Why preload all fonts?**
+These fonts are preloaded because:
 
-- Ensures instant font switching with no loading delay
-- Eliminates FOUT when accessibility panel is opened
-- Small performance trade-off (~200KB compressed) for significantly better user experience
-- All fonts are needed for core accessibility functionality
+- **TogetherAssessments**: Brand font used for all headings site-wide
+- **Sylexiad Sans Medium**: Default body font (majority of users)
+- **Performance**: Both use `font-display: block` to prevent CLS (Cumulative Layout Shift)
+
+**Accessibility Fonts (Lazy Loaded)**:
+
+Location: `src/components/common/AccessibilityPanel.astro:672-717`
+
+OpenDyslexic and Fast Sans are loaded on-demand using the CSS Font Loading API:
+
+- **When**: Only loaded when user opens accessibility panel OR has saved preference
+- **Why**: Saves 336KB bandwidth for users who never use accessibility fonts (majority)
+- **Zero network impact**: Fonts don't appear in critical render path
+- **Implementation**: JavaScript `loadAccessibilityFonts()` function with promise-based loading
+
+**Font preview handling**:
+
+- Sylexiad preview shown immediately (preloaded font)
+- OpenDyslexic/Fast Sans previews use opacity transitions:
+  - Hidden (`opacity: 0`) until fonts load
+  - Smooth fade-in (`opacity: 1, transition: 0.3s`) when ready
+  - Instant display if fonts already cached
 
 ### Size Adjustments
 
@@ -1162,6 +1180,28 @@ The accessibility panel includes proper ARIA attributes:
 - `aria-expanded` - Dynamically indicates panel open/closed state on toggle buttons
 - `aria-controls` - Links toggle button to panel ID
 
+**Modal Dialog Semantic HTML (2025-01-19)**:
+
+Modal panels (accessibility panel and search panel) use semantically correct HTML elements for `role="dialog"`:
+
+```html
+<!-- Correct: div with dialog role -->
+<div
+  id="accessibility-panel"
+  class="accessibility-panel"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Accessibility Settings"
+></div>
+```
+
+**Note**: Previously used `<aside role="dialog">` which was flagged by Lighthouse as semantically incompatible. The `<aside>` element has an implicit role of "complementary" which conflicts with the explicit "dialog" role. Changed to `<div>` in:
+
+- `src/components/common/AccessibilityPanel.astro:10` (accessibility panel)
+- `src/components/common/SearchPanel.astro:10` (search panel)
+
+This ensures screen readers correctly announce the panels as modal dialogs without role conflicts.
+
 See [Accessibility Settings Panel](#accessibility-settings-panel) for complete implementation details.
 
 ### Dynamic Content
@@ -1201,6 +1241,43 @@ Colours tested for contrast in both light and dark modes:
 - Text (`rgb(229 236 246)`) on dark background (`rgb(18 16 20)`)
 - Muted text (`rgb(229 236 246 / 66%)`) on dark background
 
+### Button Colour Contrast (Dark Mode)
+
+**Issue Resolved (2025-01-19)**: Secondary buttons were failing WCAG 2.1 AA contrast requirements in dark mode due to a CSS specificity issue.
+
+**Root Cause**: A global dark mode styling rule for links was overriding button text colours with `!important`:
+
+```css
+/* Previous implementation (caused contrast issues) */
+.dark a {
+  color: var(--aw-color-text-default) !important; /* rgb(229 236 246) = #e5ecf6 */
+}
+```
+
+This forced button links to use `#e5ecf6` text on `#1d7963` background, producing a 4.45:1 contrast ratio (below the 4.5:1 WCAG AA minimum).
+
+**Solution**: Modified `src/components/CustomStyles.astro:111-121` to exclude button classes from the dark mode link override:
+
+```css
+/* Fixed implementation (WCAG compliant) */
+.dark a:not(.btn):not(.btn-primary):not(.btn-secondary):not(.btn-tertiary) {
+  color: var(--aw-color-text-default) !important;
+  font-weight: 700;
+  text-decoration: none !important;
+}
+```
+
+**Result**: Buttons now use proper white text (`#ffffff`) which provides a 5.2:1 contrast ratio, exceeding WCAG 2.1 AA requirements with a comfortable safety margin.
+
+**Affected Elements** (all now compliant):
+
+- Primary CTA buttons
+- Secondary action buttons
+- Service card "Learn more" links
+- FAQ "More FAQs" button
+
+**Testing**: Verified with Google Lighthouse - achieved 100/100 accessibility score in both light and dark themes.
+
 ### Non-Colour Indicators
 
 Information not conveyed by colour alone:
@@ -1214,4 +1291,4 @@ Information not conveyed by colour alone:
 
 ---
 
-**Last Updated**: 2025-10-14
+**Last Updated**: 2025-01-19

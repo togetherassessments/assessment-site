@@ -108,13 +108,14 @@
   }
 
   /* Dark mode hyperlink styling - match text colour but bold */
-  .dark a {
+  /* Exclude buttons to preserve their intended colours (WCAG contrast compliance) */
+  .dark a:not(.btn):not(.btn-primary):not(.btn-secondary):not(.btn-tertiary) {
     color: var(--aw-color-text-default) !important;
     font-weight: 700;
     text-decoration: none !important;
   }
 
-  .dark a:hover {
+  .dark a:not(.btn):not(.btn-primary):not(.btn-secondary):not(.btn-tertiary):hover {
     color: var(--aw-color-text-default) !important;
     text-decoration: none !important;
   }
