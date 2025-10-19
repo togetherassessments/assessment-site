@@ -25,6 +25,10 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
 export default defineConfig({
   output: 'static',
 
+  build: {
+    inlineStylesheets: 'auto',
+  },
+
   integrations: [
     tailwind({
       applyBaseStyles: false,
@@ -91,6 +95,7 @@ export default defineConfig({
       },
     },
     build: {
+      assetsInlineLimit: 4096, // Inline assets smaller than 4KB
       rollupOptions: {
         external: ['/pagefind/pagefind.js'],
       },
