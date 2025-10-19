@@ -48,29 +48,10 @@
     size-adjust: 120%;
   }
 
-  @font-face {
-    font-family: 'OpenDyslexic3';
-    src:
-      url('/fonts/OpenDyslexic3-Regular.woff2') format('woff2'),
-      url('/fonts/OpenDyslexic3-Regular.woff') format('woff'),
-      url('/fonts/OpenDyslexic3-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-    size-adjust: 85%;
-  }
-
-  @font-face {
-    font-family: 'Fast Sans';
-    src:
-      url('/fonts/Fast_Sans.woff2') format('woff2'),
-      url('/fonts/Fast_Sans.woff') format('woff'),
-      url('/fonts/Fast_Sans.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-    size-adjust: 100%;
-  }
+  /* OpenDyslexic and Fast Sans @font-face declarations moved to DeferredFontLoader.astro
+     to prevent blocking initial render. These fonts are only used in the accessibility
+     panel which requires user interaction to open. Fonts are loaded asynchronously
+     after DOMContentLoaded using the CSS Font Loading API. */
 
   /* Enable OpenType contextual alternates (calt) feature globally
      This is needed for Fast Sans letter highlighting to work.

@@ -41,7 +41,7 @@ const settings = DEFAULT_SETTINGS;
             checked={settings.font === 'sylexiad'}
             class="accessibility-radio"
           />
-          <span class="font-preview" style="font-family: 'Sylexiad Sans Medium', sans-serif;">Sylexiad Sans</span>
+          <span class="font-preview font-preview-sylexiad">Sylexiad Sans</span>
         </label>
         <label class="accessibility-radio-label">
           <input
@@ -51,11 +51,11 @@ const settings = DEFAULT_SETTINGS;
             checked={settings.font === 'opendyslexic'}
             class="accessibility-radio"
           />
-          <span class="font-preview" style="font-family: 'OpenDyslexic3', sans-serif;">OpenDyslexic</span>
+          <span class="font-preview font-preview-opendyslexic">OpenDyslexic</span>
         </label>
         <label class="accessibility-radio-label">
           <input type="radio" name="font" value="fast" checked={settings.font === 'fast'} class="accessibility-radio" />
-          <span class="font-preview" style="font-family: 'Fast Sans', sans-serif;">Fast Sans</span>
+          <span class="font-preview font-preview-fast">Fast Sans</span>
         </label>
       </div>
     </section>
@@ -376,6 +376,19 @@ const settings = DEFAULT_SETTINGS;
     width: 1.25rem;
     height: 1.25rem;
     cursor: pointer;
+  }
+
+  /* Font preview styles - fonts loaded asynchronously via DeferredFontLoader */
+  .font-preview-sylexiad {
+    font-family: 'Sylexiad Sans Medium', sans-serif;
+  }
+
+  .font-preview-opendyslexic {
+    font-family: 'OpenDyslexic3', sans-serif;
+  }
+
+  .font-preview-fast {
+    font-family: 'Fast Sans', sans-serif;
   }
 
   /* Button Groups */
