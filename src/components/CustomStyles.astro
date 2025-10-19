@@ -17,10 +17,11 @@
 // Urbanist
 ---
 
+<!-- Preload only critical fonts used on initial page load -->
 <link rel="preload" href="/fonts/TogetherAssessments-Regular.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/fonts/SylexiadSansMedium.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/fonts/OpenDyslexic3-Regular.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/fonts/Fast_Sans.woff2" as="font" type="font/woff2" crossorigin />
+<!-- OpenDyslexic and Fast Sans are deferred - only loaded when accessibility panel opens -->
+<!-- This prevents 336KB of non-critical fonts from blocking initial render -->
 
 <style is:inline>
   @font-face {
