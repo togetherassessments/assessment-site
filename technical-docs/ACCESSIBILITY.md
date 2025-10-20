@@ -1344,6 +1344,7 @@ Information not conveyed by colour alone:
 All hyperlinks across the site follow a consistent, accessible styling pattern to ensure WCAG 2.1 compliance:
 
 **Standard Link Style**:
+
 - **Default state**: Underlined text
 - **Hover state**: Underline removed (provides visual feedback)
 - **Colour**: `text-primary` (purple) in light mode, light text colour in dark mode
@@ -1352,6 +1353,7 @@ All hyperlinks across the site follow a consistent, accessible styling pattern t
 **Implementation Locations**:
 
 1. **Global Dark Mode Links** (`src/components/CustomStyles.astro:112-121`):
+
    ```css
    .dark a:not(.btn):not(.btn-primary):not(.btn-secondary):not(.btn-tertiary) {
      color: var(--aw-color-text-default) !important;
@@ -1366,6 +1368,7 @@ All hyperlinks across the site follow a consistent, accessible styling pattern t
    ```
 
 2. **Prose/Markdown Content Links** (`src/components/CustomStyles.astro:123-130`):
+
    ```css
    .prose a {
      text-decoration: underline;
@@ -1384,12 +1387,14 @@ All hyperlinks across the site follow a consistent, accessible styling pattern t
    - Inline links: `text-primary underline hover:no-underline`
 
 **WCAG Compliance**:
+
 - Meets WCAG 2.1 Success Criterion 1.4.1 (Use of Colour) - Level A
 - Links are identifiable by underline, not colour alone
 - Provides non-colour visual distinction for users with colour blindness
 - Hover state provides clear feedback for interactive elements
 
 **Consistency Benefits**:
+
 - All links behave the same way across the site
 - Predictable user experience
 - Easier for users with cognitive differences to identify clickable elements

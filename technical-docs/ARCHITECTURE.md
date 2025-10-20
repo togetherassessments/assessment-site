@@ -787,17 +787,20 @@ npm run preview            # Serve dist/ locally
 **Implementation**: `astro-pagefind` integration (astro.config.ts line 79)
 
 **How it works**:
+
 - Pagefind generates static search indexes during `astro build`
 - Indexes written to `dist/pagefind/` after all pages are built
 - Dev server serves indexes from `dist/` (Vite config lines 104-107)
 
 **Development workflow**:
+
 1. Run build first: `npm run build:assessments` (with env vars)
 2. Start dev server: `npm run dev:assessments`
 3. Search works in dev mode using built indexes
 4. Rebuild when adding searchable content
 
 **Why build is required**:
+
 - Pagefind crawls generated HTML in `dist/` to create indexes
 - No build = no `dist/pagefind/` = 404 errors on search
 - This is expected Pagefind architecture, not a bug
