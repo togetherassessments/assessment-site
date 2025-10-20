@@ -107,17 +107,26 @@
     }
   }
 
-  /* Dark mode hyperlink styling - match text colour but bold */
+  /* Dark mode hyperlink styling - match text colour with underline for accessibility */
   /* Exclude buttons to preserve their intended colours (WCAG contrast compliance) */
   .dark a:not(.btn):not(.btn-primary):not(.btn-secondary):not(.btn-tertiary) {
     color: var(--aw-color-text-default) !important;
     font-weight: 700;
-    text-decoration: none !important;
+    text-decoration: underline !important;
   }
 
   .dark a:not(.btn):not(.btn-primary):not(.btn-secondary):not(.btn-tertiary):hover {
     color: var(--aw-color-text-default) !important;
     text-decoration: none !important;
+  }
+
+  /* Light mode prose link styling - ensure consistent underline behavior */
+  .prose a {
+    text-decoration: underline;
+  }
+
+  .prose a:hover {
+    text-decoration: none;
   }
 
   /* Text Size Scaling

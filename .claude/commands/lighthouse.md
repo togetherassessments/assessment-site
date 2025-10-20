@@ -20,16 +20,25 @@ You are running the Lighthouse performance testing command. This command runs Go
    - If target looks like a route (starts with `/`): run lighthouse on that specific page
    - Otherwise: show error and usage instructions
 
-3. **Run Lighthouse**:
+3. **Build before testing**:
+   - **REQUIRED**: Run fresh production build before Lighthouse tests
+   - Command: `cross-env ASSESSMENTS_URL=http://localhost:4321 ADHD_URL=http://localhost:4321 AUTISM_URL=http://localhost:4321 npm run build:assessments`
+   - This ensures:
+     - Latest code changes are tested
+     - Pagefind search indexes are generated
+     - All optimisations are applied
+   - Skip build ONLY if testing immediately after a recent build
+
+4. **Run Lighthouse**:
    - For specific page: `node scripts/lighthouse.js --url=<route> --mobile`
-   - For all pages: `npm run lighthouse` (builds and tests all pages)
+   - For all pages: `npm run lighthouse` (includes build step automatically)
    - **IMPORTANT**: Run synchronously (NOT in background) - the script will complete and exit when done
    - **IMPORTANT**: By default, tests BOTH light and dark themes (can specify `--theme=light` or `--theme=dark` for single theme)
    - Use a timeout of at least 300000ms (5 minutes) for single pages with both themes
    - Use a timeout of at least 600000ms (10 minutes) for 'all' pages with both themes
    - Wait for the command to complete naturally - the script exits cleanly when done
 
-4. **Locate and read the summary reports**:
+5. **Locate and read the summary reports**:
    - **CRITICAL**: Parse the Lighthouse command output to find the report directory
    - The script prints: "✅ Reports saved to: <directory-path>"
    - Extract this exact directory path from the command output
@@ -39,14 +48,14 @@ You are running the Lighthouse performance testing command. This command runs Go
    - These are lightweight (~450 lines each) and contain everything needed for analysis
    - Example: Read both `_.light.summary.json` AND `_.dark.summary.json`
 
-5. **Summary file contains**:
+6. **Summary file contains**:
    - `url`: The tested page URL
    - `theme`: The tested theme ('light' or 'dark')
    - `categories`: Scores for performance, accessibility, best-practices, seo
    - `coreWebVitals`: Full details for LCP, CLS, TBT, FCP, Speed Index
    - `failedAudits`: All audits with score < 1, organized by category, including details/snippets
 
-6. **Provide comprehensive feedback**:
+7. **Provide comprehensive feedback**:
 
    For each page tested, report:
 
@@ -91,12 +100,12 @@ You are running the Lighthouse performance testing command. This command runs Go
    - Note any significant score differences between themes
    - Highlight theme-specific colour contrast issues
 
-7. **Reference your sources**:
+8. **Reference your sources**:
    - Always mention which report file(s) you analysed
    - Include the full path to the report directory
    - Example: "Based on `_.light.summary.json` and `_.dark.summary.json`"
 
-8. **Summary for 'all' pages**:
+9. **Summary for 'all' pages**:
    - Show a comparison table of scores across all pages AND themes
    - Highlight the worst-performing page in each category
    - Note theme-specific issues across pages
@@ -113,6 +122,7 @@ You are running the Lighthouse performance testing command. This command runs Go
 
 ## Important Notes
 
+- **Build is required first** - Lighthouse tests the production build from `dist/`
 - Lighthouse tests take 2-5 minutes per page - don't rush or timeout
 - The script uses Astro preview server, testing the production build
 - Tests use Google PageSpeed Insights configuration (mobile-first, throttled)

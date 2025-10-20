@@ -1334,11 +1334,69 @@ Information not conveyed by colour alone:
 
 - Form validation: Icons + text messages
 - Required fields: Asterisk + text label
-- Links: Underline on hover/focus
+- Links: Underline (permanent, removed on hover)
 - Buttons: Distinct shape and position
 
----
+### Link Styling Standard
+
+**Updated**: 2025-01-20
+
+All hyperlinks across the site follow a consistent, accessible styling pattern to ensure WCAG 2.1 compliance:
+
+**Standard Link Style**:
+- **Default state**: Underlined text
+- **Hover state**: Underline removed (provides visual feedback)
+- **Colour**: `text-primary` (purple) in light mode, light text colour in dark mode
+- **Purpose**: Underlines ensure links are visually distinguishable from regular text without relying solely on colour
+
+**Implementation Locations**:
+
+1. **Global Dark Mode Links** (`src/components/CustomStyles.astro:112-121`):
+   ```css
+   .dark a:not(.btn):not(.btn-primary):not(.btn-secondary):not(.btn-tertiary) {
+     color: var(--aw-color-text-default) !important;
+     font-weight: 700;
+     text-decoration: underline !important;
+   }
+
+   .dark a:not(.btn):not(.btn-primary):not(.btn-secondary):not(.btn-tertiary):hover {
+     color: var(--aw-color-text-default) !important;
+     text-decoration: none !important;
+   }
+   ```
+
+2. **Prose/Markdown Content Links** (`src/components/CustomStyles.astro:123-130`):
+   ```css
+   .prose a {
+     text-decoration: underline;
+   }
+
+   .prose a:hover {
+     text-decoration: none;
+   }
+   ```
+
+3. **Footer Links** (`src/components/widgets/Footer.astro:75,57`):
+   - Navigation links: `underline hover:no-underline`
+   - Email link in footNote: `underline hover:no-underline`
+
+4. **Hardcoded Page Links** (e.g., `src/pages/consultation.astro:65-70,86-87`):
+   - Inline links: `text-primary underline hover:no-underline`
+
+**WCAG Compliance**:
+- Meets WCAG 2.1 Success Criterion 1.4.1 (Use of Colour) - Level A
+- Links are identifiable by underline, not colour alone
+- Provides non-colour visual distinction for users with colour blindness
+- Hover state provides clear feedback for interactive elements
+
+**Consistency Benefits**:
+- All links behave the same way across the site
+- Predictable user experience
+- Easier for users with cognitive differences to identify clickable elements
+- Maintains accessibility in both light and dark modes
 
 ---
 
-**Last Updated**: 2025-01-19
+---
+
+**Last Updated**: 2025-01-20

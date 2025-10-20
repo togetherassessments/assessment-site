@@ -160,7 +160,7 @@ export const footerData = {
   footNote: `
     <div class="text-sm">
       <p>Copyright © ${settings.site.name} ${new Date().getFullYear()}. ICO Registration: ${settings.site.ico_registration}</p>
-      <p class="mt-2">Sole trader, trading as ${settings.site.name}. North Lincolnshire and surrounding areas, <a href="mailto:${settings.site.email}" class="text-primary hover:underline dark:text-primary">${settings.site.email}</a></p>
+      <p class="mt-2">Sole trader, trading as ${settings.site.name}. North Lincolnshire and surrounding areas, <a href="mailto:${settings.site.email}" class="text-primary underline hover:no-underline dark:text-primary dark:underline dark:hover:no-underline">${settings.site.email}</a></p>
     </div>
   `,
 };
