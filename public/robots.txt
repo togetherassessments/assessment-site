@@ -1,2 +1,8 @@
 User-agent: *
-Disallow:
+# CMS admin interface
+Disallow: /admin/
+Disallow: /admin
+
+# Build assets and search index
+Disallow: /_astro/
+Disallow: /pagefind/
