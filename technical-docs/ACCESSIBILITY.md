@@ -176,12 +176,25 @@ When the user clicks "Listen to This Page", the system:
 
 1. Loads the TTS player module lazily (only on first use)
 2. Extracts all visible text from the main content area using TreeWalker
-3. Selects the best available British English voice
-4. Creates a SpeechSynthesisUtterance and starts playback
-5. Shows collapsed player tab at bottom of page
-6. User can click tab to expand controls, minimize to collapse whilst playing, or close to stop
+3. Automatically chunks content if it exceeds 4000 characters (Chrome has an undocumented limit)
+4. Selects the best available British English voice
+5. Creates SpeechSynthesisUtterance(s) and starts playback
+6. Shows collapsed player tab at bottom of page
+7. User can click tab to expand controls, minimize to collapse whilst playing, or close to stop
 
 The player uses a getter pattern to query DOM elements fresh on every access, preventing stale reference bugs during Astro view transitions.
+
+**Content chunking for long pages**:
+
+Chrome's speechSynthesis API has an undocumented character limit of approximately 4000 characters. When content exceeds this limit, the utterance silently fails without firing any error events. To handle this:
+
+- Content over 4000 characters is automatically split into chunks at sentence boundaries
+- If a sentence exceeds the limit, it's further split at comma boundaries
+- Chunks are played sequentially using the `onend` event handler
+- Pause/resume/stop functionality works seamlessly across chunks
+- The chunk size is configurable (currently set to 500 characters for safety margin)
+
+This ensures reliable playback on pages of any length, from brief blog posts to comprehensive assessment information.
 
 **Content extraction logic**:
 
@@ -216,7 +229,10 @@ This blacklist approach ensures all visible content is read, including links, he
 
 - **Player UI**: `src/components/common/TTSPlayer.astro` (pure UI component with HTML/CSS only - no JavaScript)
 - **TTS Initialization**: `src/scripts/tts-init.ts` (lazy-loaded initialization module with event handlers and pre-loading logic)
-- **TTS Logic**: `src/scripts/tts-player.ts` (TypeScript class handling Web Speech API, content extraction, voice selection, state management)
+- **TTS Logic**: `src/scripts/tts-player.ts` (TypeScript class handling Web Speech API, content extraction, voice selection, state management, content chunking)
+  - `splitIntoChunks()`: Intelligently splits content at sentence boundaries (lines 492-534)
+  - `speakCurrentChunk()`: Handles sequential playback of chunks (lines 539-593)
+  - Multi-chunk support: `contentChunks` and `currentChunkIndex` properties track playback state (lines 317-318)
 - **Integration**: `src/components/common/AccessibilityPanel.astro:1453-1476` (lazy loads tts-init.ts when panel opens)
 - **Layout**: Player component included in `src/components/widgets/Header.astro` and page layouts
 
@@ -1473,4 +1489,4 @@ All hyperlinks across the site follow a consistent, accessible styling pattern t
 
 ---
 
-**Last Updated**: 2025-01-22
+**Last Updated**: 2025-10-22

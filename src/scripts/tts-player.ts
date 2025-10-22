@@ -313,6 +313,10 @@ export class TTSPlayer {
   private state: PlayerState = 'idle';
   private voicesLoaded: boolean = false;
 
+  // Multi-chunk support for long content
+  private contentChunks: string[] = [];
+  private currentChunkIndex: number = 0;
+
   // Getter that queries DOM fresh each time (Astro navigation can replace elements)
   private get playerElement(): HTMLElement {
     const el = document.getElementById('tts-player');
@@ -377,35 +381,21 @@ export class TTSPlayer {
       return;
     }
 
-    // Create new utterance
-    this.utterance = new SpeechSynthesisUtterance(content);
-    this.utterance.rate = 1.0;
+    // CHROME WORKAROUND: Split content into chunks to avoid 4000 character limit
+    // Chrome has an undocumented limit that causes silent failure on long utterances
+    const maxChunkLength = 500;
 
-    // Select preferred British English voice
-    const selectedVoice = this.selectPreferredVoice();
-    if (selectedVoice) {
-      this.utterance.voice = selectedVoice;
+    if (content.length > maxChunkLength) {
+      this.contentChunks = this.splitIntoChunks(content, maxChunkLength);
+      this.currentChunkIndex = 0;
+    } else {
+      // Single chunk
+      this.contentChunks = [content];
+      this.currentChunkIndex = 0;
     }
 
-    // Set up event handlers
-    this.utterance.onstart = () => {
-      this.onStart();
-    };
-    this.utterance.onend = () => {
-      this.onEnd();
-    };
-    this.utterance.onpause = () => {
-      this.onPause();
-    };
-    this.utterance.onresume = () => {
-      this.onResume();
-    };
-    this.utterance.onerror = (e) => {
-      this.onError(e);
-    };
-
-    // Start speaking
-    this.synthesis.speak(this.utterance);
+    // Start speaking the first chunk
+    this.speakCurrentChunk();
     this.state = 'playing';
 
     // Show player
@@ -432,6 +422,8 @@ export class TTSPlayer {
     this.synthesis.cancel();
     this.state = 'idle';
     this.utterance = null;
+    this.currentChunkIndex = 0; // Reset chunk position
+    this.contentChunks = [];
     this.updateUI();
   }
 
@@ -463,6 +455,112 @@ export class TTSPlayer {
   }
 
   // PRIVATE METHODS
+
+  /**
+   * Split content into chunks at sentence boundaries
+   * Ensures chunks don't exceed maxLength and break at natural pauses
+   */
+  private splitIntoChunks(content: string, maxLength: number): string[] {
+    const chunks: string[] = [];
+    let currentChunk = '';
+
+    // Split on sentence boundaries (period, exclamation, question mark followed by space)
+    const sentences = content.split(/([.!?]+\s+)/);
+
+    for (let i = 0; i < sentences.length; i += 2) {
+      const sentence = sentences[i] + (sentences[i + 1] || '');
+
+      if (currentChunk.length + sentence.length <= maxLength) {
+        currentChunk += sentence;
+      } else {
+        if (currentChunk) {
+          chunks.push(currentChunk.trim());
+        }
+
+        // If single sentence exceeds limit, split it further at commas
+        if (sentence.length > maxLength) {
+          const parts = sentence.split(/([,;:]\s+)/);
+          let part = '';
+          for (let j = 0; j < parts.length; j += 2) {
+            const segment = parts[j] + (parts[j + 1] || '');
+            if (part.length + segment.length <= maxLength) {
+              part += segment;
+            } else {
+              if (part) chunks.push(part.trim());
+              part = segment;
+            }
+          }
+          currentChunk = part;
+        } else {
+          currentChunk = sentence;
+        }
+      }
+    }
+
+    if (currentChunk) {
+      chunks.push(currentChunk.trim());
+    }
+
+    return chunks;
+  }
+
+  /**
+   * Speak the current chunk and set up event handlers
+   */
+  private speakCurrentChunk(): void {
+    if (this.currentChunkIndex >= this.contentChunks.length) {
+      // Finished all chunks
+      this.onEnd();
+      return;
+    }
+
+    const chunkText = this.contentChunks[this.currentChunkIndex];
+
+    // Create utterance for this chunk
+    this.utterance = new SpeechSynthesisUtterance(chunkText);
+    this.utterance.rate = 1.0;
+
+    // Select voice
+    const selectedVoice = this.selectPreferredVoice();
+    if (selectedVoice) {
+      this.utterance.voice = selectedVoice;
+    }
+
+    // Set up event handlers
+    this.utterance.onstart = () => {
+      if (this.currentChunkIndex === 0) {
+        // First chunk starting
+        this.onStart();
+      }
+    };
+
+    this.utterance.onend = () => {
+      // Move to next chunk
+      this.currentChunkIndex++;
+      if (this.currentChunkIndex < this.contentChunks.length) {
+        // More chunks to speak
+        this.speakCurrentChunk();
+      } else {
+        // All chunks complete
+        this.onEnd();
+      }
+    };
+
+    this.utterance.onpause = () => {
+      this.onPause();
+    };
+
+    this.utterance.onresume = () => {
+      this.onResume();
+    };
+
+    this.utterance.onerror = (e) => {
+      this.onError(e);
+    };
+
+    // Start speaking this chunk
+    this.synthesis.speak(this.utterance);
+  }
 
   private waitForVoices(): Promise<void> {
     return new Promise((resolve) => {
