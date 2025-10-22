@@ -40,18 +40,23 @@ import { UI } from 'astrowind:config';
     }
   }
 
+  // Close mobile navigation menu - exposed globally for search/accessibility panels
+  window.closeMobileMenu = function () {
+    document.querySelector('[data-aw-toggle-menu]')?.classList.remove('expanded');
+    document.body.classList.remove('overflow-hidden');
+    document.getElementById('header')?.classList.remove('h-screen');
+    document.getElementById('header')?.classList.remove('expanded');
+    document.getElementById('header')?.classList.remove('bg-page');
+    document.querySelector('#header nav')?.classList.add('hidden');
+    document.querySelector('#header > div > div:last-child')?.classList.add('hidden');
+  };
+
   const onLoad = function () {
     let lastKnownScrollPosition = window.scrollY;
     let ticking = true;
 
     attachEvent('#header nav', 'click', function () {
-      document.querySelector('[data-aw-toggle-menu]')?.classList.remove('expanded');
-      document.body.classList.remove('overflow-hidden');
-      document.getElementById('header')?.classList.remove('h-screen');
-      document.getElementById('header')?.classList.remove('expanded');
-      document.getElementById('header')?.classList.remove('bg-page');
-      document.querySelector('#header nav')?.classList.add('hidden');
-      document.querySelector('#header > div > div:last-child')?.classList.add('hidden');
+      window.closeMobileMenu();
     });
 
     attachEvent('[data-aw-toggle-menu]', 'click', function (_, elem) {
@@ -110,13 +115,7 @@ import { UI } from 'astrowind:config';
 
     const screenSize = window.matchMedia('(max-width: 767px)');
     screenSize.addEventListener('change', function () {
-      document.querySelector('[data-aw-toggle-menu]')?.classList.remove('expanded');
-      document.body.classList.remove('overflow-hidden');
-      document.getElementById('header')?.classList.remove('h-screen');
-      document.getElementById('header')?.classList.remove('expanded');
-      document.getElementById('header')?.classList.remove('bg-page');
-      document.querySelector('#header nav')?.classList.add('hidden');
-      document.querySelector('#header > div > div:last-child')?.classList.add('hidden');
+      window.closeMobileMenu();
     });
 
     function applyHeaderStylesOnScroll() {

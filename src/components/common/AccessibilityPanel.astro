@@ -932,6 +932,11 @@ const settings = DEFAULT_SETTINGS;
         allToggleButtons.forEach((btn) => btn.setAttribute('aria-expanded', 'false'));
         document.body.classList.remove('accessibility-panel-open');
       } else {
+        // Close mobile navigation menu if open
+        if (typeof window.closeMobileMenu === 'function') {
+          window.closeMobileMenu();
+        }
+
         panel?.classList.add('open');
         allToggleButtons.forEach((btn) => btn.setAttribute('aria-expanded', 'true'));
         document.body.classList.add('accessibility-panel-open');

@@ -265,6 +265,11 @@ import { Icon } from 'astro-icon/components';
 
     // Open panel
     async function openSearchPanel() {
+      // Close mobile navigation menu if open
+      if (typeof window.closeMobileMenu === 'function') {
+        window.closeMobileMenu();
+      }
+
       lastFocusedElement = document.activeElement as HTMLElement | null;
 
       backdrop.style.display = 'block';
