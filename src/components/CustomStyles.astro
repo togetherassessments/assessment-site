@@ -20,7 +20,7 @@
 <!-- Preload only critical fonts used on initial page load -->
 <link rel="preload" href="/fonts/TogetherAssessments-Regular.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/fonts/SylexiadSansMedium.woff2" as="font" type="font/woff2" crossorigin />
-<!-- OpenDyslexic and Fast Sans are deferred - only loaded when accessibility panel opens -->
+<!-- OpenDyslexic and Fast Syldexia are deferred - only loaded when accessibility panel opens -->
 <!-- This prevents 336KB of non-critical fonts from blocking initial render -->
 
 <style is:inline>
@@ -48,13 +48,12 @@
     size-adjust: 120%;
   }
 
-  /* OpenDyslexic and Fast Sans @font-face declarations moved to DeferredFontLoader.astro
-     to prevent blocking initial render. These fonts are only used in the accessibility
-     panel which requires user interaction to open. Fonts are loaded asynchronously
-     after DOMContentLoaded using the CSS Font Loading API. */
+  /* OpenDyslexic and Fast Syldexia @font-face declarations are dynamically injected
+     by loadAccessibilityFonts() in AccessibilityPanel.astro when the panel opens.
+     This prevents fonts from loading on initial page render (performance optimization). */
 
   /* Enable OpenType contextual alternates (calt) feature globally
-     This is needed for Fast Sans letter highlighting to work.
+     This is needed for Fast Syldexia letter highlighting to work.
      Safari enables this by default, but Chrome requires explicit activation.
      This setting only affects fonts that have the calt feature. */
   body {

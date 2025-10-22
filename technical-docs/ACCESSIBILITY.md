@@ -44,7 +44,7 @@ Three neurodiversity-friendly font options with visual preview:
 
 - **Sylexiad Sans** (default) - General neurodiversity support
 - **OpenDyslexic** - Specialised dyslexia support
-- **Fast Sans** - Quick reading optimisation
+- **Fast Syldexia** - Quick reading optimisation with dyslexia-friendly features
 
 Font names are displayed in their own typeface, allowing users to preview the font before selection. Selected font applies instantly across the entire site.
 
@@ -463,9 +463,10 @@ The site implements a custom font system allowing users to select their preferre
    - Weighted bottoms help prevent letter confusion
    - Increases letter height and spacing
 
-3. **Fast Sans**
-   - Optimised for quick reading and reduced eye strain
-   - Clean, modern design
+3. **Fast Syldexia**
+   - Optimised for quick reading with dyslexia-friendly features
+   - Based on Sylexiad Sans Medium with enhanced readability
+   - 20% size increase (size-adjust: 120%) for improved legibility
    - OpenType contextual alternates (calt) feature for letter highlighting
 
 4. **Together Assessments** (brand font)
@@ -477,9 +478,23 @@ The site implements a custom font system allowing users to select their preferre
 
 **Font Definitions**
 
-Location: `src/components/CustomStyles.astro:24-70`
+Location: `src/components/CustomStyles.astro:27-53`
+
+**Critical fonts** (preloaded in HTML):
 
 ```css
+@font-face {
+  font-family: 'Together Assessments';
+  src:
+    url('/fonts/TogetherAssessments-Regular.woff2') format('woff2'),
+    url('/fonts/TogetherAssessments-Regular.woff') format('woff'),
+    url('/fonts/TogetherAssessments-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+  size-adjust: 115%;
+}
+
 @font-face {
   font-family: 'Sylexiad Sans Medium';
   src:
@@ -488,12 +503,12 @@ Location: `src/components/CustomStyles.astro:24-70`
     url('/fonts/SylexiadSansMedium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
   size-adjust: 120%;
 }
-
-/* Similar @font-face rules for other fonts */
 ```
+
+**Accessibility fonts** (lazy-loaded via dynamic injection - see Font Loading Strategy section):
 
 **CSS Custom Properties**
 
@@ -541,14 +556,14 @@ The font selection interface is part of the Accessibility Settings panel:
 
 **Font Switching Logic**
 
-Location: `src/components/common/AccessibilityPanel.astro:781-790`
+Location: `src/components/common/AccessibilityPanel.astro:747-754`
 
 ```javascript
 function applyFont(font) {
   const fonts = {
     sylexiad: 'Sylexiad Sans Medium, ui-sans-serif, system-ui, -apple-system',
     opendyslexic: 'OpenDyslexic3, ui-sans-serif, system-ui, -apple-system',
-    fast: 'Fast Sans, ui-sans-serif, system-ui, -apple-system',
+    fast: 'Fast Syldexia, ui-sans-serif, system-ui, -apple-system',
   };
 
   document.documentElement.style.setProperty('--aw-font-sans', fonts[font]);
@@ -584,50 +599,104 @@ These fonts are preloaded because:
 - **Sylexiad Sans Medium**: Default body font (majority of users)
 - **Performance**: Both use `font-display: block` to prevent CLS (Cumulative Layout Shift)
 
-**Accessibility Fonts (Lazy Loaded)**:
+**Accessibility Fonts (Lazy Loaded via Dynamic Injection)**:
 
-Location: `src/components/common/AccessibilityPanel.astro:672-717`
+Location: `src/components/common/AccessibilityPanel.astro:672-715`
 
-OpenDyslexic and Fast Sans are loaded on-demand using the CSS Font Loading API:
+OpenDyslexic and Fast Syldexia use dynamic `@font-face` injection for optimal performance:
 
 - **When**: Only loaded when user opens accessibility panel OR has saved preference
-- **Why**: Saves 336KB bandwidth for users who never use accessibility fonts (majority)
-- **Zero network impact**: Fonts don't appear in critical render path
-- **Implementation**: JavaScript `loadAccessibilityFonts()` function with promise-based loading
+- **Why**: Saves ~240KB bandwidth for users who never use accessibility fonts (majority)
+- **Zero network impact**: Fonts don't appear in critical render path, no Lighthouse penalty
+- **Implementation**: `loadAccessibilityFonts()` dynamically injects `<style>` element with @font-face declarations
+
+**Uniform Loading Architecture** (Updated 2025-01-22):
+
+Both accessibility fonts use the same loading mechanism for consistency:
+
+```javascript
+async function loadAccessibilityFonts() {
+  // Check if style already injected (prevents duplicates)
+  if (!document.getElementById('accessibility-fonts-styles')) {
+    const style = document.createElement('style');
+    style.id = 'accessibility-fonts-styles';
+    style.textContent = `
+      @font-face {
+        font-family: 'OpenDyslexic3';
+        src: url('/fonts/OpenDyslexic3-Regular.woff2') format('woff2'),
+             url('/fonts/OpenDyslexic3-Regular.woff') format('woff'),
+             url('/fonts/OpenDyslexic3-Regular.ttf') format('truetype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Fast Syldexia';
+        src: url('/fonts/Fast_Syldexia.woff2') format('woff2'),
+             url('/fonts/Fast_Syldexia.woff') format('woff'),
+             url('/fonts/Fast_Syldexia.ttf') format('truetype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+        size-adjust: 120%;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+}
+```
+
+**Benefits of Dynamic Injection**:
+
+- Single code path for all deferred accessibility fonts
+- Supports `size-adjust` property (not available in FontFace API)
+- Simpler implementation than mixed approaches
+- Future-proof for adding more accessibility fonts
+- Browser automatically loads fonts when CSS font-family applied
 
 **Font preview handling**:
 
 - Sylexiad preview shown immediately (preloaded font)
-- OpenDyslexic/Fast Sans previews use opacity transitions:
+- OpenDyslexic/Fast Syldexia previews use opacity transitions:
   - Hidden (`opacity: 0`) until fonts load
   - Smooth fade-in (`opacity: 1, transition: 0.3s`) when ready
   - Instant display if fonts already cached
 
 ### Size Adjustments
 
-**Purpose**: Ensure consistent metrics across different fonts
+**Purpose**: Ensure consistent metrics and optimal readability across different fonts
 
 ```css
-@font-face {
-  font-family: 'Sylexiad Sans Medium';
-  size-adjust: 120%; /* Slightly larger for readability */
-}
-
-@font-face {
-  font-family: 'OpenDyslexic3';
-  size-adjust: 85%; /* Smaller to compensate for large x-height */
-}
-
-@font-face {
-  font-family: 'Fast Sans';
-  size-adjust: 100%; /* No adjustment needed */
-}
-
 @font-face {
   font-family: 'Together Assessments';
   size-adjust: 115%; /* Slightly larger for headings */
 }
+
+@font-face {
+  font-family: 'Sylexiad Sans Medium';
+  size-adjust: 120%; /* Larger for better readability */
+}
+
+@font-face {
+  font-family: 'OpenDyslexic3';
+  /* No size-adjust - native size works well */
+}
+
+@font-face {
+  font-family: 'Fast Syldexia';
+  size-adjust: 120%; /* 20% larger for improved legibility */
+}
 ```
+
+**Fast Syldexia Size Adjustment** (Updated 2025-01-22):
+
+Fast Syldexia uses `size-adjust: 120%` to render 20% larger than its native size:
+
+- Improves legibility for users with reading difficulties
+- Matches the size-adjust of Sylexiad Sans Medium for consistency
+- Applied via dynamic @font-face injection to maintain lazy-loading performance
+- No impact on Lighthouse scores (font remains deferred)
 
 ### User Preference Persistence
 
@@ -650,7 +719,7 @@ All accessibility preferences are stored together in `localStorage.accessibility
 
 ### OpenType Features
 
-**Location**: `src/components/CustomStyles.astro:76-79`
+**Location**: `src/components/CustomStyles.astro:55-63`
 
 ```css
 body {
@@ -659,11 +728,11 @@ body {
 }
 ```
 
-**Purpose**: Enable Fast Sans letter highlighting feature
+**Purpose**: Enable Fast Syldexia letter highlighting feature
 
 - Safari enables by default
 - Chrome requires explicit activation
-- Only affects fonts with calt feature
+- Only affects fonts with calt feature (contextual alternates)
 
 ---
 
@@ -1404,4 +1473,4 @@ All hyperlinks across the site follow a consistent, accessible styling pattern t
 
 ---
 
-**Last Updated**: 2025-01-20
+**Last Updated**: 2025-01-22

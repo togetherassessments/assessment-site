@@ -55,7 +55,7 @@ const settings = DEFAULT_SETTINGS;
         </label>
         <label class="accessibility-radio-label">
           <input type="radio" name="font" value="fast" checked={settings.font === 'fast'} class="accessibility-radio" />
-          <span class="font-preview font-preview-fast">Fast Sans</span>
+          <span class="font-preview font-preview-fast">Fast Syldexia</span>
         </label>
       </div>
     </section>
@@ -669,7 +669,8 @@ const settings = DEFAULT_SETTINGS;
     let accessibilityFontsLoaded = false;
     let accessibilityFontsLoading = false;
 
-    // Lazy load accessibility fonts (OpenDyslexic and Fast Sans)
+    // Lazy load accessibility fonts (OpenDyslexic and Fast Syldexia)
+    // Uses dynamic @font-face injection for uniform handling and size-adjust support
     async function loadAccessibilityFonts() {
       // Only load once
       if (accessibilityFontsLoaded || accessibilityFontsLoading) {
@@ -678,39 +679,39 @@ const settings = DEFAULT_SETTINGS;
 
       accessibilityFontsLoading = true;
 
-      // Check if browser supports CSS Font Loading API
-      if (!('fonts' in document)) {
-        accessibilityFontsLoaded = true;
-        accessibilityFontsLoading = false;
-        return;
+      // Check if style already injected (prevents duplicates on navigation)
+      if (!document.getElementById('accessibility-fonts-styles')) {
+        // Create style element with @font-face declarations
+        const style = document.createElement('style');
+        style.id = 'accessibility-fonts-styles';
+        style.textContent = `
+          @font-face {
+            font-family: 'OpenDyslexic3';
+            src: url('/fonts/OpenDyslexic3-Regular.woff2') format('woff2'),
+                 url('/fonts/OpenDyslexic3-Regular.woff') format('woff'),
+                 url('/fonts/OpenDyslexic3-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+          }
+
+          @font-face {
+            font-family: 'Fast Syldexia';
+            src: url('/fonts/Fast_Syldexia.woff2') format('woff2'),
+                 url('/fonts/Fast_Syldexia.woff') format('woff'),
+                 url('/fonts/Fast_Syldexia.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+            size-adjust: 120%;
+          }
+        `;
+
+        document.head.appendChild(style);
       }
 
-      // Create FontFace objects
-      const openDyslexic = new FontFace(
-        'OpenDyslexic3',
-        'url(/fonts/OpenDyslexic3-Regular.woff2) format("woff2"), url(/fonts/OpenDyslexic3-Regular.woff) format("woff"), url(/fonts/OpenDyslexic3-Regular.ttf) format("truetype")',
-        { weight: '400', style: 'normal', display: 'swap' }
-      );
-
-      const fastSans = new FontFace(
-        'Fast Sans',
-        'url(/fonts/Fast_Sans.woff2) format("woff2"), url(/fonts/Fast_Sans.woff) format("woff"), url(/fonts/Fast_Sans.ttf) format("truetype")',
-        { weight: '400', style: 'normal', display: 'swap' }
-      );
-
-      // Load fonts
-      try {
-        const fonts = await Promise.all([openDyslexic.load(), fastSans.load()]);
-        fonts.forEach((font) => {
-          document.fonts.add(font);
-        });
-        accessibilityFontsLoaded = true;
-        accessibilityFontsLoading = false;
-      } catch {
-        // Silently fail - fonts will fallback to system fonts
-        accessibilityFontsLoaded = true;
-        accessibilityFontsLoading = false;
-      }
+      accessibilityFontsLoaded = true;
+      accessibilityFontsLoading = false;
     }
 
     // Local copy of AccessibilitySettings utilities (inline scripts can't use imports)
@@ -748,7 +749,7 @@ const settings = DEFAULT_SETTINGS;
       const fonts = {
         sylexiad: 'Sylexiad Sans Medium, ui-sans-serif, system-ui, -apple-system',
         opendyslexic: 'OpenDyslexic3, ui-sans-serif, system-ui, -apple-system',
-        fast: 'Fast Sans, ui-sans-serif, system-ui, -apple-system',
+        fast: 'Fast Syldexia, ui-sans-serif, system-ui, -apple-system',
       };
       document.documentElement.style.setProperty('--aw-font-sans', fonts[font]);
     }
@@ -770,7 +771,7 @@ const settings = DEFAULT_SETTINGS;
           previews.opendyslexic.classList.add('fonts-loaded');
         }
         if (previews.fast) {
-          previews.fast.style.fontFamily = "'Fast Sans', sans-serif";
+          previews.fast.style.fontFamily = "'Fast Syldexia', sans-serif";
           previews.fast.classList.add('fonts-loaded');
         }
       }
@@ -909,7 +910,7 @@ const settings = DEFAULT_SETTINGS;
       }
 
       // Normal path for users without ruler enabled (vast majority + Lighthouse)
-      // Check if user has saved OpenDyslexic or Fast Sans preference
+      // Check if user has saved OpenDyslexic or Fast Syldexia preference
       const isDeferredFont = currentSettings.font === 'opendyslexic' || currentSettings.font === 'fast';
 
       if (isDeferredFont) {
