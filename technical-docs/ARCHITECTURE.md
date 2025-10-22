@@ -578,7 +578,7 @@ apps:
     postsPerPage: 6
 
     post:
-      permalink: '/%slug%' # Post URL pattern
+      permalink: '/blog/%slug%' # Post URL pattern - all posts under /blog/
       robots:
         index: true
 
@@ -588,18 +588,28 @@ apps:
         index: true
 
     category:
-      pathname: 'category' # Category path
+      pathname: 'blog/category' # Category path - nested under /blog/
       robots:
         index: true
 
     tag:
-      pathname: 'tag' # Tag path
+      pathname: 'blog/tag' # Tag path - nested under /blog/
       robots:
         index: false # Tags are noindex
 
     isRelatedPostsEnabled: true
     relatedPostsCount: 4
 ```
+
+**URL Structure**: All blog content is organized under the `/blog/*` prefix:
+
+- Blog posts: `/blog/{slug}`
+- Categories: `/blog/category/{category}`
+- Tags: `/blog/tag/{tag}`
+- Blog list: `/blog`
+- Pagination: `/blog/2`, `/blog/3`, etc.
+
+This hierarchical structure provides better URL organization and prevents blog post slugs from conflicting with other site pages.
 
 ### File Structure (Multi-Site)
 
@@ -883,4 +893,4 @@ i18n:
 
 ---
 
-**Last Updated**: 2025-10-19
+**Last Updated**: 2025-10-22

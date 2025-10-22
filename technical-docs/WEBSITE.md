@@ -39,20 +39,21 @@ The website consists of the following pages:
 
 ### Blog System
 
-| Page                 | Route Pattern          | Content Source                 | Description                                          |
-| -------------------- | ---------------------- | ------------------------------ | ---------------------------------------------------- |
-| **Blog Index**       | `/blog`                | Dynamic (from post collection) | Main blog listing with pagination (6 posts per page) |
-| **Blog Post**        | `/{slug}`              | CMS: Blog Posts                | Individual blog post pages                           |
-| **Category Archive** | `/category/{category}` | Dynamic (from post categories) | Posts filtered by category with pagination           |
-| **Tag Archive**      | `/tag/{tag}`           | Dynamic (from post tags)       | Posts filtered by tag with pagination (noindex)      |
-| **RSS Feed**         | `/rss.xml`             | Generated from posts           | RSS feed for blog subscribers                        |
+| Page                 | Route Pattern               | Content Source                 | Description                                          |
+| -------------------- | --------------------------- | ------------------------------ | ---------------------------------------------------- |
+| **Blog Index**       | `/blog`                     | Dynamic (from post collection) | Main blog listing with pagination (6 posts per page) |
+| **Blog Post**        | `/blog/{slug}`              | CMS: Blog Posts                | Individual blog post pages                           |
+| **Category Archive** | `/blog/category/{category}` | Dynamic (from post categories) | Posts filtered by category with pagination           |
+| **Tag Archive**      | `/blog/tag/{tag}`           | Dynamic (from post tags)       | Posts filtered by tag with pagination (noindex)      |
+| **RSS Feed**         | `/rss.xml`                  | Generated from posts           | RSS feed for blog subscribers                        |
 
 **Blog Configuration:**
 
 - Posts per page: 6 (set in `src/config.yaml`)
 - Related posts: Enabled, 4 posts shown (set in `src/config.yaml`)
 - SEO: Main blog and categories indexed, tags noindex
-- Post URL format: `/{slug}` (configurable in `src/config.yaml`)
+- Post URL format: `/blog/{slug}` (configurable in `src/config.yaml`)
+- All blog content organized under `/blog/*` prefix for better URL hierarchy
 
 ### Policy & Legal Pages
 
@@ -736,4 +737,4 @@ This prevents race conditions and ensures quality control before content goes li
 
 ---
 
-**Last Updated:** 2025-10-19
+**Last Updated:** 2025-10-22
