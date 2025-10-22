@@ -605,7 +605,6 @@ export class TTSPlayer {
       document.querySelector('main') || document.querySelector('[role="main"]') || document.querySelector('article');
 
     if (!main) {
-      console.warn('No main content found');
       return '';
     }
 

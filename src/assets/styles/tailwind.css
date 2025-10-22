@@ -99,8 +99,7 @@
   @apply rotate-45 translate-y-[-8px] translate-x-[14px];
 }
 
-/* To deprecated */
-
+/* Remove top margin from first child in definition description elements */
 .dd *:first-child {
   margin-top: 0;
 }

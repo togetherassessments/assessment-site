@@ -1,7 +1,10 @@
 ---
 import { UI } from 'astrowind:config';
 
-// TODO: This code is temporary
+// CRITICAL: Prevents FOUC (Flash of Unstyled Content) by applying theme immediately in <head>
+// This runs BEFORE page content renders, ensuring correct theme from first paint
+// BasicScripts.astro has duplicate logic that runs later for Astro navigation and event handling
+// Both are necessary: this prevents FOUC, BasicScripts handles interactions and navigation
 ---
 
 <script is:inline define:vars={{ defaultTheme: UI.theme || 'system' }}>

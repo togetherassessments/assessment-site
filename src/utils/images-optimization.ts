@@ -36,7 +36,8 @@ export type ImagesOptimizer = (
 
 /* ******* */
 const config = {
-  // FIXME: Use this when image.width is minor than deviceSizes
+  // Breakpoints for small images (width < 640px) like icons, logos, and thumbnails
+  // Prevents generating unnecessary large variants for images that will never be viewport-width
   imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
 
   deviceSizes: [
@@ -199,12 +200,18 @@ const getBreakpoints = ({
     return [width, doubleWidth];
   }
   if (layout === 'constrained') {
+    // Optimization: Use imageSizes for small images (icons, thumbnails, etc.)
+    // This prevents generating unnecessary large breakpoints for images that will never be viewport-width
+    const smallestDeviceSize = config.deviceSizes[0]; // 640px
+    const shouldUseImageSizes = width < smallestDeviceSize;
+    const breakpointSource = shouldUseImageSizes ? config.imageSizes : config.deviceSizes;
+
     return [
       // Always include the image at 1x and 2x the specified width
       width,
       doubleWidth,
       // Filter out any resolutions that are larger than the double-res image
-      ...(breakpoints || config.deviceSizes).filter((w) => w < doubleWidth),
+      ...(breakpoints || breakpointSource).filter((w) => w < doubleWidth),
     ];
   }
 

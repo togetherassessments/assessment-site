@@ -680,7 +680,6 @@ const settings = DEFAULT_SETTINGS;
 
       // Check if browser supports CSS Font Loading API
       if (!('fonts' in document)) {
-        console.warn('CSS Font Loading API not supported');
         accessibilityFontsLoaded = true;
         accessibilityFontsLoading = false;
         return;
@@ -707,9 +706,8 @@ const settings = DEFAULT_SETTINGS;
         });
         accessibilityFontsLoaded = true;
         accessibilityFontsLoading = false;
-        console.log('✓ Accessibility fonts loaded');
-      } catch (error) {
-        console.warn('Failed to load accessibility fonts:', error);
+      } catch {
+        // Silently fail - fonts will fallback to system fonts
         accessibilityFontsLoaded = true;
         accessibilityFontsLoading = false;
       }
@@ -803,12 +801,11 @@ const settings = DEFAULT_SETTINGS;
       }
     }
 
-    // Placeholder for reading ruler (will be replaced by lazy-loaded module)
-    // This is a no-op initially; the lazy-loaded module will replace it
+    // No-op placeholder for reading ruler functionality
+    // This function is overridden by the lazy-loaded accessibility module when the panel opens
+    // Allows reading ruler preference to be referenced before the module loads
     function applyReadingRuler(_enabled) {
-      // Reading ruler functionality is loaded lazily when the panel opens
-      // The lazy-loaded module will override this function
-      // For now, just store the preference (it will be applied when module loads)
+      // Intentionally empty - overridden by lazy-loaded module
     }
 
     // Close accessibility panel - exposed globally for TTS and other features
