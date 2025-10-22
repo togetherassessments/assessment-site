@@ -108,7 +108,7 @@ Playwright is available via MCP for visual debugging and verification.
 
 **Common workflow:**
 
-1. Start dev server: `npm run dev`
+1. Start dev server: `/start` command
 2. Navigate to page: `browser_navigate` to http://localhost:4321
 3. Inspect structure: `browser_snapshot` (better than screenshots for most debugging)
 4. Capture visual: `browser_take_screenshot` when needed

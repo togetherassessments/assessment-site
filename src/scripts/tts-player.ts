@@ -773,6 +773,14 @@ export class TTSPlayer {
   }
 
   private onError(event: SpeechSynthesisErrorEvent): void {
+    // "interrupted" is not an error - it happens when user stops playback
+    if (event.error === 'interrupted') {
+      this.state = 'idle';
+      this.updateUI();
+      return;
+    }
+
+    // Log actual errors
     console.error('TTS Error:', event.error);
     this.announce(`Error: ${event.error}`);
     this.state = 'idle';
