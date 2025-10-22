@@ -17,4 +17,5 @@ interface ImportMeta {
 
 interface Window {
   closeMobileMenu?: () => void;
+  closeAccessibilityPanel?: () => void;
 }

@@ -811,6 +811,15 @@ const settings = DEFAULT_SETTINGS;
       // For now, just store the preference (it will be applied when module loads)
     }
 
+    // Close accessibility panel - exposed globally for TTS and other features
+    window.closeAccessibilityPanel = function () {
+      const panel = document.getElementById('accessibility-panel');
+      const allToggleButtons = document.querySelectorAll('[data-accessibility-toggle]');
+      panel?.classList.remove('open');
+      allToggleButtons.forEach((btn) => btn.setAttribute('aria-expanded', 'false'));
+      document.body.classList.remove('accessibility-panel-open');
+    };
+
     function updateUI(settings) {
       const fontRadio = document.querySelector(`input[name="font"][value="${settings.font}"]`);
       if (fontRadio) fontRadio.checked = true;
@@ -928,9 +937,7 @@ const settings = DEFAULT_SETTINGS;
       const isOpen = panel?.classList.contains('open');
 
       if (isOpen) {
-        panel?.classList.remove('open');
-        allToggleButtons.forEach((btn) => btn.setAttribute('aria-expanded', 'false'));
-        document.body.classList.remove('accessibility-panel-open');
+        window.closeAccessibilityPanel();
       } else {
         // Close mobile navigation menu if open
         if (typeof window.closeMobileMenu === 'function') {

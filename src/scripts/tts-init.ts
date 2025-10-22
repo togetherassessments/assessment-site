@@ -177,6 +177,10 @@ function setupTTSToggleHandlers() {
       } else {
         // This is synchronous - no await - fixes mobile!
         ttsPlayerInstance.start();
+        // Close accessibility panel when TTS starts
+        if (typeof window.closeAccessibilityPanel === 'function') {
+          window.closeAccessibilityPanel();
+        }
       }
       return;
     }
@@ -196,6 +200,10 @@ function setupTTSToggleHandlers() {
         ttsModuleState = 'ready';
         updateTTSButtonState('ready');
         ttsPlayerInstance.start();
+        // Close accessibility panel when TTS starts
+        if (typeof window.closeAccessibilityPanel === 'function') {
+          window.closeAccessibilityPanel();
+        }
       } catch {
         ttsModuleState = 'error';
         updateTTSButtonState('error');
@@ -207,6 +215,10 @@ function setupTTSToggleHandlers() {
         ttsPlayerInstance.close();
       } else {
         ttsPlayerInstance.start();
+        // Close accessibility panel when TTS starts
+        if (typeof window.closeAccessibilityPanel === 'function') {
+          window.closeAccessibilityPanel();
+        }
       }
     }
   });
