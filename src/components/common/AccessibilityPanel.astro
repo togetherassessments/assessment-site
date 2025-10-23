@@ -867,6 +867,12 @@ const settings = DEFAULT_SETTINGS;
       }
     }
 
+    // Reset font loading state (called on astro:before-swap)
+    function resetFontLoadingState() {
+      accessibilityFontsLoaded = false;
+      accessibilityFontsLoading = false;
+    }
+
     // Expose utility functions globally for lazy-loaded module
     window.accessibilityPanelUtils = {
       getSettings,
@@ -880,6 +886,7 @@ const settings = DEFAULT_SETTINGS;
       applyReadingRuler,
       loadAccessibilityFonts,
       applyFontPreviews,
+      resetFontLoadingState,
     };
 
     // Main initialization function - called on initial load AND after each navigation
@@ -980,8 +987,7 @@ const settings = DEFAULT_SETTINGS;
   let ttsInitialized = false;
 
   // Make function available globally for the inline script
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (window as any).initializeTTSIfNeeded = async function () {
+  window.initializeTTSIfNeeded = async function () {
     if (ttsInitialized) {
       return;
     }
@@ -1001,8 +1007,7 @@ const settings = DEFAULT_SETTINGS;
   let accessibilityPanelInitialized = false;
 
   // Make function available globally for triggering on first interaction
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (window as any).initializeAccessibilityPanelInteractions = async function () {
+  window.initializeAccessibilityPanelInteractions = async function () {
     if (accessibilityPanelInitialized) {
       return Promise.resolve(); // Already initialized, return resolved promise
     }
@@ -1020,10 +1025,15 @@ const settings = DEFAULT_SETTINGS;
     }
   };
 
-  // Reset initialization flag on page navigation to allow re-initialization
+  // Reset initialization flags on page navigation to allow re-initialization
   // This is needed for features like the reading ruler that need to be recreated on each page
+  // Also reset font loading state so fonts are re-injected on new page
   document.addEventListener('astro:before-swap', () => {
     accessibilityPanelInitialized = false;
+    // Reset font loading flags in the inline script
+    if (typeof window.accessibilityPanelUtils?.resetFontLoadingState === 'function') {
+      window.accessibilityPanelUtils.resetFontLoadingState();
+    }
   });
 
   // Initialize interactions on first accessibility panel interaction
@@ -1033,10 +1043,8 @@ const settings = DEFAULT_SETTINGS;
     (e: MouseEvent) => {
       const target = (e.target as HTMLElement).closest('[data-accessibility-toggle]');
       if (target) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        if (typeof (window as any).initializeAccessibilityPanelInteractions === 'function') {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (window as any).initializeAccessibilityPanelInteractions();
+        if (typeof window.initializeAccessibilityPanelInteractions === 'function') {
+          window.initializeAccessibilityPanelInteractions();
         }
       }
     },
@@ -1048,10 +1056,8 @@ const settings = DEFAULT_SETTINGS;
     'keydown',
     (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === 'A') {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        if (typeof (window as any).initializeAccessibilityPanelInteractions === 'function') {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          (window as any).initializeAccessibilityPanelInteractions();
+        if (typeof window.initializeAccessibilityPanelInteractions === 'function') {
+          window.initializeAccessibilityPanelInteractions();
         }
       }
     },

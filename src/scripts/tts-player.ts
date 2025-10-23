@@ -358,8 +358,7 @@ export class TTSPlayer {
     this.setupUI();
 
     // Store globally for Astro navigation
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (window as any).ttsPlayer = this;
+    window.ttsPlayer = this;
   }
 
   public async start(): Promise<void> {

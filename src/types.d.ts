@@ -1,5 +1,6 @@
 import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import type { HTMLAttributes, ImageMetadata } from 'astro/types';
+import type { TTSPlayer } from './scripts/tts-player';
 
 export interface Post {
   /** A unique ID number that identifies a post. */
@@ -388,6 +389,11 @@ export interface Contact extends Omit<Headline, 'classes'>, Form, Widget {}
 // Global window extensions for accessibility features
 declare global {
   interface Window {
+    ttsPlayer?: TTSPlayer;
+    closeAccessibilityPanel?: () => void;
+    closeMobileMenu?: () => void;
+    initializeTTSIfNeeded?: () => Promise<void>;
+    initializeAccessibilityPanelInteractions?: () => Promise<void>;
     accessibilityPanelUtils: {
       getSettings: () => {
         font: string;
@@ -424,11 +430,10 @@ declare global {
       applyReadingRuler: (enabled: boolean) => void;
       loadAccessibilityFonts: () => Promise<void>;
       applyFontPreviews: () => void;
+      resetFontLoadingState: () => void;
       removeDragHandlers: () => void;
       removeReadingRuler: () => void;
       updateReadingRulerState: (enabled: boolean) => void;
     };
-    initializeTTSIfNeeded?: () => Promise<void>;
-    initializeAccessibilityPanelInteractions?: () => Promise<void>;
   }
 }
