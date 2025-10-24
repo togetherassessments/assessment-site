@@ -106,13 +106,13 @@ collections:
               - label: "Default Meta Description"
                 name: description
                 widget: text
-                hint: "Default description for search engines (150-160 characters recommended)"
+                hint: "The default description that appears in Google search results for pages that don't have a custom description (120-160 chars recommended). Summarise what your site offers."
 
               - label: "Default Social Share Image"
                 name: og_image
                 widget: image
                 required: false
-                hint: "Used when sharing on social media (1200x628px recommended)"
+                hint: "The default image that appears when pages from your site are shared on Facebook, LinkedIn, or WhatsApp. Recommended size: 1200x628px. Pages can override this with their own custom image."
 
               - label: "Google Site Verification ID"
                 name: google_verification_id
@@ -131,6 +131,62 @@ collections:
                 widget: boolean
                 default: true
                 hint: "Allow search engines to follow links on your site"
+
+              - label: "Business Area Served"
+                name: area_served
+                widget: string
+                required: false
+                hint: "Geographic area your business serves (e.g., 'North Lincolnshire'). Used in LocalBusiness schema."
+
+              - label: "Social Media Links"
+                name: social
+                widget: object
+                collapsed: true
+                required: false
+                hint: "Social media profiles for Organization schema 'sameAs' property"
+                fields:
+                  - label: "LinkedIn"
+                    name: linkedin
+                    widget: string
+                    required: false
+                    hint: "Full URL (e.g., https://linkedin.com/company/together-assessments)"
+
+                  - label: "Twitter"
+                    name: twitter
+                    widget: string
+                    required: false
+                    hint: "Full URL (e.g., https://twitter.com/togetherassess)"
+
+                  - label: "Facebook"
+                    name: facebook
+                    widget: string
+                    required: false
+                    hint: "Full URL (e.g., https://facebook.com/togetherassessments)"
+
+              - label: "Business Details (Optional)"
+                name: business
+                widget: object
+                collapsed: true
+                required: false
+                hint: "Additional business information for Organization schema"
+                fields:
+                  - label: "Founding Date"
+                    name: founding_date
+                    widget: string
+                    required: false
+                    hint: "Format: YYYY-MM-DD"
+                    pattern: ['^\d{4}-\d{2}-\d{2}$', "Must be YYYY-MM-DD format"]
+
+                  - label: "Legal Name"
+                    name: legal_name
+                    widget: string
+                    required: false
+                    hint: "Full legal trading name"
+
+                  - label: "VAT ID"
+                    name: vat_id
+                    widget: string
+                    required: false
 
           - label: "Analytics"
             name: analytics
@@ -269,6 +325,26 @@ collections:
               - label: Step Text
                 name: text
                 widget: string
+          - label: "SEO Settings"
+            name: seo_settings
+            widget: object
+            collapsed: true
+            required: false
+            hint: "Custom SEO metadata for the homepage. Leave empty to use site defaults."
+            fields:
+              - label: "Meta Title"
+                name: metaTitle
+                widget: string
+                required: false
+                pattern: ['^.{0,60}$', "Maximum 60 characters"]
+                hint: "The title that appears in Google search results and browser tabs (max 60 chars). Leave empty to use site name only."
+
+              - label: "Meta Description"
+                name: metaDescription
+                widget: string
+                required: false
+                pattern: ['^.{120,160}$', "Must be 120-160 characters"]
+                hint: "The description that appears under your title in Google search results (120-160 chars). Write a compelling summary to encourage clicks. Leave empty to use site default."
   - name: site_settings_trust_badges
     label: Site Settings / Trust Badges
     label_singular: Trust Badge
@@ -359,6 +435,31 @@ collections:
             widget: markdown
             required: false
             hint: Optional content displayed before the FAQ items. Supports full markdown formatting.
+          - label: "SEO Settings"
+            name: seo_settings
+            widget: object
+            collapsed: true
+            required: false
+            fields:
+              - label: "Meta Title"
+                name: metaTitle
+                widget: string
+                required: false
+                pattern: ['^.{0,60}$', "Maximum 60 characters"]
+                hint: "The title that appears in Google search results and browser tabs (max 60 chars). Leave empty to auto-generate from page title."
+
+              - label: "Meta Description"
+                name: metaDescription
+                widget: string
+                required: false
+                pattern: ['^.{120,160}$', "Must be 120-160 characters"]
+                hint: "The description that appears under your title in Google search results (120-160 chars). Write a compelling summary to encourage clicks."
+
+              - label: "Open Graph Image"
+                name: ogImage
+                widget: image
+                required: false
+                hint: "Custom image that appears when this page is shared on social media like Facebook, LinkedIn, or WhatsApp (recommended size: 1200x628px). Leave empty to use site default."
   - name: faqs_page_items
     label: FAQs Page / FAQ Items
     label_singular: FAQ
@@ -431,6 +532,31 @@ collections:
             widget: markdown
             required: false
             hint: Optional content displayed before the service items. Supports full markdown formatting.
+          - label: "SEO Settings"
+            name: seo_settings
+            widget: object
+            collapsed: true
+            required: false
+            fields:
+              - label: "Meta Title"
+                name: metaTitle
+                widget: string
+                required: false
+                pattern: ['^.{0,60}$', "Maximum 60 characters"]
+                hint: "The title that appears in Google search results and browser tabs (max 60 chars). Leave empty to auto-generate from page title."
+
+              - label: "Meta Description"
+                name: metaDescription
+                widget: string
+                required: false
+                pattern: ['^.{120,160}$', "Must be 120-160 characters"]
+                hint: "The description that appears under your title in Google search results (120-160 chars). Write a compelling summary to encourage clicks."
+
+              - label: "Open Graph Image"
+                name: ogImage
+                widget: image
+                required: false
+                hint: "Custom image that appears when this page is shared on social media like Facebook, LinkedIn, or WhatsApp (recommended size: 1200x628px). Leave empty to use site default."
   - name: services_page_items
     label: Services Page / Service Items
     label_singular: Service
@@ -522,6 +648,31 @@ collections:
               - ^https://calendar\.google\.com/.+$
               - Must be a valid Google Calendar URL
             hint: The full Google Calendar Appointments Schedule link
+          - label: "SEO Settings"
+            name: seo_settings
+            widget: object
+            collapsed: true
+            required: false
+            fields:
+              - label: "Meta Title"
+                name: metaTitle
+                widget: string
+                required: false
+                pattern: ['^.{0,60}$', "Maximum 60 characters"]
+                hint: "The title that appears in Google search results and browser tabs (max 60 chars). Leave empty to auto-generate from page title."
+
+              - label: "Meta Description"
+                name: metaDescription
+                widget: string
+                required: false
+                pattern: ['^.{120,160}$', "Must be 120-160 characters"]
+                hint: "The description that appears under your title in Google search results (120-160 chars). Write a compelling summary to encourage clicks."
+
+              - label: "Open Graph Image"
+                name: ogImage
+                widget: image
+                required: false
+                hint: "Custom image that appears when this page is shared on social media like Facebook, LinkedIn, or WhatsApp (recommended size: 1200x628px). Leave empty to use site default."
   - name: contact_page
     label: Contact Page
     delete: false
@@ -559,6 +710,31 @@ collections:
             widget: markdown
             required: false
             hint: Optional content displayed before the contact button. Supports full markdown formatting.
+          - label: "SEO Settings"
+            name: seo_settings
+            widget: object
+            collapsed: true
+            required: false
+            fields:
+              - label: "Meta Title"
+                name: metaTitle
+                widget: string
+                required: false
+                pattern: ['^.{0,60}$', "Maximum 60 characters"]
+                hint: "The title that appears in Google search results and browser tabs (max 60 chars). Leave empty to auto-generate from page title."
+
+              - label: "Meta Description"
+                name: metaDescription
+                widget: string
+                required: false
+                pattern: ['^.{120,160}$', "Must be 120-160 characters"]
+                hint: "The description that appears under your title in Google search results (120-160 chars). Write a compelling summary to encourage clicks."
+
+              - label: "Open Graph Image"
+                name: ogImage
+                widget: image
+                required: false
+                hint: "Custom image that appears when this page is shared on social media like Facebook, LinkedIn, or WhatsApp (recommended size: 1200x628px). Leave empty to use site default."
   - name: waitlist_page
     label: Waitlist Page
     delete: false
@@ -603,6 +779,31 @@ collections:
               - ^https://docs\.google\.com/forms/.+$
               - Must be a valid Google Forms URL
             hint: The full Google Form link
+          - label: "SEO Settings"
+            name: seo_settings
+            widget: object
+            collapsed: true
+            required: false
+            fields:
+              - label: "Meta Title"
+                name: metaTitle
+                widget: string
+                required: false
+                pattern: ['^.{0,60}$', "Maximum 60 characters"]
+                hint: "The title that appears in Google search results and browser tabs (max 60 chars). Leave empty to auto-generate from page title."
+
+              - label: "Meta Description"
+                name: metaDescription
+                widget: string
+                required: false
+                pattern: ['^.{120,160}$', "Must be 120-160 characters"]
+                hint: "The description that appears under your title in Google search results (120-160 chars). Write a compelling summary to encourage clicks."
+
+              - label: "Open Graph Image"
+                name: ogImage
+                widget: image
+                required: false
+                hint: "Custom image that appears when this page is shared on social media like Facebook, LinkedIn, or WhatsApp (recommended size: 1200x628px). Leave empty to use site default."
   - name: text_pages
     label: Text Pages
     label_singular: Text Page
@@ -646,6 +847,31 @@ collections:
         name: body
         widget: markdown
         hint: The main content of the page. Supports full markdown formatting.
+      - label: "SEO Settings"
+        name: seo_settings
+        widget: object
+        collapsed: true
+        required: false
+        fields:
+          - label: "Meta Title"
+            name: metaTitle
+            widget: string
+            required: false
+            pattern: ['^.{0,60}$', "Maximum 60 characters"]
+            hint: "The title that appears in Google search results and browser tabs (max 60 chars). Leave empty to auto-generate from page title."
+
+          - label: "Meta Description"
+            name: metaDescription
+            widget: string
+            required: false
+            pattern: ['^.{120,160}$', "Must be 120-160 characters"]
+            hint: "The description that appears under your title in Google search results (120-160 chars). Write a compelling summary to encourage clicks."
+
+          - label: "Open Graph Image"
+            name: ogImage
+            widget: image
+            required: false
+            hint: "Custom image that appears when this page is shared on social media like Facebook, LinkedIn, or WhatsApp (recommended size: 1200x628px). Leave empty to use site default."
   - name: post
     label: Blog Posts
     label_singular: Blog Post
@@ -713,11 +939,6 @@ collections:
         date_format: DD/MM/YYYY
         time_format: false
         hint: When this post should be published
-      - label: Author
-        name: author
-        widget: string
-        default: Team
-        hint: Author name to display
       - label: Draft
         name: draft
         widget: boolean
@@ -735,18 +956,52 @@ collections:
         widget: object
         collapsed: true
         required: false
-        hint: Optional SEO settings to override defaults
+        hint: Advanced SEO settings - only use if you need to prevent indexing
         fields:
-          - label: Canonical URL
-            name: canonical
-            widget: string
-            required: false
-            pattern:
-              - ^https?://.+$
-              - Must be a valid URL
-            hint: Use if this content is published elsewhere
           - label: No Index
             name: noindex
             widget: boolean
             required: false
-            hint: Prevent search engines from indexing this page
+            hint: Prevent search engines from indexing this page (use for draft or sensitive content)
+      - label: "SEO Settings"
+        name: seo_settings
+        widget: object
+        collapsed: true
+        required: false
+        hint: "Control how this blog post appears in Google search results and social media shares"
+        fields:
+          - label: "Meta Title"
+            name: metaTitle
+            widget: string
+            required: false
+            pattern: ['^.{0,60}$', "Maximum 60 characters"]
+            hint: "The title that appears in Google search results and browser tabs (max 60 chars). Leave empty to auto-generate from post title."
+
+          - label: "Meta Description"
+            name: metaDescription
+            widget: string
+            required: false
+            pattern: ['^.{120,160}$', "Must be 120-160 characters"]
+            hint: "The description that appears under your title in Google search results (120-160 chars). Write a compelling summary to encourage clicks. Leave empty to use excerpt."
+
+      - label: "Author"
+        name: author
+        widget: string
+        required: false
+        hint: "Author name (e.g., 'Dr Jane Smith'). For enhanced author data with credentials and bio, edit the frontmatter directly."
+
+      - label: "Content Review"
+        name: content_review
+        widget: object
+        collapsed: true
+        required: false
+        hint: "Track when you last checked this content for accuracy (helps Google know content is current)"
+        fields:
+          - label: "Last Reviewed Date"
+            name: lastReviewed
+            widget: datetime
+            required: false
+            format: "DD/MM/YYYY"
+            date_format: "DD/MM/YYYY"
+            time_format: false
+            hint: "When you last verified this content is still accurate and up-to-date. This appears in search results as 'Last updated' and signals content freshness to Google."

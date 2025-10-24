@@ -2,14 +2,14 @@ import yaml from 'js-yaml';
 import fs from 'fs';
 import path from 'path';
 
-interface SiteSettings {
+export interface SiteSettings {
   site: {
     name: string;
     email: string;
     ico_registration: string;
     waitlist_only: boolean;
   };
-  seo?: {
+  seo: {
     title_default?: string;
     title_template?: string;
     description?: string;
@@ -17,6 +17,17 @@ interface SiteSettings {
     google_verification_id?: string;
     robots_index?: boolean;
     robots_follow?: boolean;
+    area_served?: string;
+    social?: {
+      linkedin?: string;
+      twitter?: string;
+      facebook?: string;
+    };
+    business?: {
+      founding_date?: string;
+      legal_name?: string;
+      vat_id?: string;
+    };
   };
   branding?: {
     mask_icon_colour?: string;

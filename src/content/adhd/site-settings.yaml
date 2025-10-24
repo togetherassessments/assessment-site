@@ -18,6 +18,15 @@ seo:
   description: "ADHD assessments for adults in the UK. Professional neurodiversity assessment services for North Lincolnshire and surrounding areas."
   robots_index: false
   robots_follow: true
+  area_served: "North Lincolnshire"
+  social:
+    linkedin: ""
+    twitter: ""
+    facebook: ""
+  business:
+    founding_date: ""
+    legal_name: ""
+    vat_id: ""
 
 analytics:
   ga4_id: ""

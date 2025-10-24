@@ -8,10 +8,14 @@ tags:
   - tailwind css
 image: ~/assets/images/assessments/pexels-shvets-production-7176297.jpg
 publishDate: 2023-08-12T00:00:00.000Z
+updateDate: 2024-01-15T00:00:00.000Z
 author: John Smith
 draft: false
-metadata:
-  canonical: https://astrowind.vercel.app/get-started-website-with-astro-tailwind-css
+seo_settings:
+  metaTitle: "Custom Blog Post SEO Title for Phase B Testing"
+  metaDescription: "Custom blog post description for Phase B testing. This should appear in BlogPosting schema and override the default fallback value."
+content_review:
+  lastReviewed: 2025-01-10T00:00:00.000Z
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

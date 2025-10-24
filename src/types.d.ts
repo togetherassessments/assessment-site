@@ -31,7 +31,15 @@ export interface Post {
   /**  */
   tags?: Taxonomy[];
   /**  */
-  author?: string;
+  author?:
+    | string
+    | {
+        name: string;
+        jobTitle?: string;
+        credentials?: string[];
+        bio?: string;
+        photo?: string;
+      };
 
   /**  */
   metadata?: MetaData;
@@ -42,9 +50,21 @@ export interface Post {
   /**  */
   Content?: AstroComponentFactory;
   content?: string;
+  body?: string;
 
   /**  */
   readingTime?: number;
+
+  /** SEO settings for the post */
+  seo_settings?: {
+    metaTitle?: string;
+    metaDescription?: string;
+  };
+
+  /** Content review tracking */
+  content_review?: {
+    lastReviewed?: Date;
+  };
 }
 
 export interface Taxonomy {

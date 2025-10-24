@@ -1,12 +1,20 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import TextPageContent from '~/components/widgets/TextPageContent.astro';
+import StructuredData from '~/components/common/StructuredData.astro';
+import { generateBreadcrumbs } from '~/utils/breadcrumbs';
 
 const metadata = {
   title: 'Local Support',
 };
+
+// Breadcrumb schema
+const breadcrumbSchema = generateBreadcrumbs(Astro.url.pathname, Astro.site!, 'Local Support');
 ---
 
 <Layout metadata={metadata}>
+  <!-- Structured Data -->
+  <StructuredData schema={breadcrumbSchema} />
+
   <TextPageContent slug="local-support" />
 </Layout>

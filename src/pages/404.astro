@@ -1,13 +1,25 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
+import StructuredData from '~/components/common/StructuredData.astro';
+import { generateBreadcrumbs } from '~/utils/breadcrumbs';
 
 const metadata = {
   title: '404 - Page Not Found',
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
+
+// Breadcrumb schema
+const breadcrumbSchema = generateBreadcrumbs(Astro.url.pathname, Astro.site!, 'Page Not Found');
 ---
 
 <Layout metadata={metadata}>
+  <!-- Structured Data -->
+  <StructuredData schema={breadcrumbSchema} />
+
   <Hero
     tagline="404 Error"
     actions={[

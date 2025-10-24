@@ -10,8 +10,6 @@ image: https://images.unsplash.com/photo-1516996087931-5ae405802f9f?ixlib=rb-4.0
 publishDate: 2023-08-12T00:00:00.000Z
 author: John Smith
 draft: false
-metadata:
-  canonical: https://astrowind.vercel.app/get-started-website-with-astro-tailwind-css
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

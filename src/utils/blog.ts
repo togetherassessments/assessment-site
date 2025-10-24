@@ -41,7 +41,7 @@ const generatePermalink = async ({
 };
 
 const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> => {
-  const { id, data } = post;
+  const { id, data, body } = post;
   const { Content, remarkPluginFrontmatter } = await render(post);
 
   const {
@@ -55,6 +55,8 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     author,
     draft = false,
     metadata = {},
+    seo_settings,
+    content_review,
   } = data;
 
   const slug = cleanSlug(id); // cleanSlug(rawSlug.split('/').pop());
@@ -92,7 +94,10 @@ const getNormalizedPost = async (post: CollectionEntry<'post'>): Promise<Post> =
     draft: draft,
 
     metadata,
+    seo_settings,
+    content_review,
 
+    body: body,
     Content: Content,
     // or 'content' in case you consume from API
 

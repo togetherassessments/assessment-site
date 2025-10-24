@@ -12,6 +12,9 @@ import { getStaticPathsBlogPost, blogPostRobots } from '~/utils/blog';
 import { findImage } from '~/utils/images';
 import type { MetaData } from '~/types';
 import RelatedPosts from '~/components/blog/RelatedPosts.astro';
+import StructuredData from '~/components/common/StructuredData.astro';
+import { countWords, getMostRecentDate } from '~/utils/content';
+import { generateBreadcrumbs } from '~/utils/breadcrumbs';
 
 export const prerender = true;
 
@@ -27,9 +30,11 @@ const url = getCanonical(getPermalink(post.permalink, 'post'));
 const image = (await findImage(post.image)) as ImageMetadata | string | undefined;
 
 const metadata = merge(
+  { ...(post?.metadata ? { ...post.metadata } : {}) },
   {
-    title: post.title,
-    description: post.excerpt,
+    title: post.seo_settings?.metaTitle || post.title,
+    description: post.seo_settings?.metaDescription || post.excerpt,
+    canonical: url,
     robots: {
       index: blogPostRobots?.index,
       follow: blogPostRobots?.follow,
@@ -40,12 +45,88 @@ const metadata = merge(
         ? { images: [{ url: image, width: (image as ImageMetadata)?.width, height: (image as ImageMetadata)?.height }] }
         : {}),
     },
-  },
-  { ...(post?.metadata ? { ...post.metadata, canonical: post.metadata?.canonical || url } : {}) }
+  }
 ) as MetaData;
+
+// Calculate word count
+const wordCount = countWords(post.body || '');
+
+// Determine most recent modification date
+const dateModified = getMostRecentDate(post.content_review?.lastReviewed, post.updateDate) || post.publishDate;
+
+// Build author schema - handle both string and object formats
+let authorSchema: Record<string, unknown> | undefined;
+if (post.author) {
+  if (typeof post.author === 'string') {
+    // Legacy string format
+    authorSchema = {
+      '@type': 'Person',
+      name: post.author,
+      affiliation: {
+        '@id': `${Astro.site}#organization`,
+      },
+    };
+  } else {
+    // New object format with credentials
+    authorSchema = {
+      '@type': 'Person',
+      name: post.author.name,
+      ...(post.author.jobTitle && { jobTitle: post.author.jobTitle }),
+      ...(post.author.credentials && {
+        credential: post.author.credentials.map((cred) => ({
+          '@type': 'EducationalOccupationalCredential',
+          credentialCategory: 'professional',
+          name: cred,
+        })),
+      }),
+      ...(post.author.bio && { description: post.author.bio }),
+      ...(post.author.photo && {
+        image: new URL(post.author.photo, Astro.site).href,
+      }),
+      affiliation: {
+        '@id': `${Astro.site}#organization`,
+      },
+    };
+  }
+}
+
+// Build BlogPosting schema
+const blogPostingSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.title,
+  description: post.seo_settings?.metaDescription || post.excerpt,
+  ...(post.image && {
+    image: new URL(post.image, Astro.site).href,
+  }),
+  datePublished: post.publishDate?.toISOString(),
+  ...(dateModified && {
+    dateModified: dateModified.toISOString(),
+  }),
+  ...(authorSchema && { author: authorSchema }),
+  publisher: {
+    '@id': `${Astro.site}#organization`,
+  },
+  wordCount: wordCount,
+  inLanguage: 'en-GB',
+  isAccessibleForFree: true,
+  ...(post.category && {
+    articleSection: post.category.title,
+  }),
+  ...(post.tags && {
+    keywords: post.tags.map((tag) => tag.title).join(', '),
+  }),
+};
+
+// Breadcrumb schema
+const breadcrumbSchema = generateBreadcrumbs(Astro.url.pathname, Astro.site!, post.title);
 ---
 
 <Layout metadata={metadata}>
+  <!-- Structured Data -->
+  <StructuredData schema={blogPostingSchema} />
+  <StructuredData schema={breadcrumbSchema} />
+
   <SinglePost post={{ ...post, image: image }} url={url}>
     {post.Content ? <post.Content /> : <Fragment set:html={post.content || ''} />}
   </SinglePost>

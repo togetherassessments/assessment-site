@@ -1,3 +1,6 @@
+seo_settings:
+  metaTitle: "Together Assessments - Custom SEO Title Test"
+  metaDescription: "This is a custom meta description for Phase B testing. It should override the fallback value and appear in the HTML output."
 hero:
   image: ~/assets/images/assessments/pexels-shvets-production-7176297.jpg
   text: For adults in North Lincolnshire (online UK‑wide available)

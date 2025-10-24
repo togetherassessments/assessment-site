@@ -8,24 +8,17 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Button from '~/components/ui/Button.astro';
 import Image from '~/components/common/Image.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import { findImage } from '~/utils/images';
-import YAML from 'yaml';
-import fs from 'fs';
-import path from 'path';
+import { getSiteSettings } from '~/utils/site-settings';
 
-// Get WEBSITE_ID from environment
-const WEBSITE_ID = process.env.WEBSITE_ID;
-if (!WEBSITE_ID) {
-  throw new Error('WEBSITE_ID environment variable is required');
+// Load site settings and homepage content via content collections
+const settings = getSiteSettings();
+const homePageContent = await getEntry('home_page', 'content');
+
+if (!homePageContent) {
+  throw new Error('Home page content not found');
 }
-
-// Load site settings and homepage content with WEBSITE_ID
-const settingsPath = path.join(process.cwd(), `src/content/${WEBSITE_ID}/site-settings.yaml`);
-const settings = YAML.parse(fs.readFileSync(settingsPath, 'utf8'));
-
-const homePagePath = path.join(process.cwd(), `src/content/${WEBSITE_ID}/home-page/content.yaml`);
-const homePageContent = YAML.parse(fs.readFileSync(homePagePath, 'utf8'));
 
 // Load content collections - filter for published items
 const allServices = await getCollection('services_page_items');
@@ -49,9 +42,17 @@ const trustBadgesWithImages = await Promise.all(
 // Get first 4 FAQs for homepage
 const homepageFaqs = faqs.slice(0, 4);
 
+// Build metadata with SEO field fallbacks
 const metadata = {
-  title: settings.site.name,
+  title: homePageContent.data.seo_settings?.metaTitle || settings.seo.title_default,
   ignoreTitleTemplate: true,
+  description: homePageContent.data.seo_settings?.metaDescription || settings.seo.description,
+  openGraph: {
+    type: 'website',
+    ...(settings.seo.og_image && {
+      images: [{ url: settings.seo.og_image, width: 1200, height: 628 }],
+    }),
+  },
 };
 ---
 
@@ -70,32 +71,34 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: settings.site.waitlist_only ? homePageContent.ctas.waitlist.text : homePageContent.ctas.consultation.text,
+        text: settings.site.waitlist_only
+          ? homePageContent.data.ctas.waitlist.text
+          : homePageContent.data.ctas.consultation.text,
         href: settings.site.waitlist_only ? '/waitlist' : '/consultation',
         icon: 'tabler:calendar',
       },
     ]}
     image={{
-      src: homePageContent.hero.image,
-      alt: homePageContent.hero.image_alt || 'Hero image',
+      src: homePageContent.data.hero.image,
+      alt: homePageContent.data.hero.image_alt || 'Hero image',
     }}
   >
     <Fragment slot="title">
-      {homePageContent.hero.text}
+      {homePageContent.data.hero.text}
     </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="font-semibold">{homePageContent.hero.title}</span>
+      <span class="font-semibold">{homePageContent.data.hero.title}</span>
       <br />
-      <span class="text-muted">{homePageContent.hero.subtitle}</span>
+      <span class="text-muted">{homePageContent.data.hero.subtitle}</span>
     </Fragment>
   </Hero>
 
   <!-- Secondary CTA -->
   <div class="text-center py-8">
     <Button
-      text={homePageContent.ctas.secondary.text}
-      href={homePageContent.ctas.secondary.link}
+      text={homePageContent.data.ctas.secondary.text}
+      href={homePageContent.data.ctas.secondary.link}
       variant="secondary"
       class="w-auto"
     />
@@ -141,8 +144,8 @@ const metadata = {
 
   <!-- How it Works -->
   <Steps
-    title={homePageContent.sections.how_it_works}
-    items={homePageContent.steps.map((step: { text: string }, index: number) => ({
+    title={homePageContent.data.sections.how_it_works}
+    items={homePageContent.data.steps.map((step: { text: string }, index: number) => ({
       title: `Step ${index + 1}`,
       description: step.text,
       icon: index === 0 ? 'tabler:message-circle' : index === 1 ? 'tabler:clipboard-check' : 'tabler:bulb',
@@ -151,7 +154,7 @@ const metadata = {
 
   <!-- Services -->
   <Features2
-    title={homePageContent.sections.services}
+    title={homePageContent.data.sections.services}
     subtitle=""
     items={services.length > 0
       ? services.map((service) => ({
@@ -169,12 +172,12 @@ const metadata = {
   <!-- Deep CTA -->
   <CallToAction
     title=""
-    subtitle={homePageContent.ctas.deep.lead_text}
+    subtitle={homePageContent.data.ctas.deep.lead_text}
     actions={[
       {
         variant: 'primary',
-        text: homePageContent.ctas.deep.text,
-        href: homePageContent.ctas.deep.link,
+        text: homePageContent.data.ctas.deep.text,
+        href: homePageContent.data.ctas.deep.link,
         icon: 'tabler:message-circle',
       },
     ]}
@@ -182,14 +185,14 @@ const metadata = {
 
   <!-- Blog -->
   <BlogLatestPosts
-    title={homePageContent.sections.blog}
-    information={homePageContent.sections.blog_subtitle}
+    title={homePageContent.data.sections.blog}
+    information={homePageContent.data.sections.blog_subtitle}
     count={4}
   />
 
   <!-- FAQs -->
   <FAQs
-    title={homePageContent.sections.faqs}
+    title={homePageContent.data.sections.faqs}
     items={homepageFaqs.length > 0
       ? homepageFaqs.map((faq) => ({
           title: faq.data.question,

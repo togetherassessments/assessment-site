@@ -13,7 +13,6 @@ const metadataDefinition = () =>
     .object({
       title: z.string().optional(),
       ignoreTitleTemplate: z.boolean().optional(),
-      canonical: z.string().url().optional(),
       robots: z
         .object({
           index: z.boolean().optional(),
@@ -48,6 +47,16 @@ const metadataDefinition = () =>
     })
     .optional();
 
+// SEO settings schema (reused across collections)
+const seoSettingsDefinition = () =>
+  z
+    .object({
+      metaTitle: z.string().max(60).optional(),
+      metaDescription: z.string().min(120).max(160).optional(),
+      ogImage: z.string().optional(),
+    })
+    .optional();
+
 // Blog posts (site-specific)
 const postCollection = defineCollection({
   loader: glob({ pattern: ['*.md', '*.mdx'], base: `src/content/${WEBSITE_ID}/blog-posts` }),
@@ -61,7 +70,32 @@ const postCollection = defineCollection({
     image_alt: z.string().optional(),
     category: z.string().optional(),
     tags: z.array(z.string()).optional(),
-    author: z.string().optional(),
+    // Enhanced author field - supports legacy string or new object format
+    author: z
+      .union([
+        z.string(), // Legacy support
+        z.object({
+          name: z.string(),
+          jobTitle: z.string().optional(),
+          credentials: z.array(z.string()).optional(),
+          bio: z.string().optional(),
+          photo: z.string().optional(),
+        }),
+      ])
+      .optional(),
+    // SEO settings
+    seo_settings: z
+      .object({
+        metaTitle: z.string().max(60).optional(),
+        metaDescription: z.string().min(120).max(160).optional(),
+      })
+      .optional(),
+    // Content review tracking
+    content_review: z
+      .object({
+        lastReviewed: z.date().optional(),
+      })
+      .optional(),
     metadata: metadataDefinition(),
   }),
 });
@@ -87,6 +121,14 @@ const serviceCollection = defineCollection({
     order: z.number().default(1),
     icon: z.string().optional(),
     published: z.boolean().default(true),
+    // Schema.org Service data
+    schema_data: z
+      .object({
+        priceRange: z.string().optional(),
+        duration: z.string().optional(),
+        serviceType: z.string().optional(),
+      })
+      .optional(),
   }),
 });
 
@@ -113,6 +155,14 @@ const textPageCollection = defineCollection({
     subheading: z.string().optional(),
     image: z.string().optional(),
     image_alt: z.string().optional(),
+    // SEO settings
+    seo_settings: z
+      .object({
+        metaTitle: z.string().max(60).optional(),
+        metaDescription: z.string().min(120).max(160).optional(),
+        ogImage: z.string().optional(),
+      })
+      .optional(),
   }),
 });
 
@@ -125,6 +175,8 @@ const servicesPageTopContentCollection = defineCollection({
     image: z.string().optional(),
     image_alt: z.string().optional(),
     body: z.string().optional(),
+    // SEO settings
+    seo_settings: seoSettingsDefinition(),
   }),
 });
 
@@ -137,6 +189,8 @@ const faqsPageTopContentCollection = defineCollection({
     image: z.string().optional(),
     image_alt: z.string().optional(),
     body: z.string().optional(),
+    // SEO settings
+    seo_settings: seoSettingsDefinition(),
   }),
 });
 
@@ -150,6 +204,8 @@ const consultationPageCollection = defineCollection({
     image_alt: z.string().optional(),
     body: z.string().optional(),
     google_calendar_link: z.string().url(),
+    // SEO settings
+    seo_settings: seoSettingsDefinition(),
   }),
 });
 
@@ -162,6 +218,8 @@ const contactPageCollection = defineCollection({
     image: z.string().optional(),
     image_alt: z.string().optional(),
     body: z.string().optional(),
+    // SEO settings
+    seo_settings: seoSettingsDefinition(),
   }),
 });
 
@@ -175,6 +233,66 @@ const waitlistPageCollection = defineCollection({
     image_alt: z.string().optional(),
     body: z.string().optional(),
     google_form_link: z.string().url(),
+    // SEO settings
+    seo_settings: seoSettingsDefinition(),
+  }),
+});
+
+// Home page content (site-specific)
+const homePageCollection = defineCollection({
+  loader: glob({ pattern: 'content.yaml', base: `src/content/${WEBSITE_ID}/home-page` }),
+  schema: z.object({
+    // Hero section
+    hero: z.object({
+      image: z.string(),
+      text: z.string(),
+      title: z.string(),
+      subtitle: z.string(),
+      image_alt: z.string(),
+    }),
+    // CTAs
+    ctas: z.object({
+      consultation: z.object({
+        text: z.string(),
+        alt: z.string(),
+      }),
+      waitlist: z.object({
+        text: z.string(),
+        alt: z.string(),
+      }),
+      secondary: z.object({
+        text: z.string(),
+        link: z.string(),
+        alt: z.string(),
+      }),
+      deep: z.object({
+        lead_text: z.string(),
+        text: z.string(),
+        link: z.string(),
+        alt: z.string(),
+      }),
+    }),
+    // Section titles
+    sections: z.object({
+      how_it_works: z.string(),
+      services: z.string(),
+      blog: z.string(),
+      blog_subtitle: z.string(),
+      faqs: z.string(),
+    }),
+    // How it works steps
+    steps: z.array(
+      z.object({
+        text: z.string(),
+      })
+    ),
+    // SEO settings
+    seo_settings: z
+      .object({
+        metaTitle: z.string().max(60).optional(),
+        metaDescription: z.string().min(120).max(160).optional(),
+      })
+      .optional(),
   }),
 });
 
@@ -189,4 +307,5 @@ export const collections = {
   consultation_page: consultationPageCollection,
   contact_page: contactPageCollection,
   waitlist_page: waitlistPageCollection,
+  home_page: homePageCollection,
 };

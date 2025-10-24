@@ -1,12 +1,20 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import TextPageContent from '~/components/widgets/TextPageContent.astro';
+import StructuredData from '~/components/common/StructuredData.astro';
+import { generateBreadcrumbs } from '~/utils/breadcrumbs';
 
 const metadata = {
   title: 'Data Retention & SAR',
 };
+
+// Breadcrumb schema
+const breadcrumbSchema = generateBreadcrumbs(Astro.url.pathname, Astro.site!, 'Data Retention & SAR');
 ---
 
 <Layout metadata={metadata}>
+  <!-- Structured Data -->
+  <StructuredData schema={breadcrumbSchema} />
+
   <TextPageContent slug="data-retention-sar" />
 </Layout>
