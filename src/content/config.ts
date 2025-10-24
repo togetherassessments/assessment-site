@@ -96,6 +96,8 @@ const postCollection = defineCollection({
         lastReviewed: z.date().optional(),
       })
       .optional(),
+    // Optional condition reference
+    related_condition: z.string().optional(),
     metadata: metadataDefinition(),
   }),
 });
@@ -177,6 +179,13 @@ const servicesPageTopContentCollection = defineCollection({
     body: z.string().optional(),
     // SEO settings
     seo_settings: seoSettingsDefinition(),
+    // Catalogue information
+    catalogue_info: z
+      .object({
+        name: z.string().optional(),
+        description: z.string().optional(),
+      })
+      .optional(),
   }),
 });
 
@@ -296,6 +305,28 @@ const homePageCollection = defineCollection({
   }),
 });
 
+// Medical conditions (site-specific)
+const medicalConditionCollection = defineCollection({
+  loader: glob({ pattern: '*.{md,yaml}', base: `src/content/${WEBSITE_ID}/medical-conditions` }),
+  schema: z.object({
+    name: z.string(),
+    alternate_names: z.array(z.string()).optional(),
+    description: z.string(),
+    signs_symptoms: z.array(z.string()).optional(),
+    affected_anatomy: z.string().default('Brain'),
+    possible_treatments: z
+      .array(
+        z.object({
+          name: z.string(),
+          type: z.enum(['MedicalTherapy', 'Drug', 'LifestyleModification']),
+        })
+      )
+      .optional(),
+    show_on_services: z.boolean().default(true),
+    published: z.boolean().default(true),
+  }),
+});
+
 export const collections = {
   post: postCollection,
   faqs_page_items: faqCollection,
@@ -308,4 +339,5 @@ export const collections = {
   contact_page: contactPageCollection,
   waitlist_page: waitlistPageCollection,
   home_page: homePageCollection,
+  medical_conditions: medicalConditionCollection,
 };

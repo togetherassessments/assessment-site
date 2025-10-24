@@ -7,6 +7,7 @@ import Headline from '~/components/blog/Headline.astro';
 import Pagination from '~/components/blog/Pagination.astro';
 import StructuredData from '~/components/common/StructuredData.astro';
 import { generateBreadcrumbs } from '~/utils/breadcrumbs';
+import { generateWebPageSchema } from '~/utils/schema-generators';
 
 import { blogListRobots, getStaticPathsBlogCategory } from '~/utils/blog';
 
@@ -35,10 +36,20 @@ const breadcrumbSchema = generateBreadcrumbs(
   Astro.site!,
   currentPage > 1 ? `Category: ${category.title} - Page ${currentPage}` : `Category: ${category.title}`
 );
+
+// WebPage schema
+const webPageSchema = generateWebPageSchema(
+  Astro.url,
+  currentPage > 1 ? `Category: ${category.title} - Page ${currentPage}` : `Category: ${category.title}`,
+  undefined,
+  undefined,
+  `${Astro.url.href}#breadcrumb`
+);
 ---
 
 <Layout metadata={metadata}>
   <!-- Structured Data -->
+  <StructuredData schema={webPageSchema} />
   <StructuredData schema={breadcrumbSchema} />
 
   <section class="px-6 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-4xl">

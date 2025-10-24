@@ -6,6 +6,7 @@ import { marked } from 'marked';
 import StructuredData from '~/components/common/StructuredData.astro';
 import { generateBreadcrumbs } from '~/utils/breadcrumbs';
 import { getSiteSettings } from '~/utils/site-settings';
+import { generateMedicalConditionSchema, generateWebPageSchema } from '~/utils/schema-generators';
 
 const settings = getSiteSettings();
 
@@ -23,6 +24,15 @@ const htmlContent = body ? marked.parse(body) : null;
 // Fetch and filter service items
 const allServices = await getCollection('services_page_items');
 const services = allServices.filter((service) => service.data.published).sort((a, b) => a.data.order - b.data.order);
+
+// Fetch medical conditions to display on services page
+const allConditions = await getCollection('medical_conditions');
+const conditionsToShow = allConditions.filter(
+  (condition) => condition.data.published && condition.data.show_on_services
+);
+
+// Generate MedicalCondition schemas
+const conditionSchemas = conditionsToShow.map((condition) => generateMedicalConditionSchema(condition, Astro.site!));
 
 // Build array of Service schemas (only for services with schema_data)
 const serviceSchemas = services
@@ -54,8 +64,35 @@ const serviceSchemas = services
     }),
   }));
 
+// Wrap services in OfferCatalog
+const catalogueName = topContent.data.catalogue_info?.name || `${settings.site.name} Assessment Services`;
+const catalogueDescription = topContent.data.catalogue_info?.description;
+
+const offerCatalogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'OfferCatalog',
+  '@id': `${Astro.site}services#catalog`,
+  name: catalogueName,
+  ...(catalogueDescription && { description: catalogueDescription }),
+  itemListElement: serviceSchemas.map((service, index) => ({
+    '@type': 'Offer',
+    '@id': service['@id'],
+    itemOffered: service,
+    position: index + 1,
+  })),
+};
+
 // Breadcrumb schema
 const breadcrumbSchema = generateBreadcrumbs(Astro.url.pathname, Astro.site!, 'Services');
+
+// WebPage schema
+const webPageSchema = generateWebPageSchema(
+  Astro.url,
+  title,
+  undefined,
+  `${Astro.site}services#catalog`,
+  `${Astro.url.href}#breadcrumb`
+);
 
 const metadata = {
   title: title,
@@ -64,7 +101,9 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <!-- Structured Data -->
-  {serviceSchemas.map((schema) => <StructuredData schema={schema} />)}
+  <StructuredData schema={webPageSchema} />
+  <StructuredData schema={offerCatalogSchema} />
+  {conditionSchemas.map((schema) => <StructuredData schema={schema} />)}
   <StructuredData schema={breadcrumbSchema} />
 
   <div class="container mx-auto px-4 py-16">

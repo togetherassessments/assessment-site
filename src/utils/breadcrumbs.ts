@@ -6,7 +6,7 @@
  * Generate Schema.org BreadcrumbList from URL pathname
  * Used on all pages except homepage for SEO breadcrumb trails
  */
-export function generateBreadcrumbs(pathname: string, siteUrl: URL, pageTitle?: string) {
+export function generateBreadcrumbs(pathname: string, siteUrl: URL, pageTitle?: string, fullUrl?: string) {
   const segments = pathname.split('/').filter(Boolean);
 
   const breadcrumbs = [
@@ -31,9 +31,13 @@ export function generateBreadcrumbs(pathname: string, siteUrl: URL, pageTitle?: 
     });
   });
 
+  // Generate @id from fullUrl if provided, otherwise construct from pathname and siteUrl
+  const breadcrumbId = fullUrl ? `${fullUrl}#breadcrumb` : `${new URL(pathname, siteUrl).href}#breadcrumb`;
+
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
+    '@id': breadcrumbId,
     itemListElement: breadcrumbs,
   };
 }

@@ -1,0 +1,23 @@
+name: "ADHD (Attention Deficit Hyperactivity Disorder)"
+alternate_names:
+  - "ADD"
+  - "Attention Deficit Disorder"
+description: "ADHD is a neurodevelopmental disorder characterised by persistent patterns of inattention, hyperactivity, and impulsivity that interfere with daily functioning and development."
+signs_symptoms:
+  - "Difficulty sustaining attention"
+  - "Easily distracted"
+  - "Forgetfulness in daily activities"
+  - "Difficulty organising tasks"
+  - "Restlessness or fidgeting"
+  - "Impulsive decision-making"
+  - "Difficulty waiting turn"
+affected_anatomy: "Brain"
+possible_treatments:
+  - name: "Cognitive Behavioural Therapy"
+    type: "MedicalTherapy"
+  - name: "ADHD Coaching"
+    type: "MedicalTherapy"
+  - name: "Medication Management"
+    type: "Drug"
+show_on_services: true
+published: true

@@ -188,6 +188,51 @@ collections:
                     widget: string
                     required: false
 
+                  - label: "Physical Location (Optional)"
+                    name: location
+                    widget: object
+                    collapsed: true
+                    required: false
+                    hint: "Physical address and coordinates for local SEO. All fields optional - use city/region only if you don't want to publish full address."
+                    fields:
+                      - label: "Street Address"
+                        name: street_address
+                        widget: string
+                        required: false
+                        hint: "E.g., '123 High Street'. Leave empty if working from home/virtual practice."
+
+                      - label: "City/Town"
+                        name: address_locality
+                        widget: string
+                        required: false
+                        hint: "E.g., 'Scunthorpe'"
+
+                      - label: "County/Region"
+                        name: address_region
+                        widget: string
+                        required: false
+                        hint: "E.g., 'North Lincolnshire'"
+
+                      - label: "Postal Code"
+                        name: postal_code
+                        widget: string
+                        required: false
+                        hint: "E.g., 'DN15 6NE'"
+
+                      - label: "Latitude"
+                        name: latitude
+                        widget: number
+                        value_type: "float"
+                        required: false
+                        hint: "Geographic coordinate for precise location (e.g., 53.5844). Use approximate city centre if not publishing exact address."
+
+                      - label: "Longitude"
+                        name: longitude
+                        widget: number
+                        value_type: "float"
+                        required: false
+                        hint: "Geographic coordinate for precise location (e.g., -0.6542). Use approximate city centre if not publishing exact address."
+
           - label: "Analytics"
             name: analytics
             widget: object
@@ -557,6 +602,27 @@ collections:
                 widget: image
                 required: false
                 hint: "Custom image that appears when this page is shared on social media like Facebook, LinkedIn, or WhatsApp (recommended size: 1200x628px). Leave empty to use site default."
+
+          - label: "Service Catalogue Information (Optional)"
+            name: catalogue_info
+            widget: object
+            collapsed: true
+            required: false
+            hint: "Metadata for the complete services catalogue (used in OfferCatalog schema)"
+            fields:
+              - label: "Catalogue Name"
+                name: name
+                widget: string
+                required: false
+                default: "ADHD and Autism Assessment Services"
+                hint: "Name for your complete service offering"
+
+              - label: "Catalogue Description"
+                name: description
+                widget: text
+                required: false
+                hint: "Brief description of your services as a group (optional)"
+
   - name: services_page_items
     label: Services Page / Service Items
     label_singular: Service
@@ -1005,3 +1071,82 @@ collections:
             date_format: "DD/MM/YYYY"
             time_format: false
             hint: "When you last verified this content is still accurate and up-to-date. This appears in search results as 'Last updated' and signals content freshness to Google."
+
+  # Medical Conditions
+  - name: medical_conditions
+    label: "Medical Conditions"
+    label_singular: "Medical Condition"
+    folder: "src/content/{{WEBSITE_ID}}/medical-conditions"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - label: "Condition Name"
+        name: name
+        widget: string
+        hint: "Official medical name (e.g., 'ADHD', 'Autism Spectrum Disorder')"
+
+      - label: "Alternate Names"
+        name: alternate_names
+        widget: list
+        required: false
+        hint: "Other names for this condition (e.g., 'ADD', 'Attention Deficit Disorder')"
+        field:
+          label: Name
+          name: name
+          widget: string
+
+      - label: "Description"
+        name: description
+        widget: text
+        hint: "Brief description of the condition (2-3 sentences)"
+
+      - label: "Signs & Symptoms"
+        name: signs_symptoms
+        widget: list
+        required: false
+        hint: "List of common signs and symptoms"
+        field:
+          label: Symptom
+          name: symptom
+          widget: string
+
+      - label: "Affected Body Part"
+        name: affected_anatomy
+        widget: string
+        default: "Brain"
+        required: false
+        hint: "Primary anatomical area affected (typically 'Brain' for neurodevelopmental conditions)"
+
+      - label: "Possible Treatments"
+        name: possible_treatments
+        widget: list
+        required: false
+        hint: "Common treatment approaches"
+        fields:
+          - label: "Treatment Name"
+            name: name
+            widget: string
+          - label: "Treatment Type"
+            name: type
+            widget: select
+            options:
+              - label: "Therapy/Counselling"
+                value: "MedicalTherapy"
+              - label: "Medication"
+                value: "Drug"
+              - label: "Lifestyle Intervention"
+                value: "LifestyleModification"
+
+      - label: "Show on Services Page"
+        name: show_on_services
+        widget: boolean
+        default: true
+        hint: "Display this condition schema on the services page"
+
+      - label: "Published"
+        name: published
+        widget: boolean
+        default: true
+        hint: "Only published conditions appear on the site"

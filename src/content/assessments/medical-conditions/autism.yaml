@@ -1,0 +1,22 @@
+name: "Autism Spectrum Disorder"
+alternate_names:
+  - "ASD"
+  - "Autism"
+description: "Autism Spectrum Disorder is a neurodevelopmental condition characterised by differences in social communication, sensory processing, and repetitive behaviours or restricted interests."
+signs_symptoms:
+  - "Differences in social communication"
+  - "Difficulty with social reciprocity"
+  - "Sensory sensitivities"
+  - "Preference for routine and structure"
+  - "Intense or focused interests"
+  - "Literal understanding of language"
+affected_anatomy: "Brain"
+possible_treatments:
+  - name: "Applied Behaviour Analysis"
+    type: "MedicalTherapy"
+  - name: "Speech and Language Therapy"
+    type: "MedicalTherapy"
+  - name: "Occupational Therapy"
+    type: "MedicalTherapy"
+show_on_services: true
+published: true

@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import TextPageContent from '~/components/widgets/TextPageContent.astro';
 import StructuredData from '~/components/common/StructuredData.astro';
 import { generateBreadcrumbs } from '~/utils/breadcrumbs';
+import { generateWebPageSchema } from '~/utils/schema-generators';
 
 const metadata = {
   title: 'Cookie Policy',
@@ -10,10 +11,20 @@ const metadata = {
 
 // Breadcrumb schema
 const breadcrumbSchema = generateBreadcrumbs(Astro.url.pathname, Astro.site!, 'Cookie Policy');
+
+// WebPage schema
+const webPageSchema = generateWebPageSchema(
+  Astro.url,
+  'Cookie Policy',
+  undefined,
+  undefined,
+  `${Astro.url.href}#breadcrumb`
+);
 ---
 
 <Layout metadata={metadata}>
   <!-- Structured Data -->
+  <StructuredData schema={webPageSchema} />
   <StructuredData schema={breadcrumbSchema} />
 
   <TextPageContent slug="cookie-policy" />

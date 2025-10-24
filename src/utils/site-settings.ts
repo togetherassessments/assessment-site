@@ -27,6 +27,14 @@ export interface SiteSettings {
       founding_date?: string;
       legal_name?: string;
       vat_id?: string;
+      location?: {
+        street_address?: string;
+        address_locality?: string;
+        address_region?: string;
+        postal_code?: string;
+        latitude?: number;
+        longitude?: number;
+      };
     };
   };
   branding?: {

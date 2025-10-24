@@ -5,6 +5,7 @@ import Image from '~/components/common/Image.astro';
 import { marked } from 'marked';
 import StructuredData from '~/components/common/StructuredData.astro';
 import { generateBreadcrumbs } from '~/utils/breadcrumbs';
+import { generateWebPageSchema } from '~/utils/schema-generators';
 
 // Fetch waitlist page content
 const content = await getEntry('waitlist_page', 'content');
@@ -23,10 +24,14 @@ const metadata = {
 
 // Breadcrumb schema
 const breadcrumbSchema = generateBreadcrumbs(Astro.url.pathname, Astro.site!, title);
+
+// WebPage schema
+const webPageSchema = generateWebPageSchema(Astro.url, title, undefined, undefined, `${Astro.url.href}#breadcrumb`);
 ---
 
 <Layout metadata={metadata}>
   <!-- Structured Data -->
+  <StructuredData schema={webPageSchema} />
   <StructuredData schema={breadcrumbSchema} />
 
   <div class="container mx-auto px-4 py-16">

@@ -8,6 +8,7 @@ import fs from 'fs';
 import path from 'path';
 import StructuredData from '~/components/common/StructuredData.astro';
 import { generateBreadcrumbs } from '~/utils/breadcrumbs';
+import { generateWebPageSchema } from '~/utils/schema-generators';
 
 // Get WEBSITE_ID from environment
 const WEBSITE_ID = process.env.WEBSITE_ID;
@@ -41,10 +42,14 @@ const metadata = {
 
 // Breadcrumb schema
 const breadcrumbSchema = generateBreadcrumbs(Astro.url.pathname, Astro.site!, title);
+
+// WebPage schema
+const webPageSchema = generateWebPageSchema(Astro.url, title, undefined, undefined, `${Astro.url.href}#breadcrumb`);
 ---
 
 <Layout metadata={metadata}>
   <!-- Structured Data -->
+  <StructuredData schema={webPageSchema} />
   <StructuredData schema={breadcrumbSchema} />
 
   <div class="container mx-auto px-4 py-16">

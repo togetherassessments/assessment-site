@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import TextPageContent from '~/components/widgets/TextPageContent.astro';
 import StructuredData from '~/components/common/StructuredData.astro';
 import { generateBreadcrumbs } from '~/utils/breadcrumbs';
+import { generateWebPageSchema } from '~/utils/schema-generators';
 
 const metadata = {
   title: 'Terms of Service',
@@ -10,10 +11,20 @@ const metadata = {
 
 // Breadcrumb schema
 const breadcrumbSchema = generateBreadcrumbs(Astro.url.pathname, Astro.site!, 'Terms of Service');
+
+// WebPage schema
+const webPageSchema = generateWebPageSchema(
+  Astro.url,
+  'Terms of Service',
+  undefined,
+  undefined,
+  `${Astro.url.href}#breadcrumb`
+);
 ---
 
 <Layout metadata={metadata}>
   <!-- Structured Data -->
+  <StructuredData schema={webPageSchema} />
   <StructuredData schema={breadcrumbSchema} />
 
   <TextPageContent slug="terms-of-service" />

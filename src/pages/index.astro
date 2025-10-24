@@ -11,6 +11,8 @@ import Image from '~/components/common/Image.astro';
 import { getCollection, getEntry } from 'astro:content';
 import { findImage } from '~/utils/images';
 import { getSiteSettings } from '~/utils/site-settings';
+import { generateHomePageSchema } from '~/utils/schema-generators';
+import StructuredData from '~/components/common/StructuredData.astro';
 
 // Load site settings and homepage content via content collections
 const settings = getSiteSettings();
@@ -54,9 +56,14 @@ const metadata = {
     }),
   },
 };
+
+// HomePage schema - ensure title is always defined
+const pageTitle = metadata.title || settings.site.name || 'Home';
+const homePageSchema = generateHomePageSchema(Astro.url, pageTitle);
 ---
 
 <Layout metadata={metadata}>
+  <StructuredData schema={homePageSchema} />
   <!-- Site Name -->
   <div class="text-center pt-8 pb-0">
     <h1 class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading">

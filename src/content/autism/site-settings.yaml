@@ -28,6 +28,13 @@ seo:
     founding_date: ""
     legal_name: ""
     vat_id: ""
+    location:
+      street_address: ""
+      address_locality: ""
+      address_region: "North Lincolnshire"
+      postal_code: ""
+      latitude: null
+      longitude: null
 
 analytics:
   ga4_id: ""

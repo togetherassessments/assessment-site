@@ -6,6 +6,7 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import { marked } from 'marked';
 import StructuredData from '~/components/common/StructuredData.astro';
 import { generateBreadcrumbs } from '~/utils/breadcrumbs';
+import { generateWebPageSchema } from '~/utils/schema-generators';
 
 // Fetch top content
 const topContent = await getEntry('faqs_page_top_content', 'top-content');
@@ -26,6 +27,7 @@ const faqs = allFaqs.filter((faq) => faq.data.published).sort((a, b) => a.data.o
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
+  '@id': `${Astro.url.href}#faq`,
   mainEntity: faqs.map((faq) => ({
     '@type': 'Question',
     name: faq.data.question,
@@ -39,6 +41,15 @@ const faqSchema = {
 // Breadcrumb schema
 const breadcrumbSchema = generateBreadcrumbs(Astro.url.pathname, Astro.site!, 'Frequently Asked Questions');
 
+// WebPage schema
+const webPageSchema = generateWebPageSchema(
+  Astro.url,
+  title,
+  undefined,
+  `${Astro.url.href}#faq`,
+  `${Astro.url.href}#breadcrumb`
+);
+
 const metadata = {
   title: title,
 };
@@ -46,6 +57,7 @@ const metadata = {
 
 <Layout metadata={metadata}>
   <!-- Structured Data -->
+  <StructuredData schema={webPageSchema} />
   <StructuredData schema={faqSchema} />
   <StructuredData schema={breadcrumbSchema} />
 

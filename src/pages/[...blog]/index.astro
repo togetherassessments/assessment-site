@@ -15,6 +15,7 @@ import RelatedPosts from '~/components/blog/RelatedPosts.astro';
 import StructuredData from '~/components/common/StructuredData.astro';
 import { countWords, getMostRecentDate } from '~/utils/content';
 import { generateBreadcrumbs } from '~/utils/breadcrumbs';
+import { generateWebPageSchema } from '~/utils/schema-generators';
 
 export const prerender = true;
 
@@ -94,6 +95,7 @@ if (post.author) {
 const blogPostingSchema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
+  '@id': `${url}#article`,
   headline: post.title,
   description: post.seo_settings?.metaDescription || post.excerpt,
   ...(post.image && {
@@ -120,10 +122,20 @@ const blogPostingSchema = {
 
 // Breadcrumb schema
 const breadcrumbSchema = generateBreadcrumbs(Astro.url.pathname, Astro.site!, post.title);
+
+// WebPage schema
+const webPageSchema = generateWebPageSchema(
+  Astro.url,
+  post.title,
+  dateModified,
+  `${url}#article`,
+  `${Astro.url.href}#breadcrumb`
+);
 ---
 
 <Layout metadata={metadata}>
   <!-- Structured Data -->
+  <StructuredData schema={webPageSchema} />
   <StructuredData schema={blogPostingSchema} />
   <StructuredData schema={breadcrumbSchema} />
 

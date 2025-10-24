@@ -25,9 +25,16 @@ seo:
     twitter: ""
     facebook: ""
   business:
-    founding_date: ""
-    legal_name: ""
-    vat_id: ""
+    founding_date: "2020-01-15"
+    legal_name: "Together Assessments Ltd"
+    vat_id: "GB123456789"
+    location:
+      street_address: "123 High Street"
+      address_locality: "Scunthorpe"
+      address_region: "North Lincolnshire"
+      postal_code: "DN15 6NE"
+      latitude: 53.5844
+      longitude: -0.6542
 
 analytics:
   ga4_id: ""

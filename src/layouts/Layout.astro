@@ -50,6 +50,41 @@ const organizationSchema = {
   },
   medicalSpecialty: ['Psychiatry', 'Neurodevelopmental Disorders'],
   priceRange: '£££',
+
+  // Conditional address (only if any address fields are provided)
+  ...(settings.seo.business?.location &&
+    (settings.seo.business.location.street_address ||
+      settings.seo.business.location.address_locality ||
+      settings.seo.business.location.address_region ||
+      settings.seo.business.location.postal_code) && {
+      address: {
+        '@type': 'PostalAddress',
+        ...(settings.seo.business.location.street_address && {
+          streetAddress: settings.seo.business.location.street_address,
+        }),
+        ...(settings.seo.business.location.address_locality && {
+          addressLocality: settings.seo.business.location.address_locality,
+        }),
+        ...(settings.seo.business.location.address_region && {
+          addressRegion: settings.seo.business.location.address_region,
+        }),
+        ...(settings.seo.business.location.postal_code && {
+          postalCode: settings.seo.business.location.postal_code,
+        }),
+        addressCountry: 'GB',
+      },
+    }),
+
+  // Conditional geo coordinates (only if both lat and long are provided)
+  ...(settings.seo.business?.location?.latitude &&
+    settings.seo.business?.location?.longitude && {
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: settings.seo.business.location.latitude,
+        longitude: settings.seo.business.location.longitude,
+      },
+    }),
+
   ...(settings.seo.area_served && {
     areaServed: {
       '@type': 'AdministrativeArea',

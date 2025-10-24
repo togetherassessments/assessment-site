@@ -3,6 +3,7 @@ import Layout from '~/layouts/PageLayout.astro';
 import TextPageContent from '~/components/widgets/TextPageContent.astro';
 import StructuredData from '~/components/common/StructuredData.astro';
 import { generateBreadcrumbs } from '~/utils/breadcrumbs';
+import { generateWebPageSchema } from '~/utils/schema-generators';
 
 const metadata = {
   title: 'About',
@@ -10,10 +11,14 @@ const metadata = {
 
 // Breadcrumb schema
 const breadcrumbSchema = generateBreadcrumbs(Astro.url.pathname, Astro.site!, 'About');
+
+// WebPage schema
+const webPageSchema = generateWebPageSchema(Astro.url, 'About', undefined, undefined, `${Astro.url.href}#breadcrumb`);
 ---
 
 <Layout metadata={metadata}>
   <!-- Structured Data -->
+  <StructuredData schema={webPageSchema} />
   <StructuredData schema={breadcrumbSchema} />
 
   <TextPageContent slug="about" />
