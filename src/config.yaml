@@ -5,7 +5,9 @@
 # - src/content/autism/site-settings.yaml
 
 site:
-  site: 'https://nd-assessment-site.netlify.app'
+  # Site URL is automatically set from environment variables based on WEBSITE_ID
+  # (uses ASSESSMENTS_URL, ADHD_URL, or AUTISM_URL)
+  # Do not configure site URL here - it is set by the build system
   base: '/'
   trailingSlash: false
 

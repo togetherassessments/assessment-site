@@ -28,6 +28,33 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}): AstroIntegra
         const rawJsonConfig = (await loadConfig(_themeConfig)) as Config;
         const { SITE, I18N, METADATA, APP_BLOG, UI, ANALYTICS } = configBuilder(rawJsonConfig);
 
+        // Override site URL with environment-specific URL for multi-site architecture
+        const WEBSITE_ID = process.env.WEBSITE_ID;
+        if (!WEBSITE_ID) {
+          throw new Error('❌ WEBSITE_ID environment variable is required');
+        }
+
+        const validIds = ['assessments', 'adhd', 'autism'] as const;
+        if (!validIds.includes(WEBSITE_ID as any)) {
+          throw new Error(`❌ Invalid WEBSITE_ID: ${WEBSITE_ID}. Must be one of: ${validIds.join(', ')}`);
+        }
+
+        const siteUrlMap = {
+          assessments: process.env.ASSESSMENTS_URL,
+          adhd: process.env.ADHD_URL,
+          autism: process.env.AUTISM_URL,
+        };
+
+        const siteUrl = siteUrlMap[WEBSITE_ID as keyof typeof siteUrlMap];
+        if (!siteUrl) {
+          throw new Error(
+            `❌ ${WEBSITE_ID.toUpperCase()}_URL environment variable is required but not set`
+          );
+        }
+
+        SITE.site = siteUrl;
+        buildLogger.info(`Multi-site: ${WEBSITE_ID} → ${siteUrl}`);
+
         updateConfig({
           site: SITE.site,
           base: SITE.base,
