@@ -143,7 +143,7 @@ const homePageSchema = generateHomePageSchema(Astro.url, pageTitle);
       <section class="py-12">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
           <div class="text-center mb-8">
-            <p class="text-base text-muted dark:text-slate-400">Professional accreditations and memberships</p>
+            <p class="text-base text-muted dark:text-slate-400">{homePageContent.data.sections.trust_badges_heading}</p>
           </div>
           <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12">
             {trustBadgesWithImages.map((badge) => (
@@ -180,10 +180,10 @@ const homePageSchema = generateHomePageSchema(Astro.url, pageTitle);
   <!-- How it Works -->
   <Steps
     title={homePageContent.data.sections.how_it_works}
-    items={homePageContent.data.steps.map((step: { text: string }, index: number) => ({
-      title: `Step ${index + 1}`,
+    items={homePageContent.data.steps.map((step: { title: string; text: string; icon: string }) => ({
+      title: step.title,
       description: step.text,
-      icon: index === 0 ? 'tabler:message-circle' : index === 1 ? 'tabler:clipboard-check' : 'tabler:bulb',
+      icon: step.icon,
     }))}
   />
 
@@ -240,7 +240,12 @@ const homePageSchema = generateHomePageSchema(Astro.url, pageTitle);
   {
     faqs.length > 4 && (
       <div class="text-center py-4 mb-8">
-        <Button text="More FAQs" href="/faq" variant="secondary" class="w-auto" />
+        <Button
+          text={homePageContent.data.sections.more_faqs_button_text}
+          href="/faq"
+          variant="secondary"
+          class="w-auto"
+        />
       </div>
     )
   }

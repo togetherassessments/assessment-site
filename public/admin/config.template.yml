@@ -364,14 +364,33 @@ collections:
               - label: FAQs Title
                 name: faqs
                 widget: string
+              - label: Trust Badges Heading
+                name: trust_badges_heading
+                widget: string
+                default: "Professional accreditations and memberships"
+                hint: Heading text displayed above trust badges/accreditations
+              - label: More FAQs Button Text
+                name: more_faqs_button_text
+                widget: string
+                default: "More FAQs"
+                hint: Text for the button that links to the full FAQs page
           - label: How It Works Steps
             name: steps
             widget: list
             max: 3
             fields:
-              - label: Step Text
+              - label: Step Title
+                name: title
+                widget: string
+                hint: The title/label for this step (e.g., "Step 1", "Stage 1", "Initial Consultation")
+              - label: Step Description
                 name: text
                 widget: string
+                hint: Description of what happens in this step
+              - label: Step Icon
+                name: icon
+                widget: tabler-icon-picker
+                hint: Choose an icon for this step from 5,993 Tabler icons
           - label: "SEO Settings"
             name: seo_settings
             widget: object

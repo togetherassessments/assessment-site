@@ -28,7 +28,15 @@ sections:
   blog: Latest from the blog
   blog_subtitle: Lorem Ipsum
   faqs: Frequently Asked Questions
+  trust_badges_heading: Professional accreditations and memberships
+  more_faqs_button_text: More FAQs
 steps:
-  - text: Free 15‑min consult → understand needs.
-  - text: Assessment or formulation → structured sessions & validated tools.
-  - text: Clear recommendations → practical, tailored next steps (work, study, life).
+  - title: Step 1
+    text: Free 15‑min consult → understand needs.
+    icon: tabler:message-circle
+  - title: Step 2
+    text: Assessment or formulation → structured sessions & validated tools.
+    icon: tabler:clipboard-check
+  - title: Step 3
+    text: Clear recommendations → practical, tailored next steps (work, study, life).
+    icon: tabler:bulb

@@ -288,11 +288,15 @@ const homePageCollection = defineCollection({
       blog: z.string(),
       blog_subtitle: z.string(),
       faqs: z.string(),
+      trust_badges_heading: z.string(),
+      more_faqs_button_text: z.string(),
     }),
     // How it works steps
     steps: z.array(
       z.object({
+        title: z.string(),
         text: z.string(),
+        icon: z.string(),
       })
     ),
     // SEO settings
