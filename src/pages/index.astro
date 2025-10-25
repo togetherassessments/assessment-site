@@ -138,42 +138,44 @@ const homePageSchema = generateHomePageSchema(Astro.url, pageTitle);
   </div>
 
   <!-- Trust Badges -->
-  <section class="py-12">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="text-center mb-8">
-        <p class="text-base text-muted dark:text-slate-400">Professional accreditations and memberships</p>
-      </div>
-      <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12">
-        {
-          trustBadgesWithImages.map((badge) => (
-            <div class="flex items-center gap-3 w-64 sm:w-auto">
-              {badge.resolvedLogoLight && (
-                <Image
-                  src={badge.resolvedLogoLight}
-                  alt={badge.data.alt}
-                  class="h-12 w-auto dark:hidden flex-shrink-0"
-                  width={48}
-                  height={48}
-                />
-              )}
-              {badge.resolvedLogoDark && (
-                <Image
-                  src={badge.resolvedLogoDark}
-                  alt={badge.data.alt}
-                  class="h-12 w-auto hidden dark:block flex-shrink-0"
-                  width={48}
-                  height={48}
-                />
-              )}
-              <span class="text-sm font-medium text-gray-700 dark:text-gray-300 text-center flex-1">
-                {badge.data.display_text}
-              </span>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+  {
+    trustBadgesWithImages.length > 0 && (
+      <section class="py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+          <div class="text-center mb-8">
+            <p class="text-base text-muted dark:text-slate-400">Professional accreditations and memberships</p>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12">
+            {trustBadgesWithImages.map((badge) => (
+              <div class="flex items-center gap-3 w-64 sm:w-auto">
+                {badge.resolvedLogoLight && (
+                  <Image
+                    src={badge.resolvedLogoLight}
+                    alt={badge.data.alt}
+                    class="h-12 w-auto dark:hidden flex-shrink-0"
+                    width={48}
+                    height={48}
+                  />
+                )}
+                {badge.resolvedLogoDark && (
+                  <Image
+                    src={badge.resolvedLogoDark}
+                    alt={badge.data.alt}
+                    class="h-12 w-auto hidden dark:block flex-shrink-0"
+                    width={48}
+                    height={48}
+                  />
+                )}
+                <span class="text-sm font-medium text-gray-700 dark:text-gray-300 text-center flex-1">
+                  {badge.data.display_text}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
 
   <!-- How it Works -->
   <Steps
