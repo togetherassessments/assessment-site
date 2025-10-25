@@ -1,40 +1,38 @@
 site:
   name: Together Assessments
   email: info@togetherassessments.co.uk
-  ico_registration: '00010615323'
+  ico_registration: "00010615323"
   waitlist_only: false
-
 logo:
-  light: ~/assets/images/assessments/logo-light.svg
-  dark: ~/assets/images/assessments/logo-dark.svg
+  light: ~/assets/images/assessments/together-assessments-logo.png
+  dark: ~/assets/images/assessments/together-assessments-logo.png
   alt: Together Assessments Logo
-
 footer:
   title: Together Assessments
-  business_info: Sole trader, trading as Together Assessments. North Lincolnshire and surrounding areas.
-
+  business_info: Sole trader, trading as Together Assessments. North Lincolnshire
+    and surrounding areas.
 seo:
-  title_default: "Together Assessments"
+  title_default: Together Assessments
   title_template: "%s — Together Assessments"
-  description: "Professional neurodiversity assessments for adults in the UK. ADHD and autism assessments for North Lincolnshire and surrounding areas."
+  description: Professional neurodiversity assessments for adults in the UK. ADHD
+    and autism assessments for North Lincolnshire and surrounding areas.
   robots_index: false
   robots_follow: true
-  area_served: "North Lincolnshire"
+  area_served: North Lincolnshire
   social:
     linkedin: ""
     twitter: ""
     facebook: ""
   business:
-    founding_date: "2020-01-15"
-    legal_name: "Together Assessments Ltd"
-    vat_id: "GB123456789"
+    founding_date: 2020-01-15
+    legal_name: Together Assessments Ltd
+    vat_id: GB123456789
     location:
-      street_address: "123 High Street"
-      address_locality: "Scunthorpe"
-      address_region: "North Lincolnshire"
-      postal_code: "DN15 6NE"
+      street_address: 123 High Street
+      address_locality: Scunthorpe
+      address_region: North Lincolnshire
+      postal_code: DN15 6NE
       latitude: 53.5844
       longitude: -0.6542
-
 analytics:
   ga4_id: ""

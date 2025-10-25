@@ -67,6 +67,7 @@ collections:
           - label: Logo Settings
             name: logo
             widget: object
+            hint: "Use JPG for logos with solid backgrounds, PNG for logos with transparency. Avoid SVGs as JPG and PNG images are automatically optimised for performance."
             fields:
               - label: Light Mode Logo
                 name: light
@@ -255,6 +256,7 @@ collections:
               - label: "Favicon Mask Icon Colour"
                 name: mask_icon_colour
                 widget: string
+                required: false
                 default: "#8D46E7"
                 hint: "Colour for Safari pinned tab icon. Include the hash symbol (e.g., #8D46E7)"
   - name: home_page

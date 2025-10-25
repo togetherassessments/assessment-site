@@ -18,6 +18,10 @@ import StructuredData from '~/components/common/StructuredData.astro';
 const settings = getSiteSettings();
 const homePageContent = await getEntry('home_page', 'content');
 
+// Resolve logo images to ImageMetadata for proper optimization
+const resolvedLogoLight = await findImage(settings.logo.light);
+const resolvedLogoDark = await findImage(settings.logo.dark);
+
 if (!homePageContent) {
   throw new Error('Home page content not found');
 }
@@ -69,6 +73,28 @@ const homePageSchema = generateHomePageSchema(Astro.url, pageTitle);
     <h1 class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
       {settings.site.name}
     </h1>
+  </div>
+
+  <!-- Site Logo -->
+  <div class="text-center py-6 flex justify-center">
+    <div class="h-24 w-auto">
+      <Image
+        src={resolvedLogoLight}
+        alt={settings.logo.alt}
+        class="h-full w-auto dark:hidden"
+        layout="contained"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <Image
+        src={resolvedLogoDark}
+        alt={settings.logo.alt}
+        class="h-full w-auto hidden dark:block"
+        layout="contained"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
   </div>
 
   <!-- Hero Widget -->

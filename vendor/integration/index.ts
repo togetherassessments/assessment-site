@@ -35,7 +35,7 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}): AstroIntegra
         }
 
         const validIds = ['assessments', 'adhd', 'autism'] as const;
-        if (!validIds.includes(WEBSITE_ID as any)) {
+        if (!validIds.includes(WEBSITE_ID as (typeof validIds)[number])) {
           throw new Error(`❌ Invalid WEBSITE_ID: ${WEBSITE_ID}. Must be one of: ${validIds.join(', ')}`);
         }
 
@@ -47,9 +47,7 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}): AstroIntegra
 
         const siteUrl = siteUrlMap[WEBSITE_ID as keyof typeof siteUrlMap];
         if (!siteUrl) {
-          throw new Error(
-            `❌ ${WEBSITE_ID.toUpperCase()}_URL environment variable is required but not set`
-          );
+          throw new Error(`❌ ${WEBSITE_ID.toUpperCase()}_URL environment variable is required but not set`);
         }
 
         SITE.site = siteUrl;

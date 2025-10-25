@@ -1,25 +1,25 @@
 site:
   name: Together Autism
   email: info@togetherautism.co.uk
-  ico_registration: '00010615323'
+  ico_registration: "00010615323"
   waitlist_only: false
-
 logo:
-  light: ~/assets/images/autism/logo-light.svg
-  dark: ~/assets/images/autism/logo-dark.svg
+  light: ~/assets/images/autism/together-autism-logo.png
+  dark: ~/assets/images/autism/together-autism-logo.png
   alt: Together Autism Logo
-
 footer:
   title: Together Autism
-  business_info: Sole trader, trading as Together Autism. North Lincolnshire and surrounding areas.
-
+  business_info: Sole trader, trading as Together Autism. North Lincolnshire and
+    surrounding areas.
 seo:
-  title_default: "Together Autism Assessments"
+  title_default: Together Autism Assessments
   title_template: "%s — Together Autism Assessments"
-  description: "Autism assessments for adults in the UK. Professional neurodiversity assessment services for North Lincolnshire and surrounding areas."
+  description: Autism assessments for adults in the UK. Professional
+    neurodiversity assessment services for North Lincolnshire and surrounding
+    areas.
   robots_index: false
   robots_follow: true
-  area_served: "North Lincolnshire"
+  area_served: North Lincolnshire
   social:
     linkedin: ""
     twitter: ""
@@ -31,10 +31,9 @@ seo:
     location:
       street_address: ""
       address_locality: ""
-      address_region: "North Lincolnshire"
+      address_region: North Lincolnshire
       postal_code: ""
       latitude: null
       longitude: null
-
 analytics:
   ga4_id: ""
