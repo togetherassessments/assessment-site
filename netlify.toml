@@ -8,8 +8,8 @@
 
 [build.environment]
   ASSESSMENTS_URL = "https://nd-assessment-site.netlify.app"
-  ADHD_URL = "https://nd-assessment-site.netlify.app"
-  AUTISM_URL = "https://nd-assessment-site.netlify.app"
+  ADHD_URL = "https://nd-adhd-site.netlify.app"
+  AUTISM_URL = "https://nd-autism-site.netlify.app"
 [build.processing.html]
   pretty_urls = false
 
