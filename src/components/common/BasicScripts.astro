@@ -17,13 +17,28 @@ import { UI } from 'astrowind:config';
     }
   }
 
+  // Get theme from accessibility-preferences (unified storage)
+  function getThemeFromAccessibilityPrefs() {
+    try {
+      const prefs = localStorage.getItem('accessibility-preferences');
+      if (!prefs) return null;
+      const settings = JSON.parse(prefs);
+      return settings.theme; // 'light', 'dark', or 'system'
+    } catch {
+      return null;
+    }
+  }
+
   const initTheme = function () {
-    if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
+    const savedTheme = getThemeFromAccessibilityPrefs();
+
+    if ((defaultTheme && defaultTheme.endsWith(':only')) || (!savedTheme && defaultTheme !== 'system')) {
       applyTheme(defaultTheme.replace(':only', ''));
-    } else if (
-      localStorage.theme === 'dark' ||
-      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
+    } else if (savedTheme === 'dark') {
+      applyTheme('dark');
+    } else if (savedTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      applyTheme('dark');
+    } else if (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       applyTheme('dark');
     } else {
       applyTheme('light');
@@ -77,7 +92,18 @@ import { UI } from 'astrowind:config';
       Observer.removeAnimationDelay();
 
       document.documentElement.classList.toggle('dark');
-      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+
+      // Update theme in accessibility-preferences (unified storage)
+      try {
+        const prefs = localStorage.getItem('accessibility-preferences');
+        const settings = prefs
+          ? JSON.parse(prefs)
+          : { font: 'sylexiad', theme: 'system', textSize: 'base', lineHeight: 'normal', readingRuler: false };
+        settings.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        localStorage.setItem('accessibility-preferences', JSON.stringify(settings));
+      } catch {
+        // Fallback if JSON parsing fails - ignore silently
+      }
     });
 
     attachEvent('[data-aw-social-share]', 'click', function (_, elem) {

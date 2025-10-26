@@ -13,7 +13,7 @@ A comprehensive reference for all 55 AstroWind components with examples and conf
 
 ---
 
-## Widget Components (22)
+## Widget Components (24)
 
 ### 1. Hero
 
@@ -755,6 +755,29 @@ import Footer from '~/components/widgets/Footer.astro';
 - `footNote`: Copyright text
 - `theme`: 'light' | 'dark' (default: 'light')
 
+### 23. TextPageContent
+
+**Standard text page content renderer**
+
+```astro
+import TextPageContent from '~/components/widgets/TextPageContent.astro';
+
+<TextPageContent slug="about" />
+```
+
+**Props:**
+
+- `slug`: string (required) - Slug of text page to render
+
+**Features:**
+
+- Fetches content from `text_pages` collection
+- Renders title (H1) with font-heading
+- Optional subheading (H3)
+- Optional centred image with alt text
+- Markdown content rendered as prose
+- Full-width content container
+
 ````
 
 ---
@@ -1113,7 +1136,7 @@ import ToBlogLink from '~/components/blog/ToBlogLink.astro';
 
 ---
 
-## Common Components (13)
+## Common Components (18)
 
 ### 1. Image
 
@@ -1384,6 +1407,134 @@ import SearchPanel from '~/components/common/SearchPanel.astro';
 - Pagefind index must exist in dist/pagefind/ for search to work
 - Dev mode serves prebuilt index - run `npm run build:assessments` once initially
 
+### 14. ToggleAccessibility
+
+**Accessibility settings panel toggle button**
+
+```astro
+import ToggleAccessibility from '~/components/common/ToggleAccessibility.astro';
+
+<ToggleAccessibility />
+```
+
+**Props:** None
+
+**Note:** Opens the AccessibilityPanel when clicked. Uses `data-accessibility-toggle` attribute for event delegation. Multiple instances supported (mobile + desktop).
+
+### 15. AccessibilityPanel
+
+**Comprehensive accessibility settings panel**
+
+```astro
+import AccessibilityPanel from '~/components/common/AccessibilityPanel.astro';
+
+<AccessibilityPanel />
+```
+
+**Props:** None - fully self-contained component
+
+**Features:**
+
+- Font selection (Sylexiad Sans, OpenDyslexic, Fast Syldexia)
+- Theme selection (Light, Dark, System)
+- Text size adjustment (XS, SM, Base, LG, XL)
+- Line height control (Compact, Normal, Relaxed)
+- Reading ruler toggle with draggable positioning
+- Text-to-speech integration
+- Reset to defaults button
+- Settings persistence via localStorage
+- Keyboard shortcut (Ctrl/Cmd + Shift + A)
+- Focus trap for accessibility
+- Lazy-loaded interaction handlers for performance
+
+**Usage:**
+
+1. Add `<ToggleAccessibility />` button in header/navigation
+2. Add `<AccessibilityPanel />` once in layout
+3. Panel opens on button click or keyboard shortcut
+4. All settings persist across sessions
+
+### 16. TTSPlayer
+
+**Text-to-speech player UI component**
+
+```astro
+import TTSPlayer from '~/components/common/TTSPlayer.astro';
+
+<TTSPlayer />
+```
+
+**Props:** None - pure UI component (HTML/CSS only, no JavaScript)
+
+**Features:**
+
+- Collapsible 48px purple tab at bottom centre
+- Collapsed/expanded states
+- Play/pause/stop/minimize/close controls
+- Status text updates
+- Page clearance (60px bottom padding)
+- Works with TTS system in AccessibilityPanel
+
+**Note:** Actual TTS functionality is in `src/scripts/tts-player.ts` and `src/scripts/tts-init.ts`, initialized from AccessibilityPanel.
+
+### 17. CookieBanner
+
+**GDPR-compliant cookie consent banner**
+
+```astro
+import CookieBanner from '~/components/common/CookieBanner.astro';
+
+<CookieBanner />
+```
+
+**Props:** None - fully self-contained component
+
+**Features:**
+
+- GDPR/UK PECR compliant cookie consent
+- Only shows if GA4 is configured AND no valid consent exists
+- Two equal-weight buttons: "Accept Analytics" and "Reject Analytics"
+- Dismissible with X button (will show again on next page)
+- Stores consent in localStorage with 6-month expiry
+- British English content, plain language for neurodivergent users
+- Respects existing accessibility settings (fonts, text size, etc.)
+- Compatible with Astro view transitions
+- Z-index: 9995 (below critical UI like accessibility panel)
+- Bottom-positioned with slide-up animation
+- Keyboard accessible (Escape to dismiss)
+
+**Usage:**
+
+1. Add `<CookieBanner />` to Layout.astro (already included)
+2. Add "Cookie Preferences" link to footer (already in navigation.ts)
+3. Configure GA4 ID in site-settings.yaml
+4. Banner automatically appears on first visit
+5. Analytics only loads if consent = "accepted"
+
+**Technical Notes:**
+
+- Uses `src/utils/consent.ts` for localStorage management
+- Works with modified `Analytics.astro` for conditional GA4 loading
+- View transitions compatible via `astro:after-swap` event
+- Consent data: `{consent: 'accepted'|'rejected', timestamp: ISO string, version: '1.0'}`
+- Footer "Cookie Preferences" link clears consent and reopens banner
+
+### 18. StructuredData
+
+**Schema.org structured data component**
+
+```astro
+import StructuredData from '~/components/common/StructuredData.astro';
+
+<StructuredData schema={schemaObject} />
+```
+
+**Props:**
+
+- `schema`: JSON-LD schema object for structured data
+
+**Note:** Renders Schema.org markup as JSON-LD in script tag for SEO and rich snippets.
+
 ---
 
 ## Root Components (3)
@@ -1529,4 +1680,4 @@ import Layout from '~/layouts/MarkdownLayout.astro';
 
 ---
 
-**Last Updated**: 2025-01-17
+**Last Updated**: 2025-10-25

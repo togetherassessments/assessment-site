@@ -3,6 +3,63 @@ import { getSiteSettings } from '~/utils/site-settings';
 import { GoogleAnalytics } from '@astrolib/analytics';
 
 const settings = getSiteSettings();
+
+// Analytics only loads if:
+// 1. GA4 ID is configured
+// 2. User has given consent (checked client-side)
+const hasGA4Id = Boolean(settings.analytics?.ga4_id);
 ---
 
-{settings.analytics?.ga4_id ? <GoogleAnalytics id={String(settings.analytics.ga4_id)} partytown={true} /> : null}
+{
+  hasGA4Id ? (
+    <>
+      {/* Client-side consent check before loading GA4 */}
+      <script
+        is:inline
+        set:html={`
+        (function () {
+          function hasAnalyticsConsent() {
+            try {
+              const stored = localStorage.getItem('cookie-consent');
+              if (!stored) return false;
+
+              const data = JSON.parse(stored);
+
+              // Check expiry (6 months)
+              const consentDate = new Date(data.timestamp);
+              const now = new Date();
+              const monthsDiff =
+                (now.getFullYear() - consentDate.getFullYear()) * 12 + (now.getMonth() - consentDate.getMonth());
+
+              if (monthsDiff >= 6) return false;
+
+              return data.consent === 'accepted';
+            } catch {
+              return false;
+            }
+          }
+
+          // Set flag for GA4 component to check
+          window.__analyticsConsent = hasAnalyticsConsent();
+        })();
+      `}
+      />
+
+      {/* GA4 component - will check window.__analyticsConsent */}
+      <GoogleAnalytics id={String(settings.analytics?.ga4_id)} partytown={true} />
+
+      {/* Additional check to prevent GA4 loading without consent */}
+      <script
+        is:inline
+        set:html={`
+        (function () {
+          if (!window.__analyticsConsent) {
+            // Block GA4 if consent not given
+            window['ga-disable-' + document.currentScript?.dataset?.gaId] = true;
+          }
+        })();
+      `}
+      />
+    </>
+  ) : null
+}

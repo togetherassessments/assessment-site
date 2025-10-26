@@ -155,7 +155,7 @@ export const footerData = {
       ],
     },
   ],
-  secondaryLinks: [],
+  secondaryLinks: [{ text: 'Cookie Preferences', href: '#cookie-preferences' }],
   socialLinks: [], // No social links per client request
   footNote: `
     <div class="text-sm">

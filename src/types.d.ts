@@ -409,6 +409,7 @@ export interface Contact extends Omit<Headline, 'classes'>, Form, Widget {}
 // Global window extensions for accessibility features
 declare global {
   interface Window {
+    __analyticsConsent?: boolean;
     ttsPlayer?: TTSPlayer;
     closeAccessibilityPanel?: () => void;
     closeMobileMenu?: () => void;

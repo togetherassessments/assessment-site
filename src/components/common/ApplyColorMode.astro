@@ -23,12 +23,27 @@ import { UI } from 'astrowind:config';
     }
   }
 
-  if ((defaultTheme && defaultTheme.endsWith(':only')) || (!localStorage.theme && defaultTheme !== 'system')) {
+  // Get theme from accessibility-preferences (unified storage)
+  function getThemeFromAccessibilityPrefs() {
+    try {
+      const prefs = localStorage.getItem('accessibility-preferences');
+      if (!prefs) return null;
+      const settings = JSON.parse(prefs);
+      return settings.theme; // 'light', 'dark', or 'system'
+    } catch {
+      return null;
+    }
+  }
+
+  const savedTheme = getThemeFromAccessibilityPrefs();
+
+  if ((defaultTheme && defaultTheme.endsWith(':only')) || (!savedTheme && defaultTheme !== 'system')) {
     applyTheme(defaultTheme.replace(':only', ''));
-  } else if (
-    localStorage.theme === 'dark' ||
-    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-  ) {
+  } else if (savedTheme === 'dark') {
+    applyTheme('dark');
+  } else if (savedTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    applyTheme('dark');
+  } else if (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     applyTheme('dark');
   } else {
     applyTheme('light');

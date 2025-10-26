@@ -729,9 +729,10 @@ All accessibility preferences are stored together in `localStorage.accessibility
 ```
 
 - All preferences persist across sessions
-- Applied automatically on page load
+- Applied automatically on page load (via `ApplyColorMode.astro` and `BasicScripts.astro`)
 - No account required
 - Managed centrally through AccessibilityPanel component
+- **Single source of truth**: Theme preference stored ONLY in `accessibility-preferences.theme` (no separate `localStorage.theme` key used)
 
 ### OpenType Features
 
@@ -1489,4 +1490,4 @@ All hyperlinks across the site follow a consistent, accessible styling pattern t
 
 ---
 
-**Last Updated**: 2025-10-22
+**Last Updated**: 2025-10-26

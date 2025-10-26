@@ -386,6 +386,29 @@ Example: `src/content/assessments/blog-posts/`
 
 ---
 
+### Medical Conditions
+
+**Collection:** Medical Conditions (folder-based)
+
+Structured data for medical conditions used in Schema.org markup:
+
+- Condition name
+- Alternate names
+- Description
+- Signs and symptoms
+- Affected anatomy
+- Possible treatments (with type: MedicalTherapy, Drug, or LifestyleModification)
+- Show on services toggle
+- Published status
+
+**File Location:** `src/content/{siteId}/medical-conditions/`
+
+Example: `src/content/assessments/medical-conditions/`
+
+**Note:** This collection provides structured medical condition data for semantic markup and is not directly displayed as standalone pages.
+
+---
+
 ## Configuration Files
 
 ### Framework Configuration
@@ -422,7 +445,14 @@ Controls Astro/AstroWind framework behaviour:
   - SEO settings per section
 
 - **Analytics:**
-  - Google Analytics ID
+  - Google Analytics 4 ID (configured in site-settings.yaml)
+  - **Cookie Consent:** GDPR-compliant banner system
+    - Only shows if GA4 ID is configured
+    - Stores user choice in localStorage for 6 months
+    - GA4 only loads if user accepts analytics
+    - "Cookie Preferences" link in footer allows changing choice
+    - See `src/components/common/CookieBanner.astro`
+    - See `src/utils/consent.ts` for consent logic
 
 - **UI Theme:**
   - Theme mode (system/light/dark/light:only/dark:only)
@@ -737,4 +767,4 @@ This prevents race conditions and ensures quality control before content goes li
 
 ---
 
-**Last Updated:** 2025-10-22
+**Last Updated:** 2025-10-25

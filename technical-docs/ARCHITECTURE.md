@@ -529,6 +529,7 @@ The site uses Astro Content Collections for structured content management. All c
 | `contact_page`               | File   | `src/content/{WEBSITE_ID}/contact-page/content.yaml`      | Contact page content      |
 | `site_settings_trust_badges` | Folder | `src/content/{WEBSITE_ID}/site-settings/trust-badges/`    | Professional badges       |
 | `text_pages`                 | Folder | `src/content/{WEBSITE_ID}/text-pages/`                    | Static content pages      |
+| `medical_conditions`         | Folder | `src/content/{WEBSITE_ID}/medical-conditions/`            | Medical condition data    |
 
 Where `{WEBSITE_ID}` is one of: `assessments`, `adhd`, `autism`
 
@@ -893,4 +894,4 @@ i18n:
 
 ---
 
-**Last Updated**: 2025-10-22
+**Last Updated**: 2025-10-25

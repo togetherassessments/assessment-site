@@ -5,6 +5,7 @@ node_modules
 
 # Documentation and reference files
 decap-cms-docs/
+technical-docs/
 
 # CMS-managed content (user-written markdown in blog posts)
 src/content/assessments/

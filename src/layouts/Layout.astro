@@ -12,6 +12,7 @@ import SiteVerification from '~/components/common/SiteVerification.astro';
 import Analytics from '~/components/common/Analytics.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
 import StructuredData from '~/components/common/StructuredData.astro';
+import CookieBanner from '~/components/common/CookieBanner.astro';
 
 // Comment the line below to disable View Transitions
 import { ClientRouter } from 'astro:transitions';
@@ -135,5 +136,6 @@ const websiteSchema = {
     <slot />
 
     <BasicScripts />
+    <CookieBanner />
   </body>
 </html>
