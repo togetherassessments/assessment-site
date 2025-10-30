@@ -34,13 +34,14 @@ sections:
   more_faqs_button_text: More FAQs
 steps:
   - title: Step 1
-    text: Free 15‑min consult → understand needs.
-    icon: tabler:message-circle
+    text: Free 15‑min consultation → understand needs.
+    icon: tabler:message-2-question
   - title: Step 2
-    text: Assessment or formulation → structured sessions & validated tools.
+    text: Assessment → structured sessions & validated tools.
     icon: tabler:clipboard-check
   - title: Step 3
-    text: Clear recommendations → practical, tailored next steps (work, study, life).
+    text: Formulation with clear recommendations → Gaining an understanding with
+      practical, tailored next steps (work, study, life).
     icon: tabler:bulb
 seo_settings:
   metaTitle: Together Assessments - Custom SEO Title Test
