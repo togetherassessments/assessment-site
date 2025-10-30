@@ -1,11 +1,9 @@
-seo_settings:
-  metaTitle: "Together Assessments - Custom SEO Title Test"
-  metaDescription: "This is a custom meta description for Phase B testing. It should override the fallback value and appear in the HTML output."
 hero:
   image: ~/assets/images/assessments/pexels-shvets-production-7176297.jpg
   text: For adults in North Lincolnshire (online UK‑wide available)
   title: Specialist neurodiversity assessments & formulations.
-  subtitle: Independent, friendly, evidence‑based. Clear recommendations you can act on.
+  subtitle: Independent, friendly, local, evidence‑based. Clear recommendations
+    you can act on.
   image_alt: Two people talking
 ctas:
   consultation:
@@ -15,13 +13,13 @@ ctas:
     text: Join the waitlist
     alt: Join the waitlist
   secondary:
-    text: See assessment options
+    text: See assessment and support options
     link: /services
     alt: View services
   deep:
-    lead_text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris.
+    lead_text: "It is normal to be seeking support at a difficult time and to need
+      something more bespoke. If you have any adaptation needs or neurodivergent
+      support needs then please do not hesitate to get in touch! "
     text: Questions? Get in touch.
     link: /contact
     alt: Contact us
@@ -43,3 +41,7 @@ steps:
   - title: Step 3
     text: Clear recommendations → practical, tailored next steps (work, study, life).
     icon: tabler:bulb
+seo_settings:
+  metaTitle: Together Assessments - Custom SEO Title Test
+  metaDescription: This is a custom meta description for Phase B testing. It
+    should override the fallback value and appear in the HTML output.
