@@ -1,9 +1,9 @@
 ---
-name: General Medical Council
-display_text: GMC Collaborator
-logo_light: ~/assets/images/assessments/badge-placeholder.svg
-logo_dark: ~/assets/images/assessments/badge-placeholder.svg
-alt: GMC collaborative partner
-order: 2
+name: Care Quality Commission
+display_text: CQC Registered
+logo_light: ~/assets/images/assessments/1-cqc-regulated-by-white-135px.jpg
+logo_dark: ~/assets/images/assessments/1-cqc-regulated-by-purple-135px.jpg
+alt: CQC registered provider
+order: 1
 published: true
 ---
