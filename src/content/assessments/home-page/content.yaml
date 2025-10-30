@@ -1,7 +1,7 @@
 hero:
   image: ~/assets/images/assessments/pexels-shvets-production-7176297.jpg
   text: For adults in North Lincolnshire (online UK‑wide available)
-  title: Specialist neurodiversity assessments & formulations.
+  title: Specialist neurodiversity assessments, formulations, and support.
   subtitle: Independent, friendly, local, evidence‑based. Clear recommendations
     you can act on.
   image_alt: Two people talking
@@ -36,19 +36,12 @@ steps:
   - title: Step 1
     text: Free 15‑min consult → understand needs.
     icon: tabler:message-circle
-    joined_to_previous: true
   - title: Step 2
     text: Assessment or formulation → structured sessions & validated tools.
     icon: tabler:clipboard-check
-    joined_to_previous: true
   - title: Step 3
     text: Clear recommendations → practical, tailored next steps (work, study, life).
     icon: tabler:bulb
-    joined_to_previous: true
-  - title: Another
-    text: Description of it
-    icon: tabler:mood-happy
-    joined_to_previous: false
 seo_settings:
   metaTitle: Together Assessments - Custom SEO Title Test
   metaDescription: This is a custom meta description for Phase B testing. It
