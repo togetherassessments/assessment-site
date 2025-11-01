@@ -64,7 +64,22 @@ const metadata = {
 // HomePage schema - ensure title is always defined
 const pageTitle = metadata.title || settings.site.name || 'Home';
 const homePageSchema = generateHomePageSchema(Astro.url, pageTitle);
+
+// Split site name for multicolor rendering
+const siteNameWords = settings.site.name.split(' ');
 ---
+
+<style>
+  .site-name-multicolor span:nth-child(odd) {
+    color: var(--aw-color-primary);
+  }
+  .site-name-multicolor span:nth-child(even) {
+    color: var(--aw-color-accent);
+  }
+  .site-name-multicolor span {
+    font-size: inherit !important;
+  }
+</style>
 
 <Layout metadata={metadata}>
   <StructuredData schema={homePageSchema} />
@@ -91,11 +106,17 @@ const homePageSchema = generateHomePageSchema(Astro.url, pageTitle);
     </div>
   </div>
 
-
   <!-- Site Name -->
   <div class="text-center pt-0 pb-0">
-    <h1 class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
-      {settings.site.name}
+    <h1 class="site-name-multicolor text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+      {
+        siteNameWords.map((word: string, index: number) => (
+          <>
+            <span>{word}</span>
+            {index < siteNameWords.length - 1 ? ' ' : ''}
+          </>
+        ))
+      }
     </h1>
   </div>
 
