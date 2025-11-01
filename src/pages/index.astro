@@ -176,18 +176,20 @@ const siteNameWords = settings.site.name.split(' ');
                   <Image
                     src={badge.resolvedLogoLight}
                     alt={badge.data.alt}
-                    class="h-12 w-auto dark:hidden flex-shrink-0"
-                    width={48}
-                    height={48}
+                    class="h-24 w-24 dark:hidden flex-shrink-0 object-contain"
+                    width={95}
+                    height={95}
+                    layout="contained"
                   />
                 )}
                 {badge.resolvedLogoDark && (
                   <Image
                     src={badge.resolvedLogoDark}
                     alt={badge.data.alt}
-                    class="h-12 w-auto hidden dark:block flex-shrink-0"
-                    width={48}
-                    height={48}
+                    class="h-24 w-24 hidden dark:block flex-shrink-0 object-contain"
+                    width={95}
+                    height={95}
+                    layout="contained"
                   />
                 )}
                 <span class="text-sm font-medium text-gray-700 dark:text-gray-300 text-center flex-1">
