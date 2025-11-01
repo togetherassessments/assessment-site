@@ -204,11 +204,14 @@ const siteNameWords = settings.site.name.split(' ');
   <!-- How it Works -->
   <Steps
     title={homePageContent.data.sections.how_it_works}
-    items={homePageContent.data.steps.map((step: { title: string; text: string; icon: string }) => ({
-      title: step.title,
-      description: step.text,
-      icon: step.icon,
-    }))}
+    items={homePageContent.data.steps.map(
+      (step: { title: string; text: string; icon: string; joined_to_previous: boolean }) => ({
+        title: step.title,
+        description: step.text,
+        icon: step.icon,
+        joined_to_previous: step.joined_to_previous,
+      })
+    )}
   />
 
   <!-- Services -->

@@ -264,6 +264,7 @@ export interface Item {
   classes?: Record<string, string>;
   callToAction?: CallToAction;
   image?: Image;
+  joined_to_previous?: boolean;
 }
 
 export interface Price {

@@ -297,6 +297,7 @@ const homePageCollection = defineCollection({
         title: z.string(),
         text: z.string(),
         icon: z.string(),
+        joined_to_previous: z.boolean().default(true),
       })
     ),
     // SEO settings

@@ -34,9 +34,12 @@ steps:
   - title: Step 1
     text: Free 15‑min consult → understand needs.
     icon: tabler:message-circle
+    joined_to_previous: true
   - title: Step 2
     text: Assessment or formulation → structured sessions & validated tools.
     icon: tabler:clipboard-check
+    joined_to_previous: true
   - title: Step 3
     text: Clear recommendations → practical, tailored next steps (work, study, life).
     icon: tabler:bulb
+    joined_to_previous: true

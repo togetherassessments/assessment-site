@@ -390,6 +390,11 @@ collections:
                 name: icon
                 widget: tabler-icon-picker
                 hint: Choose an icon for this step from 5,993 Tabler icons
+              - label: Joined to Previous Step
+                name: joined_to_previous
+                widget: boolean
+                default: true
+                hint: Show connecting line from previous step to this one (uncheck to create visual separation)
           - label: "SEO Settings"
             name: seo_settings
             widget: object
