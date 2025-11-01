@@ -4,8 +4,8 @@ site:
   ico_registration: "00010615323"
   waitlist_only: false
 logo:
-  light: ~/assets/images/autism/together-autism-logo.png
-  dark: ~/assets/images/autism/together-autism-logo.png
+  light: ~/assets/images/autism/together-logo.png
+  dark: ~/assets/images/autism/together-logo.png
   alt: Together Autism Logo
 footer:
   title: Together Autism

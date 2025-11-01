@@ -68,12 +68,6 @@ const homePageSchema = generateHomePageSchema(Astro.url, pageTitle);
 
 <Layout metadata={metadata}>
   <StructuredData schema={homePageSchema} />
-  <!-- Site Name -->
-  <div class="text-center pt-8 pb-0">
-    <h1 class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
-      {settings.site.name}
-    </h1>
-  </div>
 
   <!-- Site Logo -->
   <div class="text-center py-6 flex justify-center">
@@ -95,6 +89,14 @@ const homePageSchema = generateHomePageSchema(Astro.url, pageTitle);
         fetchpriority="high"
       />
     </div>
+  </div>
+
+
+  <!-- Site Name -->
+  <div class="text-center pt-8 pb-0">
+    <h1 class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter mb-4 font-heading">
+      {settings.site.name}
+    </h1>
   </div>
 
   <!-- Hero Widget -->

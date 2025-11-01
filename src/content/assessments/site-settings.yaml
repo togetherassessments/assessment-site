@@ -4,8 +4,8 @@ site:
   ico_registration: "00010615323"
   waitlist_only: false
 logo:
-  light: ~/assets/images/assessments/together-assessments-logo.png
-  dark: ~/assets/images/assessments/together-assessments-logo.png
+  light: ~/assets/images/assessments/together-logo.png
+  dark: ~/assets/images/assessments/together-logo.png
   alt: Together Assessments Logo
 footer:
   title: Together Assessments

@@ -4,8 +4,8 @@ site:
   ico_registration: "00010615323"
   waitlist_only: false
 logo:
-  light: ~/assets/images/adhd/together-adhd-logo.png
-  dark: ~/assets/images/adhd/together-adhd-logo.png
+  light: ~/assets/images/adhd/together-logo.png
+  dark: ~/assets/images/adhd/together-logo.png
   alt: Together ADHD Logo
 footer:
   title: Together ADHD
