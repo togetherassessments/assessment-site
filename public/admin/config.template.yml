@@ -377,7 +377,6 @@ collections:
           - label: How It Works Steps
             name: steps
             widget: list
-            max: 3
             fields:
               - label: Step Title
                 name: title
