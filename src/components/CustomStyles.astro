@@ -123,6 +123,24 @@
     font-variant-ligatures: contextual;
   }
 
+  /* Font rendering for Together Assessments heading font
+     Forces subpixel rendering on desktop to match mobile's detailed appearance.
+     Mobile browsers render fonts with more detail/lighter weight, so we disable
+     smoothing to preserve the font's designed weight and detail. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .font-heading,
+  [style*='font-family: var(--aw-font-heading)'] {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: unset;
+    text-rendering: optimizeLegibility;
+    font-weight: 350 !important;
+  }
+
   :root {
     --aw-font-sans: 'Sylexiad Sans Medium', ui-sans-serif, system-ui, sans-serif;
     --aw-font-serif: 'Sylexiad Sans Medium', ui-serif, Georgia, serif;
