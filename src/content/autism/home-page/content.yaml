@@ -32,7 +32,7 @@ sections:
   more_faqs_button_text: More FAQs
 steps:
   - title: Step 1
-    text: Free 15‑min consult → understand needs.
+    text: Free 15‑min consultation → understand needs.
     icon: tabler:message-circle
     joined_to_previous: true
   - title: Step 2
@@ -43,3 +43,8 @@ steps:
     text: Clear recommendations → practical, tailored next steps (work, study, life).
     icon: tabler:bulb
     joined_to_previous: true
+  - joined_to_previous: false
+    title: Support sessions at any time
+    text: "One-to-one support sessions → schedule additional bespoke support
+      sessions for your needs at any time. "
+    icon: tabler:brand-messenger
