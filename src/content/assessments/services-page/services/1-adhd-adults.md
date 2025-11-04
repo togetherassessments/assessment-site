@@ -1,10 +1,11 @@
 ---
-title: ADHD (Adults)
-description: Comprehensive ADHD assessments for adults using gold-standard
-  diagnostic tools, including clinical interviews and questionnaires to provide
-  accurate diagnosis and personalised recommendations.
-anchor: adhd-adults
+title: Social communication, interactions, and sensory processing assessment
+description: Expert autism-informed and sensory processing-informed assessments
+  for adults using standardised evaluation, clinical interviews, and
+  questionnaires, providing thorough evaluation and detailed reports to support
+  understanding and access to services.
+anchor: autism
 order: 1
-icon: tabler:view-360-arrow
+icon: tabler:brain
 published: true
 ---
