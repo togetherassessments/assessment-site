@@ -20,7 +20,7 @@ title: Local Support
   ](https://adhdlincs.org/)
 * **Care Plus Group Neurodiversity Services** — Based in Grimsby, they offer adult ADHD and Autism services, including supported living and community integration programs. [Care Plus Group ND Services
   ](https://careplusgroup.org/services/adult-neurodiversity-services/)
-* **Linkage Choices (Grimsby)** — A day services centre for adults with learning disabilities and autism; ideal for social inclusion, wellbeing and community activities.[Linkage Choices (Grimsby)
+* **Linkage Choices (Grimsby)** — A day services centre for adults with learning disabilities and autism; ideal for social inclusion, wellbeing and community activities. [Linkage Choices (Grimsby)
   ](https://connectnel.com/professionals/care-navigation/learning-disabilities-autism-adhd)
 * **Matthew’s Hub (Hull)** - Peer mentoring, employment and housing support, workshops for autistic people (13+) without a learning disability, <https://matthewshub.org/> [Matthew's Hub (Hull)
   ](https://connectnel.com/professionals/care-navigation/learning-disabilities-autism-adhd/?utm_source=chatgpt.com)
@@ -31,15 +31,15 @@ title: Local Support
 
 ### **National Charities**
 
-* **National Autistic Society** — Offers comprehensive information on autism across the UK, including helplines, toolkits, and service directories. https://www.autism.org.uk/
+* **National Autistic Society** — Offers comprehensive information on autism across the UK, including helplines, toolkits, and service directories. <https://www.autism.org.uk/>
 * **ADHD Adult** - a national charity the provides tools and signposts for adults with or suspecting ADHD in the UK. <https://www.adhdadult.uk/resources/> 
 * **Mind** — A leading mental health charity that provides principles and signposts for autism and neurodiversity support. <https://www.mind.org.uk/> 
 * **The Autism Directory** — A UK-wide signposting tool to find local autism-friendly services and groups.[The Autism Directory](https://www.autism.org.uk/autism-services-directory)
 
 ### **Emergency & Crisis Support**
 
+**Call 999 if you are in immediate danger**
+
 * **NHS 111** — For immediate health queries or concerns—available 24/7 via phone or [online](https://111.nhs.uk/).
 * **Samaritans** — Call 116 123 (free, 24/7) or visit[ samaritans.org](https://www.samaritans.org) for emotional support.
-* **Shout** - Text ‘Shout’ to 85258 (free, 24/7) or visit <https://giveusashout.org/> for emotional support. 
-
-Call 999 if you are in immediate danger
+* **Shout** - Text ‘Shout’ to 85258 (free, 24/7) or visit <https://giveusashout.org/> for emotional support.
