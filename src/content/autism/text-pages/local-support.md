@@ -14,11 +14,11 @@ title: Local Support
 
 ### **Regional Support & Organisations**
 
-* **The Lincolnshire Autistic Society** — Provides advice, signposting, and links to local groups across Lincolnshire, including PAACT and social meet-ups. Hosts the annual Autism Conference in Lincoln.[Lincolnshire Autistic Society
+* **The Lincolnshire Autistic Society** — Provides advice, signposting, and links to local groups across Lincolnshire, including PAACT and social meet-ups. Hosts the annual Autism Conference in Lincoln. [Lincolnshire Autistic Society
   ](https://lincolnshireautisticsociety.org.uk/)
-* **ADHD Lincs** — A charity offering ADHD awareness workshops, family support, webinars, and community training across Lincolnshire.[ADHD Lincs 
+* **ADHD Lincs** — A charity offering ADHD awareness workshops, family support, webinars, and community training across Lincolnshire. [ADHD Lincs 
   ](https://adhdlincs.org/)
-* **Care Plus Group Neurodiversity Services** — Based in Grimsby, they offer adult ADHD and Autism services, including supported living and community integration programs.[Care Plus Group ND Services
+* **Care Plus Group Neurodiversity Services** — Based in Grimsby, they offer adult ADHD and Autism services, including supported living and community integration programs. [Care Plus Group ND Services
   ](https://careplusgroup.org/services/adult-neurodiversity-services/)
 * **Linkage Choices (Grimsby)** — A day services centre for adults with learning disabilities and autism; ideal for social inclusion, wellbeing and community activities.[Linkage Choices (Grimsby)
   ](https://connectnel.com/professionals/care-navigation/learning-disabilities-autism-adhd)
@@ -27,19 +27,13 @@ title: Local Support
 * **North Lincolnshire Mind** - offering valuable free services, including: **talking therapy** by arrangement (01724 279500 or email [support@nlmind.org](mailto:support@nlmind.org)), **Safespace support line** from 4pm - 12am 01724 279 500, peer support and courses [https://www.nlmind.org/our-services
   ](https://www.nlmind.org/our-services)
 * **Hull and East Yorkshire Mind** - offering a range of valuable free services <https://heymind.org.uk/hull/> 
-
 * **NHS Hull Talking Therapies (Hull)** - access free therapy by visiting <https://www.letstalkhull.co.uk/pages/make-a-referral> or calling 01482 247111
-
-
 
 ### **National Charities**
 
 * **National Autistic Society** — Offers comprehensive information on autism across the UK, including helplines, toolkits, and service directories. https://www.autism.org.uk/
-
 * **ADHD Adult** - a national charity the provides tools and signposts for adults with or suspecting ADHD in the UK. <https://www.adhdadult.uk/resources/> 
-
 * **Mind** — A leading mental health charity that provides principles and signposts for autism and neurodiversity support. <https://www.mind.org.uk/> 
-
 * **The Autism Directory** — A UK-wide signposting tool to find local autism-friendly services and groups.[The Autism Directory](https://www.autism.org.uk/autism-services-directory)
 
 ### **Emergency & Crisis Support**
