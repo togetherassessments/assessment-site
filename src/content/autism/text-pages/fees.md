@@ -3,7 +3,7 @@ slug: fees
 title: Fees
 ---
 [**15 minute virtual session** - £0](https://calendar.app.google/F5uKAijroSm64ryn9)\
-Please consider booking a 15 minute session with me now to consider your needs and how I may be able to support you\
+Please consider booking a free, no obligation, 15 minute session with me now to consider your needs and how I may be able to support you\
 
 **Attention and hyperactivity assessments** - £300\
 This includes formulation and recommendations, discussed and presented in a formal report
