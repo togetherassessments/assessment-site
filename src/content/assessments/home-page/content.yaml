@@ -1,10 +1,10 @@
 hero:
-  image: ~/assets/images/assessments/pexels-shvets-production-7176297.jpg
+  image: ~/assets/images/assessments/pexels-nita-9825-54300.jpg
   text: For adults in North Lincolnshire (online UK‑wide available)
   title: Specialist neurodiversity assessments, formulations, and support.
   subtitle: Independent, friendly, local, evidence‑based. Clear recommendations
     you can act on.
-  image_alt: Two people talking
+  image_alt: "A dandelion with seeds flying in the wind "
 ctas:
   consultation:
     text: Book a free 15‑minute consultation
