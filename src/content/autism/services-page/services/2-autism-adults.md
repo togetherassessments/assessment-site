@@ -5,7 +5,7 @@ description: Expert autism-informed and sensory processing-informed assessments
   questionnaires, providing thorough evaluation and detailed reports to support
   understanding and access to services.
 anchor: autism
-order: 2
-icon: tabler:brain
+order: 1
+icon: tabler:infinity
 published: true
 ---
