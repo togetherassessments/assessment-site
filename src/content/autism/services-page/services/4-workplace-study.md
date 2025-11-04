@@ -1,11 +1,12 @@
 ---
-title: ADHD/Autism diagnostic services
-description: "We do not currently offer assessments with a diagnostic outcome.
-  This service is anticipated to launch within the next 3+ months, you can
-  [sign-up to the waitlist for these services
-  here](https://docs.google.com/forms/d/e/1FAIpQLSeScLLecEv0whiTGV2EzKVd9UxOKuk\
-  fQnAiPyp2OtFNg43IFQ/viewform). "
-anchor: diagnosis
+title: Non diagnostic assessments
+description: "[Together Assessments](https://togetherassessments.co.uk) can
+  offer a comprehensive neurodevelopmental assessment combining standardised
+  ADHD, sensory processing, and autism-informed assessments, resulting in
+  collaborative psychological formulations that help individuals understand
+  their experiences within a non-diagnostic neurodevelopmental framework,
+  creating a shared understanding and pathway forward."
+anchor: formulations
 order: 4
 icon: tabler:label-off
 published: true
