@@ -29,7 +29,7 @@ backend:
     delete: 'feat(content/{{WEBSITE_ID}}): Delete {{collection}} "{{slug}}"'
     uploadMedia: 'feat(media/{{WEBSITE_ID}}): Upload "{{path}}"'
     deleteMedia: 'feat(media/{{WEBSITE_ID}}): Delete "{{path}}"'
-publish_mode: editorial_workflow
+# publish_mode: editorial_workflow  # Commented out to enable simple publishing mode (one-click publish)
 local_backend: {{LOCAL_BACKEND}}
 media_folder: {{MEDIA_FOLDER}}
 public_folder: {{PUBLIC_FOLDER}}

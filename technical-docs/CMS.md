@@ -90,9 +90,31 @@ See [Editorial Workflow](#editorial-workflow) section for details.
 
 ---
 
-## Editorial Workflow
+## Publishing Mode
 
-The CMS uses a three-stage Editorial Workflow before publishing:
+**Current Mode**: Simple Publishing (one-click publish)
+
+The CMS is configured with **simple publishing mode**, which means content is published directly to production when saved. This provides immediate publishing without review stages.
+
+### Simple Publishing Workflow
+
+1. **Edit content** in the CMS
+2. **Click "Publish"** - Content commits directly to main branch
+3. **Build triggers** automatically
+4. **Content goes live** immediately
+
+### Switching to Editorial Workflow
+
+If you need a multi-stage review process before publishing (useful for teams or quality control), you can enable Editorial Workflow mode:
+
+**To enable Editorial Workflow**:
+1. Edit `public/admin/config.template.yml`
+2. Uncomment line 32: `publish_mode: editorial_workflow`
+3. Restart dev server: `npm run dev:assessments`
+
+### Editorial Workflow (Alternative Mode - Currently Disabled)
+
+When Editorial Workflow is enabled, the CMS uses a three-stage process before publishing:
 
 ### 1. Draft
 
@@ -138,7 +160,7 @@ The CMS uses a three-stage Editorial Workflow before publishing:
 - **Images**: Committed to repository
 - **History**: Full Git commit history
 
-### Benefits of Editorial Workflow
+### Benefits of Editorial Workflow (When Enabled)
 
 1. **No Race Conditions** - Single build per publish, not per edit
 2. **No Orphaned Images** - Images only committed when content published
@@ -146,6 +168,20 @@ The CMS uses a three-stage Editorial Workflow before publishing:
 4. **Version Control** - Full Git history with meaningful commit messages
 5. **Rollback Capability** - Easy reversion through Git if needed
 6. **Branch Isolation** - Multiple editors can work without conflicts
+
+### Considerations for Simple Publishing Mode (Current)
+
+**Benefits**:
+- ✅ One-click publishing - fast and simple
+- ✅ Immediate content updates
+- ✅ No multi-step workflow complexity
+- ✅ Still uses Git for version control
+
+**Trade-offs**:
+- ⚠️ No review step before going live
+- ⚠️ Each save triggers a build (watch build minute usage)
+- ⚠️ Greater risk of accidental publishing
+- ⚠️ Potential for orphaned images if edits are abandoned
 
 ---
 
