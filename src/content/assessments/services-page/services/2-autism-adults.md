@@ -1,10 +1,11 @@
 ---
-title: Autism (Adults)
-description: Expert autism assessments for adults using internationally
-  recognised diagnostic criteria, providing thorough evaluation and detailed
-  reports to support understanding and access to services.
-anchor: autism-adults
+title: Attention and hyperactivity assessments
+description: Comprehensive ADHD-informed assessments for adults using
+  standarsied tools, clinical interviews, and questionnaires to provide an
+  accurate description of someone's strengths and weaknesses, and personalised
+  recommendations.
+anchor: adhd
 order: 2
-icon: tabler:brain
+icon: tabler:view-360-arrow
 published: true
 ---
