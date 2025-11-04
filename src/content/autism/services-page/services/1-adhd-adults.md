@@ -1,10 +1,11 @@
 ---
-title: ADHD (Adults)
-description: Comprehensive ADHD assessments for adults using gold-standard
-  diagnostic tools, including clinical interviews and questionnaires to provide
-  accurate diagnosis and personalised recommendations.
-anchor: adhd-adults
-order: 1
+title: Attention and hyperactivity assessments
+description: Comprehensive ADHD-informed assessments for adults using
+  standarsied tools, clinical interviews, and questionnaires to provide an
+  accurate description of someone's strengths and weaknesses, and personalised
+  recommendations.
+anchor: adhd
+order: 2
 icon: tabler:view-360-arrow
 published: true
 ---
