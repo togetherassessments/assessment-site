@@ -1,9 +1,10 @@
 hero:
   image: ~/assets/images/autism/pexels-nita-9825-54300.jpg
   image_alt: "Dandelion with seeds blowing in the wind "
-  text: For adults in North Lincolnshire (online UK‑wide available)
-  title: Specialist neurodiversity assessments & formulations.
-  subtitle: Independent, friendly, evidence‑based. Clear recommendations you can act on.
+  text: For adults in North Lincolnshire
+  title: "Specialist autism and sensory processing assessments & reports. "
+  subtitle: Independent, friendly, gold-standard evidence‑based. Clear
+    recommendations you can act on.
 ctas:
   consultation:
     text: Book a free 15‑minute consultation
@@ -16,9 +17,9 @@ ctas:
     link: /services
     alt: View services
   deep:
-    lead_text: "It is not unusual to seek support when things are hard. Please do
-      not hesitate to reach out to talk about what you need and explore how and
-      if I might be able to help. "
+    lead_text: It is normal to be seeking support at a difficult time and to need
+      something more bespoke. If you have any adaptation needs or neurodivergent
+      support needs then please do not hesitate to get in touch!
     text: Questions? Get in touch.
     link: /contact
     alt: Contact us
@@ -36,11 +37,13 @@ steps:
     icon: tabler:message-circle
     joined_to_previous: true
   - title: Step 2
-    text: Assessment or formulation → structured sessions & validated tools.
+    text: Diagnostic Assessment → structured sessions and gold-standard, validated
+      tools.
     icon: tabler:clipboard-check
     joined_to_previous: true
   - title: Step 3
-    text: Clear recommendations → practical, tailored next steps (work, study, life).
+    text: Clear outcome with recommendations → practical, tailored next steps (work,
+      study, life).
     icon: tabler:bulb
     joined_to_previous: true
   - joined_to_previous: false
