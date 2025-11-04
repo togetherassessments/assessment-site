@@ -7,6 +7,6 @@ description: "We do not currently offer assessments with a diagnostic outcome.
   fQnAiPyp2OtFNg43IFQ/viewform). "
 anchor: diagnosis
 order: 4
-icon: tabler:briefcase
+icon: tabler:label-off
 published: true
 ---
