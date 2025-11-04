@@ -1,6 +1,18 @@
 ---
+title: "Designing for Accessibility: How Together Assessments Builds Inclusion
+  Into Every Aspect"
 excerpt: At Together Assessments, accessibility isn’t an afterthought – it’s a
   starting point.
+category: News
+tags:
+  - font
+  - accessibility
+  - logo
+  - design
+  - dyslexia
+image: ~/assets/images/assessments/for-you.jpg
+image_alt: For you written on a gift tag
+publishDate: 04/11/2025
 draft: false
 seo_settings:
   metaTitle: Building an Accessible Website for Neurodivergent Adults
@@ -9,17 +21,6 @@ seo_settings:
     user controls.
 author: Adriana
 updateDate: 2024-01-15T00:00:00.000Z
-title: "Designing for Accessibility: How Together Assessments Builds Inclusion
-  Into Every Aspect"
-category: News
-tags:
-  - font
-  - accessibility
-  - logo
-  - design
-  - dyslexia
-image: ""
-publishDate: 04/11/2025
 content_review:
   lastReviewed: 04/11/2025
 ---
