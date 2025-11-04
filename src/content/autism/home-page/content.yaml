@@ -16,9 +16,9 @@ ctas:
     link: /services
     alt: View services
   deep:
-    lead_text: "It isn't unusual to seek support when things are hard. Please do not
-      hesitate to reach out to talk about what you need and explore how and if I
-      might be able to help. "
+    lead_text: "It is not unusual to seek support when things are hard. Please do
+      not hesitate to reach out to talk about what you need and explore how and
+      if I might be able to help. "
     text: Questions? Get in touch.
     link: /contact
     alt: Contact us
