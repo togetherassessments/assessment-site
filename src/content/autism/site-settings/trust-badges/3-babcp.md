@@ -1,9 +1,9 @@
 ---
-name: British Association for Behavioural and Cognitive Psychotherapies
-display_text: BABCP Accredited
+name: Care Quality Commission regulated and registered provider
+display_text: CQC Regulated and registered
 logo_light: ~/assets/images/autism/badge-placeholder.svg
 logo_dark: ~/assets/images/autism/badge-placeholder.svg
-alt: BABCP accredited member
-order: 3
-published: true
+alt: CQC registered provider
+order: 1
+published: false
 ---
