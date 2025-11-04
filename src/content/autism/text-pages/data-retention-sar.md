@@ -1,6 +1,6 @@
 ---
 slug: data-retention-sar
-title: Data Retention & SAR
+title: Data Privacy and Consent
 ---
 **Privacy & Consent (Summary)**
 
