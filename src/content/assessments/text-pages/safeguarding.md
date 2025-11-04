@@ -43,10 +43,9 @@ This policy applies to:
 * **Clinical Supervisor:** HCPC-registered psychologist providing professional oversight and case review.
 
 
-
 ### **5. Roles & Responsibilities**
 
-DSL: Adriana Ferrari
+DSL: Adriana
 
 * Receives and logs safeguarding concerns.
 * Decides on action required in consultation with the Clinical Supervisor if action is not more readily apparent.
@@ -56,7 +55,7 @@ DSL: Adriana Ferrari
 
 **Deputy DSL:** HCPC-registered Clinical Supervisor.
 
-* Acts as DSL if Adriana Ferrari is unavailable.
+* Acts as DSL if Adriana is unavailable.
 
 
 **All Staff/Associates:**
@@ -116,8 +115,6 @@ Potential collaboration partners:
 ### **10. Information Sharing**
 
 We will share information lawfully and proportionately under the Care Act 2014, Data Protection Act 2018, and GDPR, prioritising the prevention of harm. Consent will be sought unless doing so increases the risk to the person.
-
-
 
 ### **11. Training**
 
