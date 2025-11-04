@@ -2,7 +2,7 @@
 question: How much does an assessment cost?
 answer: "Assessment fees vary depending on the type and complexity of the
   evaluation required. [We provide transparent pricing
-  information](https://nd-autism-site.netlify.app/fees) and during your initial
+  information](https://togetherautism.co.uk/fees) and during your initial
   enquiry can discuss payment plans if needed. "
 order: 6
 published: true
