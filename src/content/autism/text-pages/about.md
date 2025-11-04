@@ -3,8 +3,7 @@ slug: about
 title: About
 ---
 
-
-* **Who I am**: My name is Adriana (she/they). I am an independent practitioner with nearly a decade of NHS experience, and I have training in neurodevelopmental assessment and formulation. I identify as disabled, queer, and neurodivergent and am passionate about providing an accessible and supportive service. My practice is supervised by an HCPC-registered Clinical Psychologist who also identifies as disabled, LGBTQ+, and neurodivergent. 
+* **Who I am**: My name is Adriana (she/they). I am an independent practitioner with nearly a decade of NHS experience, and I have training in neurodevelopmental assessments and formulation. I identify as disabled, queer, and neurodivergent and am passionate about providing an accessible and supportive service. My practice is supervised by an HCPC-registered Clinical Psychologist who also identifies as disabled, LGBTQ+, and neurodivergent. 
 
 * **My approach**: Neuro-affirming, strengths-based, and collaborative.
 
