@@ -1,21 +1,27 @@
 ---
-title: Get started with AstroWind to create a website using Astro and Tailwind CSS
-excerpt: Start your web journey with AstroWind – harness Astro and Tailwind CSS
-  for a stunning site. Explore our guide now.
-category: Tutorials
-tags:
-  - astro
-  - tailwind css
-image: ~/assets/images/assessments/pexels-shvets-production-7176297.jpg
-publishDate: 2023-08-12T00:00:00.000Z
-updateDate: 2024-01-15T00:00:00.000Z
-author: John Smith
+excerpt: At Together Assessments, accessibility isn’t an afterthought – it’s a
+  starting point.
 draft: false
 seo_settings:
-  metaTitle: "Custom Blog Post SEO Title for Phase B Testing"
-  metaDescription: "Custom blog post description for Phase B testing. This should appear in BlogPosting schema and override the default fallback value."
+  metaTitle: Building an Accessible Website for Neurodivergent Adults
+  metaDescription: Discover how Together Assessments designs with accessibility in
+    mind — from colour-blind-friendly branding to dyslexia-friendly fonts and
+    user controls.
+author: Adriana
+updateDate: 2024-01-15T00:00:00.000Z
+title: "Designing for Accessibility: How Together Assessments Builds Inclusion
+  Into Every Aspect"
+category: News
+tags:
+  - font
+  - accessibility
+  - logo
+  - design
+  - dyslexia
+image: ""
+publishDate: 04/11/2025
 content_review:
-  lastReviewed: 2025-01-10T00:00:00.000Z
+  lastReviewed: 04/11/2025
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
