@@ -1,6 +1,6 @@
 hero:
-  image: ~/assets/images/autism/pexels-shvets-production-7176297.jpg
-  image_alt: Specialist neurodiversity assessment service
+  image: ~/assets/images/autism/pexels-nita-9825-54300.jpg
+  image_alt: "Dandelion with seeds blowing in the wind "
   text: For adults in North Lincolnshire (online UK‑wide available)
   title: Specialist neurodiversity assessments & formulations.
   subtitle: Independent, friendly, evidence‑based. Clear recommendations you can act on.
@@ -12,13 +12,13 @@ ctas:
     text: Join the waitlist
     alt: Join the waitlist
   secondary:
-    text: See assessment options
+    text: See service options
     link: /services
     alt: View services
   deep:
-    lead_text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris.
+    lead_text: "It isn't unusual to seek support when things are hard. Please do not
+      hesitate to reach out to talk about what you need and explore how and if I
+      might be able to help. "
     text: Questions? Get in touch.
     link: /contact
     alt: Contact us
@@ -26,7 +26,7 @@ sections:
   how_it_works: How it works
   services: Services
   blog: Latest from the blog
-  blog_subtitle: Lorem Ipsum
+  blog_subtitle: " "
   faqs: Frequently Asked Questions
   trust_badges_heading: Professional accreditations and memberships
   more_faqs_button_text: More FAQs
