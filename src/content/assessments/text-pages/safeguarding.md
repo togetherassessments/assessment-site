@@ -15,7 +15,7 @@ Review date: August 2026** (or sooner if guidance changes)
 
 Together Assessments is committed to safeguarding adults at risk of abuse or neglect and to promoting their wellbeing, in line with the Care Act 2014, CQC Regulation 13, and all relevant UK safeguarding legislation.
 
-We recognise that safeguarding is everyone’s responsibility and that adults have the right to live free from abuse, neglect, and exploitation. Our service is currently for adults (18+) and operates within a ~30-mile radius of DN39 6TG in North Lincolnshire.
+We recognise that safeguarding is everyone’s responsibility and that adults have the right to live free from abuse, neglect, and exploitation. Our service is currently for adults (18+) and operates within a ~30-mile radius of DN39 in North Lincolnshire.
 
 ### **2. Scope**
 
