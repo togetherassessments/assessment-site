@@ -21,164 +21,161 @@ seo_settings:
 
 Every person experiences the world differently. During assessments, we aim to make things as comfortable, fair, and accessible as possible. Some approaches are part of our default way of working. Others can be adapted to suit your needs or preferences.  
 
-You can let us know your preferences before or during your free 15-minute consultation, or at any point in the assessment process. There is no limit on what you can ask for, you can change your mind, and we will always try to meet your needs wherever possible.
+You can let us know what you need before or during your free 15-minute consultation, or at any point in the assessment process. There is no limit on what you can ask for, you can change your mind, and we will always try to meet your needs wherever possible.
 
-## Sensory needs
+## Sensory comfort
 
 ### Default approach
 
-* Small sensory kit brought to in-person appointments
-* Limited use of perfumes, or deodorants during home visits
-* Calm, low-stimulus environment for online or in-person sessions
-* Breaks will be offered
+* Small sensory kit brought to in-person appointments  
+* Limited use of perfumes or deodorants during home visits  
+* Calm, low-stimulus environment for online or in-person sessions recommended
 
 ### Additional or alternative options
 
 * Adjusted lighting or background colour 
-* Choice of paper colour for printed materials 
-* Choice of font style, size, colour, or line spacing 
-* Set or additional breaks or pauses to avoid sensory overload  
-* Option to wear noise-reducing headphones during sessions 
-* No use of perfumes, or deodorants during home visits
+* Option to wear noise-reducing headphones 
+* Complete no-scent policy if preferred 
 
-## Communication needs
+## Communication and understanding
 
 ### Default approach
 
 * Clear, plain language used throughout  
 * Choice between spoken, written, or mixed communication  
-* Visual information in size 14, dyslexia-friendly font, and colour-blind-friendly text  
-* Automated subtitles available during video calls  
+* Automated subtitles available for video calls  
 
 ### Additional or alternative options
 
-* Text-based communication before or during sessions 
-* Use of easy-read or symbol-supported documents 
+* Text-based communication before or during sessions  
+* Easy-read or symbol-supported documents  
 * Interpreter or Makaton-supported communication  
-* Alternative ways to share information such as verbal, text-based, diagram-supported, or summaries  
+* Visual aids, diagrams, or summaries to support understanding  
 
 ## Predictability and control
 
 ### Default approach
 
-* Full outline of what will happen in each session as far as possible provided in advance 
-* Advance notice of any changes to times, content, or format 
-* Clear explanation of what each part of the process means 
+* Agenda each session provided in advance  
+* Advance notice of any changes to time, content, or format  
+* Clear explanation of each stage of the process
+* The same assessor will be with you from beginning to end
+* Only your assessor will be in sessions with you at a time
 
 ### Additional or alternative options
 
-* Extra getting-to-know-each-other session before the assessment begins 
-* Option to review the structure of sessions in advance 
-* Written schedule or checklist to follow along 
+* Extra getting-to-know-you sessions can be booked before starting  
+* Written session plan or checklist  
+* Option to review structure or materials (as far as possible) in advance 
+* Scheduled breaks
 
-## Session times and breaks
+## Session timing and breaks
 
 ### Default approach
 
 * Sessions planned around your preferred time of day  
-* Regular opportunities for breaks 
-* Longer sessions offered as needed
+* Breaks offered at a point in the session
+* Longer sessions available if needed  
 
 ### Additional or alternative options
 
-* Spreading the assessment across several shorter meetings  
-* Scheduled movement or comfort breaks  
-* Follow-up support sessions after the main assessment 
-* Shorter sessions
+* Shorter sessions 
+* Splitting the assessment across additional days
+* Scheduled comfort or movement breaks  
+* Follow-up support sessions after the assessment  
 
 ## Location and mode of sessions
 
 ### Default approach
 
 * Choice between home visits and secure online video appointments  
-* Clear guidance if a home visit is recommended for assessment accuracy 
+* Clear explanation if a home visit is recommended for assessment accuracy  
 
 ### Additional or alternative options
 
-* Extra home visits if these feel more comfortable  
-* Fully online assessment process if required
-* Flexibility to change mode part-way through if needed  
+* Extra home visits if preferred  
+* Fully online process if required  
+* Flexibility to change between online and in-person  
 
 You can read more and book your free 15-minute consultation at [this link](https://calendar.app.google/F5uKAijroSm64ryn9).
 
-## Accompaniment and support
+## Support and accompaniment
 
 ### Default approach
 
-* You are always welcome to have a carer, family member, friend, or pet present  
+* You are welcome to have a carer, family member, friend, or pet(s) present  
 
 ### Additional or alternative options
 
-* Liaising directly with your supporter before or after sessions  
+* Liaising with your supporter before or after sessions 
 * Joint planning for accessibility or wellbeing needs 
-* Seeking more information from your supporter (informant) to reduce the number of questions required from you
+* Gathering more information from a supporter (informant) to reduce some of the questions asked of you
 
-## Information sharing and recordings
+## Your information
 
-### Default approach
+### Default approach  
 
-* All sessions may be recorded for supervision and accuracy with consent  
-* You receive a full report to discuss and review before finalisation  
-* Opportunity to make corrections or add comments before the report is final  
+* You can add comments or corrections before the report is complete  
 
 ### Additional or alternative options
 
 * Option not to contribute to the written report  
-* Option to review your notes after sessions  
+* Option to review notes after sessions  
 * Agreement on how updates are shared and who receives them  
-* Choice between seeing drafts or only final versions  
+* Choice to view drafts or final versions only  
 
-## Written and verbal information
+## Written information and presentation
 
 ### Default approach
 
 * Written materials are clear, accessible, and visually structured  
-* Verbal information is summarised to aid understanding  
-* Any notes taken in the session can be viewed at the end of the session if requested  
+* Standard font size 14, using a dyslexia-friendly typeface and colour-blind-safe design  
 
 ### Additional or alternative options
 
-* Easy-read or plain-text versions of all documents  
-* Larger print, coloured paper, or adjusted line spacing  
-* Voice notes, video summaries, or diagrams supplementing text  
+* Easy-read versions of any documents  
+* Larger print, coloured paper, or wider line spacing  
+* Voice notes, video summaries, or diagrams instead of written text  
 
-## Reminders and timing support
+## Reminders and scheduling
 
 ### Default approach
 
-* Email confirmation and reminders for all sessions  
+* Email confirmations, calendar invites, and reminders for all sessions  
 
 ### Additional or alternative options
 
 * Text message reminders  
-* Calendar invites  
-* Extra reminders for questionnaires or forms  
+* Extra reminders for forms or questionnaires 
+* Inviting additional recipients to the calendar invites or reminders
 
-## Collaboration and feedback
-
-### Default approach
-
-* You are encouraged to ask questions and check understanding at any time  
-* Reports are discussed with you before being finalised  
-
-### Additional or alternative options
-
-* Time set aside to reflect and review the assessment process  
-* Follow-up meeting to discuss recommendations  
-* Support with sharing outcomes with employers, education providers, or healthcare teams  
-
-## Health and safety considerations
+## Feedback and next steps
 
 ### Default approach
 
-* Clear infection-control and hygiene practice followed for home visits  
-* No face coverings used unless clinically necessary or requested  
+* Space to ask questions and check understanding at any time 
+* Follow-up meeting to discuss outcome and recommendations  
+* Reports discussed with you before they are finalised  
 
 ### Additional or alternative options
 
-* Lateral Flow Tests before visits  
-* Use of see-through masks to support lip-reading or communication  
-* Face masks worn on request  
+* Extra time to reflect and review at any point in the process
+* Support with sharing outcomes with workplaces, education providers, or healthcare teams  
+
+## Health and safety
+
+### Default approach
+
+* Clear hygiene and infection-control practice for home visits and all equipment taken with me
+* No face coverings used unless clinically required or requested 
+* Up-to date on all relevant and eligible vaccines
+
+### Additional or alternative options
+
+* Lateral Flow Tests before visits 
+* Use of see-through masks for lip-reading or communication 
+* Face masks worn on request 
+* Let me know if you or a close loved one is particularly vulnerable to infection and I can take extra care and precautions
 
 ## Identity and language
 
@@ -188,12 +185,6 @@ You can read more and book your free 15-minute consultation at [this link](https
 
 ### Additional or alternative options
 
-* Using different pronouns in different settings or with different people  
+* Different pronouns or names used in different settings if preferred  
 * Agreement on how you are described in notes and reports  
-* Use of your preferred name, title, or form of address  
-
-## After your assessment
-
-After your assessment, you will receive a detailed report with findings and personalised recommendations. You will have a chance to make changes before it is finalised. We can also provide guidance on next steps, including support services, workplace or educational adjustments, or applications such as Access to Work or Disabled Students Allowance.  
-
-Follow-up support sessions can be booked at any time.
+* Use of your preferred name, title, or form of address
