@@ -23,6 +23,14 @@ const htmlContent = body ? marked.parse(body) : null;
 const allFaqs = await getCollection('faqs_page_items');
 const faqs = allFaqs.filter((faq) => faq.data.published).sort((a, b) => a.data.order - b.data.order);
 
+// Process FAQ answers through markdown parser
+const faqItems = await Promise.all(
+  faqs.map(async (faq) => ({
+    title: faq.data.question,
+    description: await marked.parse(faq.data.answer),
+  }))
+);
+
 // Build FAQPage schema
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -82,12 +90,5 @@ const metadata = {
   </div>
 
   <!-- FAQ Items -->
-  <FAQs
-    items={faqs.length > 0
-      ? faqs.map((faq) => ({
-          title: faq.data.question,
-          description: faq.data.answer,
-        }))
-      : []}
-  />
+  <FAQs items={faqItems} />
 </Layout>

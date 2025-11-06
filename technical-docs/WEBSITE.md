@@ -194,14 +194,22 @@ Example: `src/content/assessments/faqs-page/top-content.yaml`
 
 Individual FAQ question-answer pairs:
 
-- Question text
-- Answer text
+- Question text (plain text)
+- Answer text (markdown support - links, bold, italic, lists, etc.)
 - Display order
 - Published status
 
 **File Location:** `src/content/{siteId}/faqs-page/faq-items/`
 
 Example: `src/content/assessments/faqs-page/faq-items/`
+
+**Markdown Support:** FAQ answers support full markdown formatting, allowing content editors to include:
+- Links: `[link text](url)`
+- Bold and italic text
+- Lists (ordered and unordered)
+- All standard markdown syntax
+
+**Implementation:** Answer content is processed through `marked.parse()` before rendering on both the FAQ page (`src/pages/faq.astro:89`) and homepage (`src/pages/index.astro:264`), converting markdown to HTML with properly formatted links and styling.
 
 **Note:** First 4 published FAQs also appear on the homepage.
 
@@ -767,4 +775,4 @@ This prevents race conditions and ensures quality control before content goes li
 
 ---
 
-**Last Updated:** 2025-10-25
+**Last Updated:** 2025-11-06

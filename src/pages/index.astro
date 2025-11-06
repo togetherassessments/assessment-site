@@ -13,6 +13,7 @@ import { findImage } from '~/utils/images';
 import { getSiteSettings } from '~/utils/site-settings';
 import { generateHomePageSchema } from '~/utils/schema-generators';
 import StructuredData from '~/components/common/StructuredData.astro';
+import { marked } from 'marked';
 
 // Load site settings and homepage content via content collections
 const settings = getSiteSettings();
@@ -45,8 +46,13 @@ const trustBadgesWithImages = await Promise.all(
   }))
 );
 
-// Get first 4 FAQs for homepage
-const homepageFaqs = faqs.slice(0, 4);
+// Get first 4 FAQs for homepage and process through markdown parser
+const homepageFaqs = await Promise.all(
+  faqs.slice(0, 4).map(async (faq) => ({
+    title: faq.data.question,
+    description: await marked.parse(faq.data.answer),
+  }))
+);
 
 // Build metadata with SEO field fallbacks
 const metadata = {
@@ -255,15 +261,7 @@ const siteNameWords = settings.site.name.split(' ');
   />
 
   <!-- FAQs -->
-  <FAQs
-    title={homePageContent.data.sections.faqs}
-    items={homepageFaqs.length > 0
-      ? homepageFaqs.map((faq) => ({
-          title: faq.data.question,
-          description: faq.data.answer,
-        }))
-      : []}
-  />
+  <FAQs title={homePageContent.data.sections.faqs} items={homepageFaqs} />
 
   <!-- More FAQs Button -->
   {

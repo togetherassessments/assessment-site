@@ -351,6 +351,30 @@ Decap CMS supports numerous field types:
 
 Full documentation: See `decap-cms-docs/` directory
 
+### Markdown Widget Usage
+
+The `markdown` widget provides a rich text editor with formatting toolbar and supports full markdown syntax including:
+
+- Links: `[text](url)`
+- Bold: `**bold**` or `__bold__`
+- Italic: `*italic*` or `_italic_`
+- Lists (ordered and unordered)
+- Headers
+- Code blocks
+- And all standard markdown features
+
+**Example configuration**:
+
+```yaml
+fields:
+  - label: Answer
+    name: answer
+    widget: markdown
+    hint: Supports full markdown formatting including links, bold, italic, lists, etc.
+```
+
+**Note**: Content rendered from markdown fields must be processed through a markdown parser (e.g., `marked.parse()`) before rendering to HTML on the site. See [WEBSITE.md](./WEBSITE.md#faq-items) for implementation details.
+
 ### Image Alt Text Fields
 
 All 8 CMS image fields include optional alt text fields for accessibility:
@@ -579,4 +603,4 @@ For bulk updates, consider editing files directly:
 
 ---
 
-**Last Updated**: 2025-10-25
+**Last Updated**: 2025-11-06

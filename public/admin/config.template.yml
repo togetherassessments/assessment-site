@@ -551,8 +551,8 @@ collections:
         hint: The question to be displayed
       - label: Answer
         name: answer
-        widget: text
-        hint: The answer to the question
+        widget: markdown
+        hint: The answer to the question. Supports full markdown formatting including links, bold, italic, lists, etc.
       - label: Display Order
         name: order
         widget: number
