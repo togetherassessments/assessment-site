@@ -4,11 +4,9 @@ title: Service User Guide
 ---
 # **Service User Guide**
 
-**Together Assessments****Version:** 1.0
-**Date:** August 2025
-**Review date:** August 2026 (or sooner if legislation changes)
-
-
+**Together Assessments**\
+Version: 1.0
+Date: August 2025Review date: August 2026 (or sooner if legislation changes)
 
 ## **About Our Service**
 
@@ -18,8 +16,6 @@ Our assessments follow NICE guidelines (CG142 for Autism, NG87 for ADHD) and are
 
 We aim to provide a clear, fair, and accessible service where people feel listened to, understood, and supported.
 
-
-
 ## **What We Provide**
 
 * Autism assessments (using recognised tools such as ADOS-2, ADI-R, self-report measures, and developmental history).
@@ -27,7 +23,6 @@ We aim to provide a clear, fair, and accessible service where people feel listen
 * Written diagnostic reports, including strengths, challenges, and recommendations for reasonable adjustments and support.
 * A post-assessment feedback session to explain results clearly and answer questions.
 * Signposting to further support and services where needed.
-
 
 ## **What We Do Not Provide**
 
@@ -50,8 +45,6 @@ Before any assessment, we carry out a free 15-minute consultation and a pre-scre
 
 If we are not the right service for you, we will explain why and, where possible, provide information on alternative providers.
 
-
-
 ## **Practical Information**
 
 ### **Charges**
@@ -72,7 +65,6 @@ If we are not the right service for you, we will explain why and, where possible
 * This will always be discussed with you beforehand, and recordings are only made with your consent.
 * Recordings are stored securely and deleted once supervision is complete (usually within 4–6 weeks).
 
-
 ### **Safeguarding**
 
 * If at any point we believe you or someone else may be at risk of harm, we have a duty to act.
@@ -85,7 +77,6 @@ If we are not the right service for you, we will explain why and, where possible
 * We will always try to resolve issues quickly and fairly.
 * If you remain dissatisfied, you can contact the Care Quality Commission (CQC) on 03000 616161.
 * You can also share compliments and feedback, which we use to improve our service.
-
 
 ### **Contract Terms**
 
