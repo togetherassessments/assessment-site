@@ -1,6 +1,8 @@
 ---
 slug: fees
 title: Fees
+image: ~/assets/images/assessments/pexels-anntarazevich-5242813.jpg
+image_alt: Two people holding receipts
 ---
 
 [**15 minute virtual session** - £0](<>)
