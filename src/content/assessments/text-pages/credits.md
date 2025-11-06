@@ -1,12 +1,14 @@
 ---
 slug: credits
 title: Credits
+image: ~/assets/images/assessments/pexels-vie-studio-4439442.jpg
+image_alt: Thank you written on a black card with foliage
 ---
 Together Assessment has benefited greatly from active collaboration (to date primarily with professionals identifying as being neurodivergent) and publicly available resources and as such would like to formally recognise, thank, and credit these.
 
 **Supervision**
 
-Clinical guidance and supervision has been provided by [Dr Jessica Bragg, Clinical Psychologist](jessica@togetherassessments.co.uk). \
+Thank you to [Dr Jessica Bragg, Clinical Psychologist](jessica@togetherassessments.co.uk), for providing Clinical guidance, supervision and support. \
 \
 **Mentoring**
 
