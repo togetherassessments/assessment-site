@@ -10,7 +10,7 @@ tags:
   - equity
 image: ~/assets/images/assessments/pexels-onetrillionpixels-29376690.jpg
 image_alt: Silence is Violence written on a picket
-publishDate: 05/11/2025
+publishDate: 2025-11-05
 draft: false
 seo_settings:
   metaDescription: Explore how race, culture and systemic bias affect diagnosis of

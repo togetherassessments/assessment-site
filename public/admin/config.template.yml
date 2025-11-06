@@ -1027,6 +1027,7 @@ collections:
       - label: Publish Date
         name: publishDate
         widget: datetime
+        format: 'YYYY-MM-DD'
         date_format: DD/MM/YYYY
         time_format: false
         hint: When this post should be published
@@ -1092,7 +1093,7 @@ collections:
             name: lastReviewed
             widget: datetime
             required: false
-            format: "DD/MM/YYYY"
+            format: "YYYY-MM-DD"
             date_format: "DD/MM/YYYY"
             time_format: false
             hint: "When you last verified this content is still accurate and up-to-date. This appears in search results as 'Last updated' and signals content freshness to Google."
@@ -1104,6 +1105,8 @@ collections:
     folder: "src/content/{{WEBSITE_ID}}/medical-conditions"
     create: true
     slug: "{{slug}}"
+    identifier_field: name
+    summary: "{{name}}"
     editor:
       preview: false
     fields:

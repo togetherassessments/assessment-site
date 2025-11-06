@@ -10,7 +10,7 @@ tags:
   - equity
 image: ~/assets/images/assessments/for-you.jpg
 image_alt: Gift tag with For You written on it
-publishDate: 04/11/2025
+publishDate: 2025-11-04
 draft: false
 seo_settings:
   metaDescription: Discover how Together Assessments designs with accessibility in

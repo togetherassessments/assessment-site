@@ -10,7 +10,7 @@ tags:
   - ADHD
 image: ~/assets/images/assessments/pexels-goumbik-317377.jpg
 image_alt: A tidy workspace showing, headphones, a cup of coffee and a laptop
-publishDate: 05/11/2025
+publishDate: 2025-11-05
 draft: false
 seo_settings:
   metaTitle: Reasonable adjustments for autism and ADHD assessments

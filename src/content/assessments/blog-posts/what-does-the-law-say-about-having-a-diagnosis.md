@@ -12,7 +12,7 @@ tags:
 image: ~/assets/images/assessments/pexels-armin-rimoldi-5301719-1-.jpg
 image_alt: Hip view of a dark-skinned human with vitiligo holding a notebook and
   facing a black human with lanyard holding a laptop
-publishDate: 05/11/2025
+publishDate: 2025-11-05
 draft: false
 seo_settings:
   metaTitle: What the law says about autism and ADHD diagnosis

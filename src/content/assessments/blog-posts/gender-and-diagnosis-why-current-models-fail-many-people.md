@@ -12,7 +12,7 @@ tags:
 image: ~/assets/images/assessments/pexels-polina-tankilevitch-7391004.jpg
 image_alt: A black gender ambiguous person with mid-length hair and an open
   orange shirt with an arm around a white femme presenting person wearing makeup
-publishDate: 05/11/2025
+publishDate: 2025-11-05
 draft: false
 seo_settings:
   metaTitle: Gender and diagnosis in autism and ADHD
