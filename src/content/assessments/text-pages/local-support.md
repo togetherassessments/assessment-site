@@ -1,6 +1,8 @@
 ---
 slug: local-support
 title: Local Support
+image: ~/assets/images/assessments/pexels-davidpickup-10700225.jpg
+image_alt: Humber bridge photographed from below
 ---
 ### **Local Support**
 
@@ -16,10 +18,8 @@ title: Local Support
 * **Care Plus Group Neurodiversity Services** — Based in Grimsby, they offer adult ADHD and Autism services, including supported living and community integration programs. [Care Plus Group ND Services](https://careplusgroup.org/services/adult-neurodiversity-services/)
 * **Linkage Choices (Grimsby)** — A day services centre for adults with learning disabilities and autism; ideal for social inclusion, wellbeing and community activities. [Linkage Choices (Grimsby)](https://connectnel.com/professionals/care-navigation/learning-disabilities-autism-adhd)
 * **Matthew’s Hub (Hull)** - Peer mentoring, employment and housing support, workshops for autistic people (13+) without a learning disability, <https://matthewshub.org/> [Matthew's Hub (Hull)](https://connectnel.com/professionals/care-navigation/learning-disabilities-autism-adhd/?utm_source=chatgpt.com)
-
-  ](<>)
 * **North Lincolnshire Mind** - offering valuable free services, including: **talking therapy** by arrangement (01724 279500 or email [support@nlmind.org](<>)), \
-  **Safespace support line** from 4pm - 12am 01724 279 500, peer support and courses[ https://www.nlmind.org/our-services](https://www.nlmind.org/our-services)
+  **Safespace support line** from 4pm - 12am 01724 279 500, peer support and courses <https://www.nlmind.org/our-services>
 * **Hull and East Yorkshire Mind** - offering a range of valuable free services [https://heymind.org.uk/hull/](<>) 
 * **NHS Hull Talking Therapies (Hull)** - access free therapy by visiting [https://www.letstalkhull.co.uk/pages/make-a-referral](<>) or calling 01482 247111
 
@@ -32,7 +32,7 @@ title: Local Support
 
 ### **Emergency & Crisis Support**
 
-**Call 999 if you are in immediate danger**
+**Call 999 if you are in immediate danger.**
 
 * **NHS 111** — For immediate health queries or concerns—available 24/7 via phone or [online](<>).
 * **Samaritans** — Call 116 123 (free, 24/7) or visit[ samaritans.org](<>) for emotional support.
