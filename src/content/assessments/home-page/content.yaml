@@ -33,15 +33,15 @@ sections:
     professionals with a decade of NHS experience
   more_faqs_button_text: More FAQs
 steps:
-  - title: Step 1
+  - title: Book a free consultation
     text: Free 15‑min consultation → understand needs.
     icon: tabler:message-2-question
     joined_to_previous: false
-  - title: Step 2
+  - title: Book assessment sessions
     text: Assessment → structured sessions & validated tools.
     icon: tabler:clipboard-check
-    joined_to_previous: true
-  - title: Step 3
+    joined_to_previous: false
+  - title: Discuss your results and report
     text: Formulation with clear recommendations → Gaining an understanding with
       practical, tailored next steps (work, study, life).
     icon: tabler:bulb
