@@ -79,8 +79,6 @@ If the complaint involves Adriana Ferrari or you feel unable to raise it with he
 
    * How to escalate if dissatisfied
 
-
-
 **Stage 3 – External Review**
 If you remain dissatisfied after Stage 2, you may request an independent review. This will be carried out by an external HCPC-registered Clinical Psychologist who is independent of Together Autism / Together ADHD, has no recent financial or professional relationship with the service, and is agreed in writing by both parties. The reviewer will consider all relevant information, may speak to both parties, and will produce a written outcome within 28 days.
 
