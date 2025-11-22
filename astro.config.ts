@@ -22,7 +22,38 @@ const hasExternalScripts = false;
 const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
+// ============================================================================
+// Site URL Configuration
+// ============================================================================
+// The site URL must be set here (not via updateConfig in an integration) to
+// ensure Astro.url is constructed correctly during static builds.
+// See: https://github.com/withastro/astro/issues/13888
+
+const WEBSITE_ID = process.env.WEBSITE_ID;
+if (!WEBSITE_ID) {
+  throw new Error('❌ WEBSITE_ID environment variable is required');
+}
+
+const validWebsiteIds = ['assessments', 'adhd', 'autism'] as const;
+type WebsiteId = (typeof validWebsiteIds)[number];
+
+if (!validWebsiteIds.includes(WEBSITE_ID as WebsiteId)) {
+  throw new Error(`❌ Invalid WEBSITE_ID: ${WEBSITE_ID}. Must be one of: ${validWebsiteIds.join(', ')}`);
+}
+
+const siteUrlMap: Record<WebsiteId, string | undefined> = {
+  assessments: process.env.ASSESSMENTS_URL,
+  adhd: process.env.ADHD_URL,
+  autism: process.env.AUTISM_URL,
+};
+
+const siteUrl = siteUrlMap[WEBSITE_ID as WebsiteId];
+if (!siteUrl) {
+  throw new Error(`❌ ${WEBSITE_ID.toUpperCase()}_URL environment variable is required but not set`);
+}
+
 export default defineConfig({
+  site: siteUrl,
   output: 'static',
 
   build: {
