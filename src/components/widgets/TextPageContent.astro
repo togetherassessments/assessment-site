@@ -27,11 +27,11 @@ const { Content } = await render(page);
   <!-- Optional subheading (H3, centered, without font-heading) -->
   {subheading && <h3 class="text-2xl text-center mb-8">{subheading}</h3>}
 
-  <!-- Optional image (centered) -->
+  <!-- Optional image (centered, constrained height for portrait images) -->
   {
     image && (
-      <div class="flex justify-center mb-8">
-        <Image src={image} alt={image_alt || title} class="max-w-full h-auto" />
+      <div class="flex justify-center mb-8 max-h-[50vh]">
+        <Image src={image} alt={image_alt || title} layout="contained" />
       </div>
     )
   }

@@ -72,17 +72,18 @@ const { post, url } = Astro.props;
 
       {
         post.image ? (
-          <Image
-            src={post.image}
-            class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
-            widths={[400, 900]}
-            sizes="(max-width: 767px) calc(100vw - 32px), 768px"
-            alt={post?.image_alt || post?.excerpt || 'Blog post featured image'}
-            width={900}
-            height={506}
-            loading="eager"
-            decoding="async"
-          />
+          <div class="max-h-[50vh] sm:max-h-[60vh] flex justify-center mb-6">
+            <Image
+              src={post.image}
+              class="max-w-full lg:max-w-[900px] sm:rounded-md"
+              widths={[400, 900]}
+              sizes="(max-width: 767px) calc(100vw - 32px), 768px"
+              alt={post?.image_alt || post?.excerpt || 'Blog post featured image'}
+              layout="contained"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
         ) : (
           <div class="max-w-3xl mx-auto px-4 sm:px-6">
             <div class="border-t dark:border-slate-700" />
