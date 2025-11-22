@@ -708,9 +708,9 @@ export class TTSPlayer {
     // Clone the main element so we can modify it without affecting the page
     const clone = main.cloneNode(true) as HTMLElement;
 
-    // Remove UI chrome elements (blacklist approach)
+    // Remove UI chrome elements and non-readable content (blacklist approach)
     const skipSelector =
-      'nav, header, footer, aside, .tts-player, [aria-hidden="true"], [hidden], button, form, input, select, textarea, .toggle-menu, .accessibility-toggle';
+      'nav, header, footer, aside, script, style, noscript, template, svg, iframe, .tts-player, [aria-hidden="true"], [hidden], button, form, input, select, textarea, .toggle-menu, .accessibility-toggle';
     const elementsToRemove = clone.querySelectorAll(skipSelector);
     elementsToRemove.forEach((el) => el.remove());
 
