@@ -1,0 +1,31 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import TextPageContent from '~/components/widgets/TextPageContent.astro';
+import StructuredData from '~/components/common/StructuredData.astro';
+import { generateBreadcrumbs } from '~/utils/breadcrumbs';
+import { generateWebPageSchema } from '~/utils/schema-generators';
+
+const metadata = {
+  title: 'Service User Guide',
+};
+
+// Breadcrumb schema
+const breadcrumbSchema = generateBreadcrumbs(Astro.url.pathname, Astro.site!, 'Service User Guide');
+
+// WebPage schema
+const webPageSchema = generateWebPageSchema(
+  Astro.url,
+  'Service User Guide',
+  undefined,
+  undefined,
+  `${Astro.url.href}#breadcrumb`
+);
+---
+
+<Layout metadata={metadata}>
+  <!-- Structured Data -->
+  <StructuredData schema={webPageSchema} />
+  <StructuredData schema={breadcrumbSchema} />
+
+  <TextPageContent slug="service-user-guide" />
+</Layout>

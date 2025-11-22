@@ -67,6 +67,7 @@ All managed via CMS as Text Pages:
 | **Safeguarding**            | `/safeguarding`            |
 | **Accessibility Statement** | `/accessibility-statement` |
 | **Data Retention & SAR**    | `/data-retention-sar`      |
+| **Service User Guide**      | `/service-user-guide`      |
 | **Refunds/Cancellations**   | `/refunds-cancellations`   |
 | **Complaints**              | `/complaints`              |
 | **Credits**                 | `/credits`                 |
@@ -354,6 +355,7 @@ Example: `src/content/assessments/text-pages/`
 - `safeguarding.md`
 - `accessibility-statement.md`
 - `data-retention-sar.md`
+- `service-user-guide.md`
 - `refunds-cancellations.md`
 - `complaints.md`
 - `credits.md`
@@ -636,7 +638,7 @@ Three columns of links:
 
 **Support & Standards:**
 
-- Safeguarding, Accessibility Statement, Data Retention & SAR, Credits, Refunds/Cancellations, Complaints
+- Safeguarding, Accessibility Statement, Data Retention & SAR, Service User Guide, Credits, Refunds/Cancellations, Complaints
 
 **Footer Note:**
 
