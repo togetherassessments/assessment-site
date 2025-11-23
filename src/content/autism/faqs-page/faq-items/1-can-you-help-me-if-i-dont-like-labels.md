@@ -7,7 +7,7 @@ answer: Yes, I am delighted to be able to offer in depth assessments and
   best of my ability to ensure that this does not pose a barer to accessing
   support that my assessments indicate would be needed. [My pricing structure
   for non-diagnostic assessments can be found at
-  togetherassessments.co.uk](https://togetherassessments.co.uk/fees).
+  togetherassessments.co.uk](/fees).
 order: 1
 published: true
 ---

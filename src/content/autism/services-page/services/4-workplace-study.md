@@ -1,6 +1,6 @@
 ---
 title: Non diagnostic assessments
-description: "[Together Assessments](https://togetherassessments.co.uk) can
+description: "[Together Assessments]() can
   offer a comprehensive neurodevelopmental assessment combining standardised
   ADHD, sensory processing, and autism-informed assessments, resulting in
   collaborative psychological formulations that help individuals understand

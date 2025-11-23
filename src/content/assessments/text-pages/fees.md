@@ -5,7 +5,7 @@ image: ~/assets/images/assessments/pexels-anntarazevich-5242813.jpg
 image_alt: Two people holding receipts
 ---
 
-[**15 minute virtual session** - £0](https://nd-assessment-site.netlify.app/consultation)<br>
+[**15 minute virtual session** - £0](/consultation)<br>
 Please consider booking a free, no obligation, 15 minute session with me now to consider your needs and how I may be able to support you
 
 **Attention and hyperactivity assessments** - £300

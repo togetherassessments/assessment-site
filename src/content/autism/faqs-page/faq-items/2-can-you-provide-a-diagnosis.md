@@ -13,7 +13,7 @@ answer: >-
   Sometimes people can act in ways that seem like they have a neurodevelopmental condition when something else might better explain what is going on for them. As part of an assessment many aspects of your personal history and life will be explored to help make an appropriate differential diagnosis. This will mean that an Autism assessment will not always lead to an Autism diagnosis. I will support with transparent information and collaborative reports with recommendations regardless of the assessment outcome.
 
 
-  If you are not in need of a formal diagnosis, [please see my services at Together Assessments](https://togetherassessments.co.uk).
+  If you are not in need of a formal diagnosis, [please see my services at Together Assessments]().
 order: 2
 published: true
 ---
