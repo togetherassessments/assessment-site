@@ -1178,3 +1178,31 @@ collections:
         widget: boolean
         default: true
         hint: "Only published conditions appear on the site"
+
+  # Downloads - uploadable files (PDFs, ZIPs, etc.) that can be linked from content
+  - name: downloads
+    label: "Downloads"
+    label_singular: "Download"
+    folder: "public/downloads/{{WEBSITE_ID}}"
+    media_folder: ""
+    public_folder: "/downloads/{{WEBSITE_ID}}"
+    create: true
+    delete: true
+    extension: yml
+    format: yml
+    slug: "{{slug}}"
+    identifier_field: title
+    summary: "{{title}} — {{file}}"
+    description: "Upload files here. Copy the file path shown in the list to use in markdown links."
+    editor:
+      preview: false
+    fields:
+      - label: "Title"
+        name: title
+        widget: string
+        hint: "A name to identify this file (e.g., 'Service User Guide')"
+
+      - label: "File"
+        name: file
+        widget: file
+        hint: "Upload PDF, ZIP, or other document (max 20MB)"
