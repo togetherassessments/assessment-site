@@ -108,6 +108,9 @@ const faqCollection = defineCollection({
   schema: z.object({
     question: z.string(),
     answer: z.string(),
+    icon: z.string().optional(),
+    image: z.string().optional(),
+    image_alt: z.string().optional(),
     order: z.number().default(1),
     published: z.boolean().default(true),
   }),

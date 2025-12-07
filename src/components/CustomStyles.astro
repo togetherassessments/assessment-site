@@ -208,6 +208,18 @@
     text-decoration: none;
   }
 
+  /* Light mode content link styling - ensure primary colour for all content links */
+  /* This complements the dark mode rules (lines 191-200) for light mode */
+  /* Scoped to main element - header/nav/footer links are excluded automatically */
+  main a:not(.btn):not(.btn-primary):not(.btn-secondary):not(.btn-tertiary) {
+    color: var(--aw-color-primary);
+    text-decoration: underline;
+  }
+
+  main a:not(.btn):not(.btn-primary):not(.btn-secondary):not(.btn-tertiary):hover {
+    text-decoration: none;
+  }
+
   /* Text Size Scaling
      Applied to body content only, not UI components.
      Uses CSS custom property for scale factor. */

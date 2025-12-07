@@ -133,7 +133,9 @@ const metadata = {
           <section id={service.data.anchor} class="scroll-mt-20">
             {/* Header with inline icon */}
             <div class="flex items-start gap-3 mb-4">
-              {service.data.icon && <Icon name={service.data.icon} class="w-8 h-8 text-primary flex-shrink-0 mt-0.5" />}
+              {service.data.icon && (
+                <Icon name={service.data.icon} class="w-8 h-8 text-primary flex-shrink-0 -mt-0.5" />
+              )}
               <h2 class="text-2xl font-bold font-heading">{service.data.title}</h2>
             </div>
 

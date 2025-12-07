@@ -52,6 +52,7 @@ const homepageFaqs = await Promise.all(
   faqs.slice(0, 4).map(async (faq) => ({
     title: faq.data.question,
     description: await marked.parse(faq.data.answer),
+    icon: faq.data.icon,
   }))
 );
 
@@ -235,7 +236,7 @@ const siteNameWords = settings.site.name.split(' ');
             href={homePageContent.data.eventbrite.url}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center gap-3 px-8 py-4 text-xl font-bold text-white bg-primary hover:bg-primary-600 dark:bg-primary-500 dark:hover:bg-primary-400 rounded-full shadow-lg hover:shadow-xl transition-all duration-200"
+            class="btn-primary inline-flex items-center justify-center gap-3 px-8 py-4 text-xl font-bold text-white bg-primary hover:bg-secondary hover:border-secondary dark:bg-primary dark:border-primary dark:hover:bg-secondary dark:hover:border-secondary rounded-full shadow-lg hover:shadow-xl dark:shadow-none transition-all duration-200"
           >
             <Icon name="tabler:calendar-event" class="w-6 h-6" />
             {homePageContent.data.eventbrite.text}

@@ -39,11 +39,11 @@ const {
               {(icon || defaultIcon) && (
                 <Icon
                   name={icon || defaultIcon}
-                  class={twMerge('w-7 h-7 mr-2 rtl:mr-0 rtl:ml-2', defaultIconClass, itemClasses?.icon)}
+                  class={twMerge('w-7 h-7 mr-2 rtl:mr-0 rtl:ml-2 -mt-0.5', defaultIconClass, itemClasses?.icon)}
                 />
               )}
             </div>
-            <div class="mt-0.5 min-w-0">
+            <div class="min-w-0">
               {title && <h3 class={twMerge('text-xl font-bold', titleClass, itemClasses?.title)}>{title}</h3>}
               {description && (
                 <p

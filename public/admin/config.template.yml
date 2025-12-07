@@ -577,6 +577,25 @@ collections:
         name: answer
         widget: markdown
         hint: The answer to the question. Supports full markdown formatting including links, bold, italic, lists, etc.
+      - label: Icon
+        name: icon
+        widget: tabler-icon-picker
+        required: false
+        hint: Optional icon to replace the default arrow. Choose from 5,993 Tabler icons. Browse at https://tabler.io/icons
+      - label: Image
+        name: image
+        widget: image
+        required: false
+        allow_multiple: false
+        hint: Optional image shown below the question title (FAQ page only, not homepage)
+        media_library:
+          config:
+            max_file_size: 2048000
+      - label: Image Alt Text
+        name: image_alt
+        widget: string
+        required: false
+        hint: Describe what the image shows. Required for accessibility when image is provided.
       - label: Display Order
         name: order
         widget: number
