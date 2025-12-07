@@ -161,6 +161,12 @@ Controls all content on the homepage:
   - Step 2 text
   - Step 3 text
 
+- **Eventbrite Link (optional):**
+  - Description (optional text displayed above the button)
+  - Link text (e.g., "View events on EventBrite")
+  - Eventbrite URL
+  - **Note:** Both link text AND URL must be set for the Eventbrite section to appear on the homepage. The section displays between "How it works" and "Services".
+
 **File Location:** `src/content/{siteId}/home-page/content.yaml`
 
 Example: `src/content/assessments/home-page/content.yaml`
@@ -777,4 +783,4 @@ This prevents race conditions and ensures quality control before content goes li
 
 ---
 
-**Last Updated:** 2025-11-06
+**Last Updated:** 2025-12-07
