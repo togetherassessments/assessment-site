@@ -131,6 +131,34 @@ Example: `src/content/assessments/site-settings/trust-badges/`
 
 ---
 
+### Testimonials
+
+**Collection:** Testimonials (folder-based)
+
+Client testimonials displayed on the homepage above the blog section:
+
+- Testimonial text (required, plain text)
+- Name (optional - displays "Provided anonymously" if not set)
+- Display order
+- Published status
+
+**File Location:** `src/content/{siteId}/testimonials/`
+
+Example: `src/content/assessments/testimonials/`
+
+**Display Behaviour:**
+
+- Section only appears when at least one published testimonial exists
+- If no testimonials exist, the section is completely hidden
+- Testimonials are displayed in a responsive grid:
+  - Desktop (1280px+): 3 columns
+  - Tablet (768px-1279px): 2 columns
+  - Mobile (<768px): Single column
+- Each card shows a quote icon, the testimonial text in italics, and the attribution
+- Supports both light and dark mode with appropriate styling
+
+---
+
 ### Home Page
 
 **Collection:** Home Page (file-based)
@@ -175,6 +203,7 @@ Example: `src/content/assessments/home-page/content.yaml`
 
 - First 4 published FAQ items (from FAQs Page / FAQ Items)
 - All published service items (from Services Page / Service Items) with automatically generated descriptive link text ("Learn more about [Service Title]")
+- Testimonials section (from Testimonials) - only shown if testimonials exist
 - Latest blog posts (from Blog Posts)
 - Trust badges (from Site Settings / Trust Badges)
 

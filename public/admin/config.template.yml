@@ -492,6 +492,42 @@ collections:
         widget: boolean
         default: true
         hint: Whether this badge is visible on the site
+  - name: testimonials
+    label: Testimonials
+    label_singular: Testimonial
+    folder: src/content/{{WEBSITE_ID}}/testimonials
+    create: true
+    delete: true
+    slug: '{{order}}-{{slug}}'
+    identifier_field: testimonial
+    sortable_fields:
+      - order
+      - name
+    summary: '{{order}}. {{name}} - "{{testimonial}}"'
+    editor:
+      preview: false
+    fields:
+      - label: Testimonial
+        name: testimonial
+        widget: text
+        hint: The testimonial text provided by the person
+      - label: Name
+        name: name
+        widget: string
+        required: false
+        hint: The name of the person who provided the testimonial. Leave empty to display as "Provided anonymously"
+      - label: Display Order
+        name: order
+        widget: number
+        default: 1
+        value_type: int
+        min: 1
+        hint: Order in which this testimonial appears (1 = first)
+      - label: Published
+        name: published
+        widget: boolean
+        default: true
+        hint: Whether this testimonial is visible on the site
   - name: faqs_page
     label: FAQs Page
     delete: false

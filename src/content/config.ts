@@ -323,6 +323,17 @@ const homePageCollection = defineCollection({
   }),
 });
 
+// Testimonials (site-specific)
+const testimonialCollection = defineCollection({
+  loader: glob({ pattern: '*.md', base: `src/content/${WEBSITE_ID}/testimonials` }),
+  schema: z.object({
+    name: z.string().optional(),
+    testimonial: z.string(),
+    order: z.number().default(1),
+    published: z.boolean().default(true),
+  }),
+});
+
 // Medical conditions (site-specific)
 const medicalConditionCollection = defineCollection({
   loader: glob({ pattern: '*.{md,yaml}', base: `src/content/${WEBSITE_ID}/medical-conditions` }),
@@ -358,4 +369,5 @@ export const collections = {
   waitlist_page: waitlistPageCollection,
   home_page: homePageCollection,
   medical_conditions: medicalConditionCollection,
+  testimonials: testimonialCollection,
 };
