@@ -43,3 +43,6 @@ steps:
     text: Clear recommendations → practical, tailored next steps (work, study, life).
     icon: tabler:bulb
     joined_to_previous: true
+eventbrite:
+  text: "View events on EventBrite"
+  url: "https://eventbrite.com/togetherassessments"

@@ -51,6 +51,10 @@ steps:
     text: One to one support sessions → Schedule additional bespoke support sessions
       at any time
     icon: tabler:message-2-code
+eventbrite:
+  text: View events on EventBrite
+  url: https://eventbrite.com/togetherassessments
+  description: View upcoming events
 seo_settings:
   metaTitle: Together Assessments - Custom SEO Title Test
   metaDescription: This is a custom meta description for Phase B testing. It

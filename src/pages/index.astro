@@ -8,6 +8,7 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Button from '~/components/ui/Button.astro';
 import Image from '~/components/common/Image.astro';
+import { Icon } from 'astro-icon/components';
 import { getCollection, getEntry } from 'astro:content';
 import { findImage } from '~/utils/images';
 import { getSiteSettings } from '~/utils/site-settings';
@@ -221,6 +222,29 @@ const siteNameWords = settings.site.name.split(' ');
       })
     )}
   />
+
+  {/* Eventbrite Link - only shown when both text and URL are set */}
+  {
+    homePageContent.data.eventbrite?.text && homePageContent.data.eventbrite?.url && (
+      <section class="py-12">
+        <div class="max-w-3xl mx-auto px-4 text-center">
+          {homePageContent.data.eventbrite.description && (
+            <p class="text-lg text-muted dark:text-slate-400 mb-6">{homePageContent.data.eventbrite.description}</p>
+          )}
+          <a
+            href={homePageContent.data.eventbrite.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-3 px-8 py-4 text-xl font-bold text-white bg-primary hover:bg-primary-600 dark:bg-primary-500 dark:hover:bg-primary-400 rounded-full shadow-lg hover:shadow-xl transition-all duration-200"
+          >
+            <Icon name="tabler:calendar-event" class="w-6 h-6" />
+            {homePageContent.data.eventbrite.text}
+            <Icon name="tabler:external-link" class="w-5 h-5" />
+          </a>
+        </div>
+      </section>
+    )
+  }
 
   <!-- Services -->
   <Features2

@@ -395,6 +395,30 @@ collections:
                 widget: boolean
                 default: true
                 hint: Show connecting line from previous step to this one (uncheck to create visual separation)
+          - label: Eventbrite Link
+            name: eventbrite
+            widget: object
+            collapsed: true
+            required: false
+            hint: "Both link text and URL must be set for the Eventbrite link to appear on the homepage."
+            fields:
+              - label: Description
+                name: description
+                widget: string
+                required: false
+                hint: "Optional text displayed above the button (e.g., 'Join us for upcoming workshops and events')"
+              - label: Link Text
+                name: text
+                widget: string
+                required: false
+                default: "View events on EventBrite"
+                hint: "The text displayed for the link (e.g., 'View events on EventBrite')"
+              - label: Eventbrite URL
+                name: url
+                widget: string
+                required: false
+                default: "https://eventbrite.com/togetherassessments"
+                hint: "Full URL to your Eventbrite page"
           - label: "SEO Settings"
             name: seo_settings
             widget: object

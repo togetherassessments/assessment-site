@@ -300,6 +300,14 @@ const homePageCollection = defineCollection({
         joined_to_previous: z.boolean().default(true),
       })
     ),
+    // Optional Eventbrite link
+    eventbrite: z
+      .object({
+        description: z.string().optional(),
+        text: z.string(),
+        url: z.string(),
+      })
+      .optional(),
     // SEO settings
     seo_settings: z
       .object({

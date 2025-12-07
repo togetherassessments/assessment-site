@@ -48,3 +48,6 @@ steps:
     text: "One-to-one support sessions → schedule additional bespoke support
       sessions for your needs at any time. "
     icon: tabler:brand-messenger
+eventbrite:
+  text: "View events on EventBrite"
+  url: "https://eventbrite.com/togetherassessments"
