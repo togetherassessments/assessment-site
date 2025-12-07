@@ -691,10 +691,21 @@ collections:
         name: title
         widget: string
         hint: The name of the service
-      - label: Description
+      - label: Home Page Description
         name: description
         widget: text
-        hint: Brief description of the service
+        hint: Brief description shown on the home page service cards
+      - label: Long Description
+        name: long_description
+        widget: text
+        required: false
+        hint: Optional longer description for the Services page. If empty, Home Page Description is used.
+      - label: Service Image
+        name: image
+        widget: image
+        required: false
+        allow_multiple: false
+        hint: Optional image shown on the Services page below the title
       - label: Anchor ID
         name: anchor
         widget: string

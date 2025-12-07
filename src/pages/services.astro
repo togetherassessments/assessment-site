@@ -4,6 +4,7 @@ import { getEntry, getCollection } from 'astro:content';
 import Image from '~/components/common/Image.astro';
 import { marked } from 'marked';
 import StructuredData from '~/components/common/StructuredData.astro';
+import { Icon } from 'astro-icon/components';
 import { generateBreadcrumbs } from '~/utils/breadcrumbs';
 import { getSiteSettings } from '~/utils/site-settings';
 import { generateMedicalConditionSchema, generateWebPageSchema } from '~/utils/schema-generators';
@@ -130,8 +131,29 @@ const metadata = {
       {
         services.map((service) => (
           <section id={service.data.anchor} class="scroll-mt-20">
-            <h2 class="text-2xl font-bold mb-4 font-heading">{service.data.title}</h2>
-            <p class="text-gray-600 dark:text-gray-400">{service.data.description}</p>
+            {/* Header with inline icon */}
+            <div class="flex items-start gap-3 mb-4">
+              {service.data.icon && <Icon name={service.data.icon} class="w-8 h-8 text-primary flex-shrink-0 mt-0.5" />}
+              <h2 class="text-2xl font-bold font-heading">{service.data.title}</h2>
+            </div>
+
+            {/* Optional image with constrained height */}
+            {service.data.image && (
+              <div class="mb-4 overflow-hidden rounded-lg" style="max-height: 300px;">
+                <Image
+                  src={service.data.image}
+                  alt={service.data.title}
+                  class="w-full h-auto object-contain"
+                  style="max-height: 300px;"
+                  widths={[400, 768]}
+                  sizes="(max-width: 768px) 100vw, 768px"
+                  layout="contained"
+                />
+              </div>
+            )}
+
+            {/* Description: long_description if available, else description */}
+            <p class="text-gray-600 dark:text-gray-400">{service.data.long_description || service.data.description}</p>
           </section>
         ))
       }

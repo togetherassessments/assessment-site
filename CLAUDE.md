@@ -52,7 +52,7 @@ All detailed technical documentation is in the `technical-docs/` folder. Use thi
 ```bash
 npm run dev          # Starts BOTH Astro dev server AND CMS proxy server concurrently
                      # Astro: http://localhost:4321
-                     # CMS: http://localhost:4321/admin/
+                     # CMS: http://localhost:4321/admin/index.html (note: /index.html required)
                      # Proxy: port 8081
 
 npm run build        # Build production site to ./dist/

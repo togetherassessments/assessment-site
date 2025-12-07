@@ -22,7 +22,7 @@ This document provides detailed information about the Decap CMS implementation, 
 
 **CMS**: Decap CMS (formerly Netlify CMS)
 **Backend**: GitHub with Editorial Workflow
-**Access**: `/admin/` route
+**Access**: `/admin/index.html` route (note: `/index.html` required for local development)
 **Storage**: Git-based (content committed to repository)
 
 ### Key Features
@@ -52,7 +52,7 @@ This command runs `concurrently "npx decap-server" "astro dev"` and starts:
 
 ### Accessing Local CMS
 
-1. Navigate to `http://localhost:4321/admin/`
+1. Navigate to `http://localhost:4321/admin/index.html` (note: `/index.html` required)
 2. No authentication required (proxy server handles this)
 3. Changes save directly to local files
 4. All content collections are editable
@@ -394,6 +394,25 @@ Each `image_alt` field is configured with helpful hints and examples for content
 - ✗ Bad: "Image of consultation", "FAQ image"
 
 For complete accessibility implementation and fallback strategy, see [ACCESSIBILITY.md](./ACCESSIBILITY.md#images).
+
+### Service Item Fields
+
+The Services Page / Service Items collection (`services_page_items`) supports the following fields:
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| Service Title | string | Yes | The name of the service |
+| Home Page Description | text | Yes | Brief description shown on home page service cards |
+| Long Description | text | No | Optional longer description for Services page. If empty, Home Page Description is used |
+| Service Image | image | No | Optional image shown on Services page below the title (max height 300px) |
+| Anchor ID | string | Yes | URL anchor for deep linking (e.g., "adhd-adults") |
+| Display Order | number | Yes | Order in which service appears (1 = first) |
+| Icon | tabler-icon | No | Icon shown on home page cards and Services page title |
+| Published | boolean | Yes | Whether service is visible on the site |
+
+**Display behaviour:**
+- **Home page**: Shows icon, Home Page Description, and "Learn more" link
+- **Services page**: Shows icon inline with title, optional image, and Long Description (or Home Page Description as fallback)
 
 ---
 

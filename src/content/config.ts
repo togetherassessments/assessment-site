@@ -119,9 +119,11 @@ const serviceCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    long_description: z.string().optional(),
     anchor: z.string(),
     order: z.number().default(1),
     icon: z.string().optional(),
+    image: z.string().optional(),
     published: z.boolean().default(true),
     // Schema.org Service data
     schema_data: z
