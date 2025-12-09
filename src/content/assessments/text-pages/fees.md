@@ -4,20 +4,24 @@ title: Fees
 image: ~/assets/images/assessments/pexels-anntarazevich-5242813.jpg
 image_alt: Two people holding receipts
 ---
+[**15 minute virtual session** - Free](/consultation)
 
-[**15 minute virtual session** - £0](/consultation)<br>
 Please consider booking a free, no obligation, 15 minute session with me now to consider your needs and how I may be able to support you
 
 **Attention and hyperactivity assessments** - £300
+
 This includes formulation and recommendations, discussed and presented in a formal report
 
 **Social communication, interactions, and sensory processing assessment** - £550
+
 This includes formulation and recommendations, discussed and presented in a formal report
 
 **Comprehensive neurodevelopmental assessment** - £700
+
 This includes formulation and recommendations, discussed and presented in a formal report
 
 **Individualised Support sessions** - £60ph
+
 [Can be booked](<>) and catered for your specific needs at any time
 
 **Travel**: One home visit [within my local area](<>) is included in each assessment price.
