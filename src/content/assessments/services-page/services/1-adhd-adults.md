@@ -1,9 +1,6 @@
 ---
-title: Social communication, interactions, and sensory processing assessment
-description: Expert autism-informed and sensory processing-informed assessments
-  for adults using standardised evaluation, clinical interviews, and
-  questionnaires, providing thorough evaluation and detailed reports to support
-  understanding and access to services.
+title: Social communication and sensory processing assessment
+description: Expert autism-informed and sensory processing-informed assessments.
 long_description: ""
 image: ""
 anchor: autism
