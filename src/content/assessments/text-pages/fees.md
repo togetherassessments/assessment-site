@@ -4,7 +4,7 @@ title: Fees
 image: ~/assets/images/assessments/pexels-anntarazevich-5242813.jpg
 image_alt: Two people holding receipts
 ---
-[**15 minute virtual session** - Free](/consultation)<br/>
+[**15 minute virtual session** - Free](https://calendar.app.google/KYYzTkpgtqCVpGbE9)<br/>
 Please consider booking a free, no obligation, 15 minute session with me now to consider your needs and how I may be able to support you
 
 **Attention and hyperactivity assessments** - £300<br/>
@@ -17,12 +17,12 @@ This includes formulation and recommendations, discussed and presented in a form
 This includes formulation and recommendations, discussed and presented in a formal report
 
 **Individualised Support sessions** - £60ph<br/>
-[Can be booked](<>) and catered for your specific needs at any time
+[Can be booked](/consultation) and catered for your specific needs at any time
 
-**Travel**: One home visit [within my local area](<>) is included in each assessment price.
+**Travel**: One home visit [within my local area](https://www.google.com/maps/place/Together+Assessments/@53.6032591,-0.460471,10z/data=!3m1!4b1!4m6!3m5!1s0x612bbcfdf8f481f9:0xeca079fc0d4ac70c!8m2!3d53.6032591!4d-0.460471!16s%2Fg%2F11mkxq2qg9?entry=ttu&g_ep=EgoyMDI1MTAyNy4wIKXMDSoASAFQAw%3D%3D) is included in each assessment price.
 If additional travel is required mileage and tolls may be charged. 
 
-Please note, the services I currently offer **do not** include formal diagnoses or prescriptions. Services which do include formal diagnosis, if appropriate, but not prescriptions are currently [wait-listed](<>) with an anticipated wait time of 3 or more months; the costs of these may vary during that time. However, I will always do my best to be as reasonably priced as possible.
+Please note, the services I currently offer **do not** include formal diagnoses or prescriptions. Services which do include formal diagnosis, if appropriate, but not prescriptions are currently [wait-listed](https://forms.gle/PbSduh2fVq3bbuKE8) with an anticipated wait time of 3 or more months; the costs of these may vary during that time. However, I will always do my best to be as reasonably priced as possible.
 
 Autism Assessment (this assessment requires at least one home visit) - £1100<br/>
 ADHD Assessment (my service cannot offer prescriptions or medication following a diagnosis at this time) - £500<br/>
