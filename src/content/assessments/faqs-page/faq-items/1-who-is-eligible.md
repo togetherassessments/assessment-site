@@ -8,6 +8,7 @@ answer: >-
 
 
   For home visits, it is required that your home is psychologically safe for the adult being assessed, with a private space, with a table and two chairs available. 
+icon: tabler:checklist
 order: 1
 published: true
 ---
