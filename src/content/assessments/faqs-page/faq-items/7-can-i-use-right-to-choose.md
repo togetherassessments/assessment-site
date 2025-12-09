@@ -7,6 +7,7 @@ answer: "Not at this time. This service is independent and not yet part of NHS
   website](https://www.autism.org.uk/advice-and-guidance/topics/diagnosis/befor\
   e-diagnosis/how-to-request-an-autism-assessment#What%20is%20'Right%20to%20Cho\
   ose'?). "
+icon: tabler:currency-pound-off
 order: 7
 published: true
 ---
