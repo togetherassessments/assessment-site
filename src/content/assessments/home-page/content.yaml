@@ -53,8 +53,8 @@ steps:
     icon: tabler:message-2-code
 eventbrite:
   text: View events on EventBrite
-  url: https://eventbrite.com/togetherassessments
-  description: View upcoming events
+  url: https://www.eventbrite.co.uk/o/together-assessments-120393690551
+  description: View upcoming information sessions
 seo_settings:
   metaTitle: Together Assessments - Custom SEO Title Test
   metaDescription: This is a custom meta description for Phase B testing. It
