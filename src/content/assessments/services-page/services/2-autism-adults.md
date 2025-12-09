@@ -1,9 +1,6 @@
 ---
 title: Attention and hyperactivity assessments
-description: Comprehensive ADHD-informed assessments for adults using
-  standarsied tools, clinical interviews, and questionnaires to provide an
-  accurate description of someone's strengths and weaknesses, and personalised
-  recommendations.
+description: Comprehensive ADHD-informed assessments
 anchor: adhd
 order: 2
 icon: tabler:view-360-arrow
