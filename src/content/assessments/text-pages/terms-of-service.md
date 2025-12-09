@@ -2,9 +2,7 @@
 slug: terms-of-service
 title: Terms of Service
 ---
-# **Together Assessments – Terms and Conditions**
-
-## **General**
+# **Together Assessments – Terms of Service**
 
 Engaging with Together Assessments (“Together Assessments”, “we”, “us”, or “our” in these Terms and Conditions) as a client, potential client, website user, or interested party includes accessing our website (www.togetherassessments.co.uk), online booking systems, digital forms, video consultations, and any electronic communications. By doing so, you accept these Terms and Conditions in full, together with any other policies, service documents, or procedures we provide to you or publish on our website.
 
