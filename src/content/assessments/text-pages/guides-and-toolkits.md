@@ -1,5 +1,5 @@
 ---
-slug: self-help
+slug: guides-and-toolkits
 title: Guides & Toolkits
 image: ~/assets/images/assessments/pexels-robertkso-34601160-1-1-.jpg
 image_alt: Organised library shelves of magazines

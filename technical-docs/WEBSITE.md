@@ -34,7 +34,7 @@ The website consists of the following pages:
 | **Contact**       | `/contact`       | CMS: Contact Page                                | Contact page with configurable content and email button                                                     |
 | **Consultation**  | `/consultation`  | CMS: Consultation Page                           | Booking page with Google Calendar integration                                                               |
 | **Waitlist**      | `/waitlist`      | CMS: Waitlist Page                               | Waitlist form with Google Form integration (not in navigation/footer, accessed via consultation page link)  |
-| **Self-Help**     | `/self-help`     | CMS: Text Pages                                  | Self-help resources                                                                                         |
+| **Guides & Toolkits** | `/guides-and-toolkits` | CMS: Text Pages                            | Guides and toolkits resources                                                                               |
 | **Local Support** | `/local-support` | CMS: Text Pages                                  | Local support information                                                                                   |
 
 ### Blog System
@@ -67,7 +67,7 @@ All managed via CMS as Text Pages:
 | **Safeguarding**            | `/safeguarding`            |
 | **Accessibility Statement** | `/accessibility-statement` |
 | **Data Retention & SAR**    | `/data-retention-sar`      |
-| **Service User Guide**      | `/service-user-guide`      |
+| **Policies and Downloads**  | `/policies-and-downloads`  |
 | **Refunds/Cancellations**   | `/refunds-cancellations`   |
 | **Complaints**              | `/complaints`              |
 | **Credits**                 | `/credits`                 |
@@ -382,7 +382,7 @@ Example: `src/content/assessments/text-pages/`
 
 - `about.md`
 - `fees.md`
-- `self-help.md`
+- `guides-and-toolkits.md`
 - `local-support.md`
 - `privacy-policy.md`
 - `cookie-policy.md`
@@ -390,7 +390,7 @@ Example: `src/content/assessments/text-pages/`
 - `safeguarding.md`
 - `accessibility-statement.md`
 - `data-retention-sar.md`
-- `service-user-guide.md`
+- `policies-and-downloads.md`
 - `refunds-cancellations.md`
 - `complaints.md`
 - `credits.md`
@@ -673,7 +673,7 @@ Three columns of links:
 
 **Support & Standards:**
 
-- Safeguarding, Accessibility Statement, Data Retention & SAR, Service User Guide, Credits, Refunds/Cancellations, Complaints
+- Safeguarding, Accessibility Statement, Data Retention & SAR, Policies and Downloads, Credits, Refunds/Cancellations, Complaints
 
 **Footer Note:**
 

@@ -300,7 +300,7 @@ src/
 │   ├── faq.astro
 │   ├── contact.astro              # Uses site-specific email
 │   ├── consultation.astro
-│   ├── self-help.astro
+│   ├── guides-and-toolkits.astro
 │   ├── local-support.astro
 │   ├── privacy-policy.astro
 │   ├── cookie-policy.astro

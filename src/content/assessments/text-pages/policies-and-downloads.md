@@ -1,25 +1,22 @@
 ---
-slug: service-user-guide
-title: Service User Guide
+slug: policies-and-downloads
+title: Policies and Downloads
 ---
-# **Service User Guide**
+# **Policies and Downloads**
 
-**Together Autism****Version:** 1.0
-**Date:** August 2025
-**Review date:** August 2026 (or sooner if legislation changes)
-
-
+**Together Assessments**\
+Version: 1.0
+Date: August 2025Review date: August 2026 (or sooner if legislation changes)
 
 ## **About Our Service**
 
-Together Autism provides specialist diagnostic assessments for autism and ADHD for adults (aged 18+), pending CQC registration. Prior to CQC registration Together Autism will solely provide a self-referring wait-list for this service and signpost to other services, including togetherassessments.co.uk, which offers non-diagnostic assessments.
+Together Assessments provides specialist assessments for autism and ADHD for adults (aged 18+), resulting in a formulation and recommendations but not a formal diagnosis.
 
 Our assessments follow NICE guidelines (CG142 for Autism, NG87 for ADHD) and are delivered in a respectful, person-centred, and neuro-affirming way.
 
 We aim to provide a clear, fair, and accessible service where people feel listened to, understood, and supported.
 
-
-## **What We Provide - pending CQC registration**
+## **What We Provide**
 
 * Autism assessments (using recognised tools such as ADOS-2, ADI-R, self-report measures, and developmental history).
 * ADHD assessments (using DIVA-5, QbCheck, and related self-report tools).
@@ -27,11 +24,10 @@ We aim to provide a clear, fair, and accessible service where people feel listen
 * A post-assessment feedback session to explain results clearly and answer questions.
 * Signposting to further support and services where needed.
 
-
 ## **What We Do Not Provide**
 
 * Assessments for children or young people under 18.
-* Formal diagnosis prior to CQC registration.
+* Formal diagnosis.
 * Medication prescribing or reviews.
 * Ongoing therapy, treatment, or case management.
 * Crisis or emergency services.
@@ -46,10 +42,8 @@ Before any assessment, we carry out a free 15-minute consultation and a pre-scre
 * You are able to give informed consent.
 * You are able to take part in structured interviews and psychometric assessments (with or without reasonable adjustments).
 * You are not currently in a psychiatric crisis or presenting with very complex needs that would be better supported by a larger team (e.g. severe mental illness, significant intellectual disability, or high safeguarding risks).
-* You are able to wait for our CQC registration to complete.
 
 If we are not the right service for you, we will explain why and, where possible, provide information on alternative providers.
-
 
 ## **Practical Information**
 
@@ -71,7 +65,6 @@ If we are not the right service for you, we will explain why and, where possible
 * This will always be discussed with you beforehand, and recordings are only made with your consent.
 * Recordings are stored securely and deleted once supervision is complete (usually within 4–6 weeks).
 
-
 ### **Safeguarding**
 
 * If at any point we believe you or someone else may be at risk of harm, we have a duty to act.
@@ -80,11 +73,10 @@ If we are not the right service for you, we will explain why and, where possible
 
 ### **Complaints & Feedback**
 
-* If you are unhappy with the service, you can raise a concern directly with Adriana Ferrari at **privacy@togetherAutism.co.uk**. 
+* If you are unhappy with the service, you can raise a concern directly with Adriana Ferrari at **privacy@togetherassessments.co.uk**.
 * We will always try to resolve issues quickly and fairly.
 * If you remain dissatisfied, you can contact the Care Quality Commission (CQC) on 03000 616161.
 * You can also share compliments and feedback, which we use to improve our service.
-
 
 ### **Contract Terms**
 

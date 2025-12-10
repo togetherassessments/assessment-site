@@ -6,16 +6,16 @@ import { generateBreadcrumbs } from '~/utils/breadcrumbs';
 import { generateWebPageSchema } from '~/utils/schema-generators';
 
 const metadata = {
-  title: 'Service User Guide',
+  title: 'Guides & Toolkits',
 };
 
 // Breadcrumb schema
-const breadcrumbSchema = generateBreadcrumbs(Astro.url.pathname, Astro.site!, 'Service User Guide');
+const breadcrumbSchema = generateBreadcrumbs(Astro.url.pathname, Astro.site!, 'Guides & Toolkits');
 
 // WebPage schema
 const webPageSchema = generateWebPageSchema(
   Astro.url,
-  'Service User Guide',
+  'Guides & Toolkits',
   undefined,
   undefined,
   `${Astro.url.href}#breadcrumb`
@@ -27,5 +27,5 @@ const webPageSchema = generateWebPageSchema(
   <StructuredData schema={webPageSchema} />
   <StructuredData schema={breadcrumbSchema} />
 
-  <TextPageContent slug="service-user-guide" />
+  <TextPageContent slug="guides-and-toolkits" />
 </Layout>
