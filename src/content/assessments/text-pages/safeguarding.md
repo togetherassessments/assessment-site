@@ -2,8 +2,10 @@
 slug: safeguarding
 title: Safeguarding Policy
 seo_settings:
-  metaTitle: "Safeguarding Policy | Together Assessments"
-  metaDescription: "Our commitment to adult safeguarding under the Care Act 2014. How we protect vulnerable adults and respond to concerns. North Lincolnshire contacts included."
+  metaTitle: Safeguarding Policy | Together Assessments
+  metaDescription: Our commitment to adult safeguarding under the Care Act 2014.
+    How we protect vulnerable adults and respond to concerns. North Lincolnshire
+    contacts included.
 ---
 ## **Adult Safeguarding Policy**
 
@@ -64,7 +66,7 @@ DSL: Adriana
 
 * **Phone:** 01724 297000 (Mon–Thu 9am–5pm; Fri 9am–4:30pm)
 * **Email:** [safeguardingadultreferrals@northlincs.gov.uk](mailto:safeguardingadultreferrals@northlincs.gov.uk)
-* **Online referral form:** Worried About a Person page on NLSAB website
+* **Online referral form:** [Worried About a Person page on NLSAB website](https://northlincs-self.achieveservice.com/AchieveForms/?mode=fill&consentMessage=yes&form_uri=sandbox-publish://AF-Process-041ea2fa-d0bd-4c69-b6c9-ccfeb1731384/AF-Stage-483e3a14-70c3-4cf9-bf06-e9d124c53084/definition.json&process=1&process_uri=sandbox-processes://AF-Process-041ea2fa-d0bd-4c69-b6c9-ccfeb1731384&process_id=AF-Process-041ea2fa-d0bd-4c69-b6c9-ccfeb1731384)
 * **Out of hours:** Emergency Duty Team – 01724 297000
 * **Police:** 999 in an emergency / 101 non-emergency
 
