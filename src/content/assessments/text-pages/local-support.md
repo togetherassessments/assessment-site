@@ -4,37 +4,39 @@ title: Local Support
 image: ~/assets/images/assessments/pexels-davidpickup-10700225.jpg
 image_alt: Humber bridge photographed from below
 seo_settings:
-  metaTitle: "Local Neurodiversity Support | North Lincolnshire & Hull"
-  metaDescription: "Directory of ADHD and autism support groups, charities, and services in North Lincolnshire, Hull, and surrounding areas. Peer support and crisis resources."
+  metaTitle: Local Neurodiversity Support | North Lincolnshire & Hull
+  metaDescription: Directory of ADHD and autism support groups, charities, and
+    services in North Lincolnshire, Hull, and surrounding areas. Peer support
+    and crisis resources.
 ---
-* **Autism Peer Support Group (Livewell North Lincolnshire)** — A friendly space for autistic adults (aged 16+) to meet and share experiences. Held in the Creator Space; you’re welcome to bring a supporter. Contact Leanne Everington for more info or transport help. [Autism Peer Support Group](<>)
-* **Autism Online Peer Support** — A relaxed, virtual peer group meeting bi-monthly (every second Thursday, 6:30–8 pm), via MS Teams. You can join with your camera off or use chat only. [Autism Online Peer Support](<>)
-* **ADHD & Tourettes Support (Hull)** — Charity-run support sessions and social meet-ups in Hull for adults with ADHD and Tourette’s. A welcoming group for connection and information sharing. [TIC and ADHD Support (Hull)](<>)
-* **The Arc, Westcliff Neurodiversity Group** — monthly meet-ups in Westcliff (First Thursday, 10 am–12 pm) addressing ADHD, autism, and hidden disabilities; includes guest speakers and local services. [The Arc](<>)
+* **Autism Peer Support Group (Livewell North Lincolnshire)** — A friendly space for autistic adults (aged 16+) to meet and share experiences. Held in the Creator Space; you’re welcome to bring a supporter. Contact Leanne Everington for more info or transport help. [Autism Peer Support Group](https://www.livewellnorthlincolnshire.org.uk/service/autism-peer-support-group)
+* **Autism Online Peer Support** — A relaxed, virtual peer group meeting bi-monthly (every second Thursday, 6:30–8 pm), via MS Teams. You can join with your camera off or use chat only. [Autism Online Peer Support](https://www.livewellnorthlincolnshire.org.uk/service/autism-online-peer-support-group)
+* **ADHD & Tourettes Support (Hull)** — Charity-run support sessions and social meet-ups in Hull for adults with ADHD and Tourette’s. A welcoming group for connection and information sharing. [TIC and ADHD Support (Hull)](https://www.livewellnorthlincolnshire.org.uk/service/tourettes-syndrome-and-adhd-support?utm_source=chatgpt.com)
+* **The Arc, Westcliff Neurodiversity Group** — monthly meet-ups in Westcliff (First Thursday, 10 am–12 pm) addressing ADHD, autism, and hidden disabilities; includes guest speakers and local services. [The Arc](https://www.arcwestcliff.co.uk/support-training/neurodiversitysupportgroup/)
 
 ### **Regional Support & Organisations**
 
-* **The Lincolnshire Autistic Society** — Provides advice, signposting, and links to local groups across Lincolnshire, including PAACT and social meet-ups. Hosts the annual Autism Conference in Lincoln. [Lincolnshire Autistic Society](<>)
-* **ADHD Lincs** — A charity offering ADHD awareness workshops, family support, webinars, and community training across Lincolnshire. [ADHD Lincs ](<>)
+* **The Lincolnshire Autistic Society** — Provides advice, signposting, and links to local groups across Lincolnshire, including PAACT and social meet-ups. Hosts the annual Autism Conference in Lincoln. [Lincolnshire Autistic Society](https://lincolnshireautisticsociety.org.uk/)
+* **ADHD Lincs** — A charity offering ADHD awareness workshops, family support, webinars, and community training across Lincolnshire. [ADHD Lincs](https://adhdlincs.org/)
 * **Care Plus Group Neurodiversity Services** — Based in Grimsby, they offer adult ADHD and Autism services, including supported living and community integration programs. [Care Plus Group ND Services](https://careplusgroup.org/services/adult-neurodiversity-services/)
 * **Linkage Choices (Grimsby)** — A day services centre for adults with learning disabilities and autism; ideal for social inclusion, wellbeing and community activities. [Linkage Choices (Grimsby)](https://connectnel.com/professionals/care-navigation/learning-disabilities-autism-adhd)
 * **Matthew's Hub (Hull)** - Peer mentoring, employment and housing support, workshops for autistic people (13+) without a learning disability. [Matthew's Hub website](https://matthewshub.org/)
 * **North Lincolnshire Mind** - offering valuable free services, including: **talking therapy** by arrangement (01724 279500 or email [support@nlmind.org](mailto:support@nlmind.org)), \
   **Safespace support line** from 4pm - 12am 01724 279 500, peer support and courses. [North Lincolnshire Mind services](https://www.nlmind.org/our-services)
-* **Hull and East Yorkshire Mind** - offering a range of valuable free services [https://heymind.org.uk/hull/](<>) 
-* **NHS Hull Talking Therapies (Hull)** - access free therapy by visiting [https://www.letstalkhull.co.uk/pages/make-a-referral](<>) or calling 01482 247111
+* **Hull and East Yorkshire Mind** - offering a range of valuable free services [HEY website](https://heymind.org.uk/hull/)
+* **NHS Hull Talking Therapies (Hull)** - access free therapy by visiting [the Hull talking therapies website](https://www.letstalkhull.co.uk/pages/make-a-referral) or calling 01482 247111
 
 ### **National Charities**
 
 * **National Autistic Society** — Offers comprehensive information on autism across the UK, including helplines, toolkits, and service directories. [National Autistic Society website](https://www.autism.org.uk/)
-* **ADHD Adult** - a national charity the provides tools and signposts for adults with or suspecting ADHD in the UK. [https://www.adhdadult.uk/resources/](<>) 
-* **Mind** — A leading mental health charity that provides principles and signposts for autism and neurodiversity support. [https://www.mind.org.uk/](<>) 
-* **The Autism Directory** — A UK-wide signposting tool to find local autism-friendly services and groups. [The Autism Directory](<>)
+* **ADHD Adult** - a national charity the provides tools and signposts for adults with or suspecting ADHD in the UK. [ADHD Adult website](https://www.adhdadult.uk/resources/) 
+* **Mind** — A leading mental health charity that provides principles and signposts for autism and neurodiversity support. [Mind website](https://www.mind.org.uk/) 
+* **The Autism Directory** — A UK-wide signposting tool to find local autism-friendly services and groups. [The Autism Directory](https://www.autism.org.uk/autism-services-directory)
 
 ### **Emergency & Crisis Support**
 
 **Call 999 if you are in immediate danger.**
 
-* **NHS 111** — For immediate health queries or concerns—available 24/7 via phone or [online](<>).
-* **Samaritans** — Call 116 123 (free, 24/7) or visit[ samaritans.org](<>) for emotional support.
-* **Shout** - Text ‘Shout’ to 85258 (free, 24/7) or visit [https://giveusashout.org/](<>) for emotional support.
+* **NHS 111** — For immediate health queries or concerns—available 24/7 via phone or [online](https://111.nhs.uk/).
+* **Samaritans** — Call 116 123 (free, 24/7) or visit [the Samaritans' website](https://www.samaritans.org) for emotional support.
+* **Shout** - Text ‘Shout’ to 85258 (free, 24/7) or visit the [Shout website](https://giveusashout.org/) for emotional support.
