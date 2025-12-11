@@ -1,6 +1,9 @@
 ---
 slug: safeguarding
 title: Safeguarding Policy
+seo_settings:
+  metaTitle: "Safeguarding Policy | Together Assessments"
+  metaDescription: "Our commitment to adult safeguarding under the Care Act 2014. How we protect vulnerable adults and respond to concerns. North Lincolnshire contacts included."
 ---
 ## **Adult Safeguarding Policy**
 
@@ -19,7 +22,7 @@ We recognise that safeguarding is everyone’s responsibility and that adults ha
 This policy applies to:
 
 * The Sole Trader (Adriana Ferrari)
-* External HCPC-registered Clinical Supervisor(s) contracted by Together Autism / Together ADHD
+* External HCPC-registered Clinical Supervisor(s) contracted by Together Assessments
 * Any other contractors or associates engaged in delivering the service
 
 ### **3. Legal & Regulatory Framework**
@@ -60,7 +63,7 @@ DSL: Adriana
 **North Lincolnshire Safeguarding Adults Board (NLSAB)**
 
 * **Phone:** 01724 297000 (Mon–Thu 9am–5pm; Fri 9am–4:30pm)
-* **Email:** safeguardingadultreferrals@northlincs.gov.uk
+* **Email:** [safeguardingadultreferrals@northlincs.gov.uk](mailto:safeguardingadultreferrals@northlincs.gov.uk)
 * **Online referral form:** Worried About a Person page on NLSAB website
 * **Out of hours:** Emergency Duty Team – 01724 297000
 * **Police:** 999 in an emergency / 101 non-emergency

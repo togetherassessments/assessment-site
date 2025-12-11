@@ -1,9 +1,10 @@
 ---
 slug: refunds-cancellations
 title: Refunds & Cancellations
+seo_settings:
+  metaTitle: "Refunds & Cancellations Policy | Together Assessments"
+  metaDescription: "Clear refund and cancellation terms. 14-day cooling-off period, compassionate adjustments for neurodivergent clients. Consumer Rights Act 2015 compliant."
 ---
-## **Refunds and Cancellations**
-
 **Together Assessments**\
 Version 1.1 – November 2025
 Review date: November 2026 (or sooner if guidance or law changes)

@@ -19,8 +19,6 @@ seo_settings:
   metaDescription: "Explore how gender bias affects autism and ADHD diagnosis and
     how inclusive, equitable assessment can better reflect lived experience. "
 ---
-# Gender and diagnosis
-
 Many people still believe autism and ADHD look a certain way. This is because most research, diagnostic tools, and examples are based on white boys and men. As a result, people of other genders are often missed, misunderstood, or diagnosed later in life. This post explains how gender affects the experience and recognition of autism and ADHD, and how current models fail to represent everyone.
 
 ## Why diagnostic models are based on men and boys

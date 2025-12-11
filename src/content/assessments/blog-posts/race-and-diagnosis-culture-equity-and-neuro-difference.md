@@ -17,7 +17,6 @@ seo_settings:
     autism and ADHD, and how assessments can be more inclusive and equitable.
   metaTitle: Race and diagnosis in autism and ADHD assessments
 ---
-# Race and diagnosis
 This post explores how race and culture influence the journey to diagnosis and support for neurodevelopmental differences such as autism and ADHD. It looks at the origins of concepts like autism and Asperger’s, how racialised people are often under-diagnosed or misdiagnosed, and what this means for equity and inclusion in assessment. It also considers how culture shapes how neurodevelopmental differences are seen and why systemic racism within medicine continues to affect who receives help.
 
 ## The origins of autism and Asperger’s

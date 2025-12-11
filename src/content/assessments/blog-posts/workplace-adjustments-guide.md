@@ -13,13 +13,12 @@ image_alt: Four clocks showing different times with labels under them reading
   Neurodivergence, ADHD, Autism, and Needs Based
 publishDate: 2025-11-06
 draft: false
-metadata:
-  noindex: true
+seo_settings:
+  metaTitle: "Workplace Adjustments for ADHD & Autism | Your Rights Guide"
+  metaDescription: "Know your rights under the Equality Act 2010. Practical guide to requesting workplace adjustments for ADHD and autism, with examples and resources."
 content_review:
   lastReviewed: 2025-11-06
 ---
-# **Workplace Adjustments Guide**
-
 **Notes on accommodations and conversations for the workplace**
 
 ## **Why workplace adjustments matter**

@@ -1,9 +1,10 @@
 ---
 slug: terms-of-service
 title: Terms of Service
+seo_settings:
+  metaTitle: "Terms of Service | Together Assessments"
+  metaDescription: "Terms and conditions for using Together Assessments services. Service scope, client responsibilities, data protection, and payment terms explained."
 ---
-# **Together Assessments – Terms of Service**
-
 Engaging with Together Assessments (“Together Assessments”, “we”, “us”, or “our” in these Terms and Conditions) as a client, potential client, website user, or interested party includes accessing our website (www.togetherassessments.co.uk), online booking systems, digital forms, video consultations, and any electronic communications. By doing so, you accept these Terms and Conditions in full, together with any other policies, service documents, or procedures we provide to you or publish on our website.
 
 Together Assessments provides structured neurodevelopmental assessments for adults aged 18 and over. Our assessments use recognised gold-standard tools and follow evidence-based practice to develop a formulation, outlining your neurodevelopmental profile, strengths, challenges, and recommendations for support. Formal diagnostic outcomes are waitlisted at this time while we prepare for CQC registration.

@@ -1,6 +1,9 @@
 ---
 slug: accessibility-statement
 title: Accessibility Statement
+seo_settings:
+  metaTitle: "Accessibility Statement | Together Assessments"
+  metaDescription: "Our commitment to accessible services. Reasonable adjustments, alternative formats, and inclusive communication for all clients. Equality Act 2010 compliant."
 ---
 We commit to:
 

@@ -3,6 +3,9 @@ slug: fees
 title: Fees
 image: ~/assets/images/assessments/pexels-anntarazevich-5242813.jpg
 image_alt: Two people holding receipts
+seo_settings:
+  metaTitle: "Assessment Fees & Pricing | Together Assessments"
+  metaDescription: "Clear pricing for ADHD and autism assessments. From £300 for ADHD to £700 for comprehensive assessments. Free 15-minute consultations available."
 ---
 [**15 minute virtual session** - Free](https://calendar.app.google/KYYzTkpgtqCVpGbE9)<br/>
 Please consider booking a free, no obligation, 15 minute session with me now to consider your needs and how I may be able to support you
@@ -31,4 +34,4 @@ Combined Autism and ADHD assessment (as above) - £1300
 **Financial Health Inequality**<br/>
 I am personally and professionally motivated by equity, and I understand costs can be a larger barrier to some, so I am actively seeking ways to subsidise my offerings for anyone who otherwise couldn't access my services. If this applies to you, please do let me know, and I might be able to support you in reducing or eliminating costs prior to my registration on the right-to-choose register which can be a lengthy process.
 
-If you are able and interested in contributing towards a fund for people for whom cost is a barrier, please [get in touch](peersupport@togetherassessments.co.uk).
+If you are able and interested in contributing towards a fund for people for whom cost is a barrier, please [get in touch](mailto:peersupport@togetherassessments.co.uk).

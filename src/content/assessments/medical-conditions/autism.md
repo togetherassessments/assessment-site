@@ -23,7 +23,7 @@ signs_symptoms:
   - Delayed communication
   - Social difficulties
   - Behavioural presentations
-  - Ridgidity
+  - Rigidity
   - Meltdowns
   - Difficulty with change
 affected_anatomy: Brain

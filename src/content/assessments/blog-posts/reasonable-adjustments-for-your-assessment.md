@@ -17,8 +17,6 @@ seo_settings:
   metaDescription: Find out what adjustments are available before and during your
     assessment to support comfort, communication, and accessibility.
 ---
-# Reasonable adjustments for your assessment
-
 Every person experiences the world differently. During assessments, we aim to make things as comfortable, fair, and accessible as possible. Some approaches are part of our default way of working. Others can be adapted to suit your needs or preferences.  
 
 You can let us know what you need before or during your free 15-minute consultation, or at any point in the assessment process. There is no limit on what you can ask for, you can change your mind, and we will always try to meet your needs wherever possible.

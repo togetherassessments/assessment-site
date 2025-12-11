@@ -3,6 +3,9 @@ slug: about
 title: About
 image_alt: An image of Adriana smiling - a white femme presenting person with
   brown hair, wearing an inclusive pride lanyard
+seo_settings:
+  metaTitle: "About Adriana | Together Assessments"
+  metaDescription: "Meet Adriana, an independent practitioner with 10 years NHS experience. Neurodivergent-led ADHD and autism assessments in North Lincolnshire."
 ---
 ## **Who I am**
 
@@ -16,10 +19,13 @@ I was raised multilingual in Germany at a time when professionals discouraged ne
 
 My practice is grounded in:
 
-**• Neurodiversity-affirming principles** – a deep respect for neurodivergence, recognising the legitimacy of different neurotypes and communication styles. While acknowledging difficulties can arise from being neurodivergent, not losing sight of the beauty in this uniqueness.
- **• Accessibility** – reducing barriers, offering clarity, and adapting the process to individual needs wherever possible. 
- **• Collaboration and transparency** – working with clients, sharing understanding, and empowering people to use assessment outcomes in ways that genuinely support them.
- **• Lived-experience-informed practice** – acknowledging the value of perspectives shaped by disability and neurodivergence and ensuring that my practice welcomes lived-experience from both clients and our work-force.
+- **Neurodiversity-affirming principles** – a deep respect for neurodivergence, recognising the legitimacy of different neurotypes and communication styles. While acknowledging difficulties can arise from being neurodivergent, not losing sight of the beauty in this uniqueness.
+
+- **Accessibility** – reducing barriers, offering clarity, and adapting the process to individual needs wherever possible.
+
+- **Collaboration and transparency** – working with clients, sharing understanding, and empowering people to use assessment outcomes in ways that genuinely support them.
+
+- **Lived-experience-informed practice** – acknowledging the value of perspectives shaped by disability and neurodivergence and ensuring that my practice welcomes lived-experience from both clients and our work-force.
 
 These values guide how I engage with clients, communicate, make recommendations, and shape the environment in which I work.
 

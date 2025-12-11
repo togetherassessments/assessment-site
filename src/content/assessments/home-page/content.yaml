@@ -56,6 +56,5 @@ eventbrite:
   url: https://www.eventbrite.co.uk/o/together-assessments-120393690551
   description: View upcoming information sessions
 seo_settings:
-  metaTitle: Together Assessments - Custom SEO Title Test
-  metaDescription: This is a custom meta description for Phase B testing. It
-    should override the fallback value and appear in the HTML output.
+  metaTitle: "ADHD & Autism Assessments North Lincolnshire | Together"
+  metaDescription: "Independent ADHD and autism assessments for adults in North Lincolnshire. Evidence-based formulations with clear recommendations. Book a free consultation."

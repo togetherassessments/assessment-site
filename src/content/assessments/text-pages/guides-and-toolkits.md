@@ -3,9 +3,10 @@ slug: guides-and-toolkits
 title: Guides & Toolkits
 image: ~/assets/images/assessments/pexels-robertkso-34601160-1-1-.jpg
 image_alt: Organised library shelves of magazines
+seo_settings:
+  metaTitle: "Guides & Toolkits | Together Assessments"
+  metaDescription: "Prepare for your assessment with our practical guides. Autism and ADHD preparation, workplace adjustments advice, and understanding your rights to diagnosis."
 ---
-### **Guides & Toolkits**
-
 * **[Preparing for your autism assessment](/blog/what-to-expect-from-an-autism-informed-assessment)** — a practical guide to help you understand what to expect.
 * **[Preparing for your ADHD assessment](/blog/what-to-expect-from-an-adhd-informed-assessment)** — a practical guide to help you understand what to expect.
 * **[Workplace adjustments guide](/blog/workplace-adjustments-guide)** — advice on accommodations and conversations for the workplace.

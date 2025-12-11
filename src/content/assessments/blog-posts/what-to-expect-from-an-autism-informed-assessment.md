@@ -13,13 +13,12 @@ image: ~/assets/images/assessments/pexels-steve-29022334.jpg
 image_alt: Abstracted blue infinity symbol
 publishDate: 2025-11-06
 draft: false
-metadata:
-  noindex: true
+seo_settings:
+  metaTitle: "What to Expect from an Autism Assessment | Guide"
+  metaDescription: "Preparing for an autism assessment? Learn what to expect at each step, from free consultation to final report. Supportive, paced process in North Lincolnshire."
 content_review:
   lastReviewed: 2025-11-06
 ---
-# **What to expect from an autism-informed assessment**
-
 A practical guide to help you understand what to expect and how to prepare
 
 
@@ -64,7 +63,7 @@ Most sessions can be done online from the comfort of your home. If you prefer, w
 * You don’t need to bring anything — but you are welcome to have a friend, family member, or supporter with you.
 
 
-## **Step 5: Face-to-Face Observational Session**
+## **Step 4: Face-to-Face Observational Session**
 
 Towards the end of the assessment process, there will be a face-to-face session in your home. This may involve simple tasks and activities. The purpose is to build a complete picture of your profile in a setting that feels natural and safe.
 
@@ -83,7 +82,7 @@ It can be really helpful if you have previous reports, letters, or documents tha
 
 **How to share these securely:**
 
-* If you have a Gmail account, you can upload documents here: <https://forms.gle/3RN7kePCjS829on19>. 
+* If you have a Gmail account, you can upload documents here: [Together Assessments secure upload form](https://forms.gle/3RN7kePCjS829on19). 
 * Alternatively, you can email password-protected attachments with a password shared separately.
 * Or, of course, you’re welcome to hand me copies when you meet me face-to-face.
 * If you’re unsure, I can provide clear instructions when you’re ready to share.

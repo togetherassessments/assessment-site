@@ -19,8 +19,6 @@ seo_settings:
   metaDescription: "Find out when a diagnosis matters for autism or ADHD and what
     the Equality Act, NHS, and UK law say about your rights to support.  "
 ---
-# What does the law say about having a diagnosis?
-
 People often ask whether you need a diagnosis of autism or ADHD to get help. The answer depends both on your preference, and on what kind of support you want to access. This post explains what the law and guidelines say about diagnosis and your rights under UK law. It covers the NHS, education, work, and social care.  
 
 ## Diagnosis and the NHS

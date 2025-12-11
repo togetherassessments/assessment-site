@@ -1,6 +1,9 @@
 ---
 slug: complaints
 title: Complaints
+seo_settings:
+  metaTitle: "Complaints Policy | Together Assessments"
+  metaDescription: "How to raise concerns about our service. Fair, accessible complaints process with CQC compliance. Response within 28 days guaranteed."
 ---
 ## **Complaints Policy**
 
@@ -10,7 +13,7 @@ Review date: August 2026 (or sooner if guidance changes)
 
 ### **1. Policy Statement**
 
-Together Autism / Together ADHD is committed to providing high-quality, person-centred services. We recognise that sometimes clients, carers, or others may be dissatisfied with an aspect of our service. This policy sets out how complaints can be raised, how they will be handled, and the rights of self-funded and other clients to a fair and timely resolution.
+Together Assessments is committed to providing high-quality, person-centred services. We recognise that sometimes clients, carers, or others may be dissatisfied with an aspect of our service. This policy sets out how complaints can be raised, how they will be handled, and the rights of self-funded and other clients to a fair and timely resolution.
 
 This policy complies with:
 
@@ -56,7 +59,7 @@ Complaints can be made verbally, in writing, or by email:
 * **Designated Complaints Contact:**
    Adriana Ferrari
    Email: enquiries@togetherassessments.co.uk
-   Tel: (tba)
+   Tel: 01469 686482
 
 If the complaint involves Adriana Ferrari or you feel unable to raise it with her, you may contact:
 
@@ -80,7 +83,7 @@ If the complaint involves Adriana Ferrari or you feel unable to raise it with he
    * How to escalate if dissatisfied
 
 **Stage 3 – External Review**
-If you remain dissatisfied after Stage 2, you may request an independent review. This will be carried out by an external HCPC-registered Clinical Psychologist who is independent of Together Autism / Together ADHD, has no recent financial or professional relationship with the service, and is agreed in writing by both parties. The reviewer will consider all relevant information, may speak to both parties, and will produce a written outcome within 28 days.
+If you remain dissatisfied after Stage 2, you may request an independent review. This will be carried out by an external HCPC-registered Clinical Psychologist who is independent of Together Assessments, has no recent financial or professional relationship with the service, and is agreed in writing by both parties. The reviewer will consider all relevant information, may speak to both parties, and will produce a written outcome within 28 days.
 
 The cost of this review will be split 50/50 by the provider and the client unless otherwise agreed in writing.
 

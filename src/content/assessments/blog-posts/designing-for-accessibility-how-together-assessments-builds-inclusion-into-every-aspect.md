@@ -18,8 +18,6 @@ seo_settings:
     user controls.
   metaTitle: Building an Accessible Website for Neurodivergent Adults
 ---
-# Designing for Accessibility: How Together Assessments Builds Inclusion Into Every Aspect
-
 At Together Assessments, accessibility isn’t an afterthought – it’s a starting point. From the very first sketches of the logo to the structure of each webpage, every decision has been guided by the question:  
 
 > “How can this design make things easier, clearer, and more comfortable for neurodivergent adults?”
@@ -82,4 +80,4 @@ That’s why we’re committed to co-producing future updates with service users
 Accessibility at Together Assessments is about more than web design. It’s about creating a digital environment that reflects our values of equity, respect, and inclusion. From ethical font choices and clear layouts to responsive settings and transparent data practices, every element exists to make our space as welcoming and usable as possible.
 
 We’ll continue refining this work in partnership with the people who matter most — the community we serve.\
-If you have feedback or suggestions, [please get in touch](feedback@togetherassessments.co.uk). Your insight helps make this space better for everyone.
+If you have feedback or suggestions, [please get in touch](mailto:feedback@togetherassessments.co.uk). Your insight helps make this space better for everyone.

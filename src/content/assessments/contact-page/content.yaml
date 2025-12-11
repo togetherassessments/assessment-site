@@ -3,5 +3,7 @@ subheading: Get in touch
 image: ~/assets/images/assessments/pexels-vie-studio-4439416.jpg
 image_alt: Hello written on a note attached to flowers
 body: I'm here to help answer any questions you may have about our assessment
-  services. [Please feel free to reach out to Adriana (she/they) on
-  info@togetherassessments.co.uk .](<>)
+  services. Please feel free to reach out to Adriana (she/they) on [info@togetherassessments.co.uk](mailto:info@togetherassessments.co.uk).
+seo_settings:
+  metaTitle: "Contact Together Assessments | Get in Touch"
+  metaDescription: "Have questions about ADHD or autism assessments? Contact Adriana at Together Assessments. Friendly, approachable support for adults in North Lincolnshire."

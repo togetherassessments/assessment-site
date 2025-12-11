@@ -1,6 +1,9 @@
 ---
 slug: cookie-policy
 title: Cookie Policy
+seo_settings:
+  metaTitle: "Cookie Policy | Together Assessments"
+  metaDescription: "How we use cookies and browser storage on our website. Essential accessibility preferences and optional analytics. Clear choices and your full control."
 ---
 
 **Last updated: 26 October 2025**

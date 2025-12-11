@@ -13,13 +13,12 @@ image: ~/assets/images/assessments/pexels-tara-winstead-8378740.jpg
 image_alt: An illustration of a head with squiggly arrows leading away from the head
 publishDate: 2025-11-06
 draft: false
-metadata:
-  noindex: true
+seo_settings:
+  metaTitle: "What to Expect from an ADHD Assessment | Step-by-Step Guide"
+  metaDescription: "Preparing for an ADHD assessment? Learn what to expect at each step, from free consultation to final report. Supportive, flexible process in North Lincolnshire."
 content_review:
   lastReviewed: 2025-11-06
 ---
-# **What to expect from an ADHD-informed assessment**
-
 A practical guide to help you understand what to expect and how to prepare. Please note that details may change depending on your needs and that other services may have a different structure. 
 
 
@@ -93,7 +92,7 @@ It can be really helpful if you have previous reports, letters, or documents tha
 
 **How to share these securely:**
 
-* If you have a Gmail account, you can upload documents here: <https://forms.gle/3RN7kePCjS829on19>. 
+* If you have a Gmail account, you can upload documents here: [Together Assessments secure upload form](https://forms.gle/3RN7kePCjS829on19). 
 * Alternatively, you can email password-protected attachments with the password shared separately.
 * Or hand me copies if we meet face-to-face.
 

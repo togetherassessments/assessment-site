@@ -1,12 +1,13 @@
 ---
 slug: policies-and-downloads
 title: Policies and Downloads
+seo_settings:
+  metaTitle: "Service Policies & Downloads | Together Assessments"
+  metaDescription: "Our service scope, practical information, and downloadable policies. NICE-compliant autism and ADHD assessments for adults aged 18+. Transparent terms."
 ---
-# **Policies and Downloads**
-
 **Together Assessments**\
 Version: 1.0
-Date: August 2025Review date: August 2026 (or sooner if legislation changes)
+Date: August 2025 Review date: August 2026 (or sooner if legislation changes)
 
 ## **About Our Service**
 
