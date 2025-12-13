@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="Together Autism - Professional autism assessment services. Coming soon." />
+    <title>Together Autism - Coming Soon</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicons/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="assets/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png" />
+
+    <style>
+      /* Font definitions */
+      @font-face {
+        font-family: 'Together Assessments';
+        src: url('assets/fonts/TogetherAssessments-Regular.woff2') format('woff2');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'Sylexiad Sans Medium';
+        src: url('assets/fonts/SylexiadSansMedium.woff2') format('woff2');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --color-primary: rgb(78, 35, 95);
+        --color-accent: rgb(29, 121, 99);
+        --color-bg: rgb(255, 255, 255);
+        --color-text: rgb(16, 16, 16);
+        --color-text-muted: rgba(16, 16, 16, 0.66);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --color-bg: rgb(18, 16, 20);
+          --color-text: rgb(229, 236, 246);
+          --color-text-muted: rgba(229, 236, 246, 0.66);
+        }
+      }
+
+      body {
+        font-family:
+          'Sylexiad Sans Medium',
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          'Helvetica Neue',
+          Arial,
+          sans-serif;
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        line-height: 1.6;
+      }
+
+      .container {
+        text-align: center;
+        max-width: 500px;
+      }
+
+      .logo {
+        width: 140px;
+        height: auto;
+        margin-bottom: 1.5rem;
+      }
+
+      .site-name {
+        font-family: 'Together Assessments', system-ui, sans-serif;
+        font-size: 2.75rem;
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+      }
+
+      .site-name .word-together {
+        color: var(--color-primary);
+      }
+
+      .site-name .word-service {
+        color: var(--color-accent);
+      }
+
+      .tagline {
+        font-family: 'Together Assessments', system-ui, sans-serif;
+        font-size: 1.5rem;
+        color: var(--color-text-muted);
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+      }
+
+      .message {
+        font-size: 1.125rem;
+        color: var(--color-text-muted);
+        margin-bottom: 2rem;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background-color: var(--color-primary);
+        color: white;
+        text-decoration: none;
+        padding: 1rem 2rem;
+        border-radius: 9999px;
+        font-size: 1.125rem;
+        font-weight: 600;
+        transition:
+          background-color 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .cta-button:hover {
+        background-color: rgb(65, 28, 80);
+        transform: translateY(-2px);
+      }
+
+      .cta-button:active {
+        transform: translateY(0);
+      }
+
+      @media (max-width: 480px) {
+        .site-name {
+          font-size: 2rem;
+        }
+
+        .tagline {
+          font-size: 1.25rem;
+        }
+
+        .message {
+          font-size: 1rem;
+        }
+
+        .logo {
+          width: 110px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="assets/together-logo.png" alt="Together Autism Logo" class="logo" />
+
+      <h1 class="site-name">
+        <span class="word-together">Together</span>
+        <span class="word-service">Autism</span>
+      </h1>
+
+      <p class="tagline">Coming Soon</p>
+
+      <p class="message">A dedicated space for autism assessment and diagnosis is on its way.</p>
+
+      <p class="message">In the meantime, autism-informed assessments and support are available now.</p>
+
+      <a href="https://togetherassessments.com" class="cta-button"> Visit Together Assessments </a>
+    </div>
+  </body>
+</html>
