@@ -735,7 +735,7 @@ The `${WEBSITE_ID}` variable expands to the value set in each Netlify site's env
 **IMPORTANT**: Each site must have `WEBSITE_ID` set as an environment variable.
 
 1. Create new Netlify site
-2. Connect to repository: `drewdotpro/assessment-site`
+2. Connect to repository: `togetherassessments/assessment-site`
 3. Set branch: `main`
 4. **Site Settings → Environment Variables** - Add the following:
 

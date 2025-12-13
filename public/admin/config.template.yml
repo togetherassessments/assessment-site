@@ -21,7 +21,7 @@
 
 backend:
   name: github
-  repo: drewdotpro/assessment-site
+  repo: togetherassessments/assessment-site
   branch: main
   commit_messages:
     create: 'feat(content/{{WEBSITE_ID}}): Create {{collection}} "{{slug}}"'
