@@ -12,18 +12,6 @@ footer:
   business_info: Sole trader, trading as Together Assessments. North Lincolnshire
     and surrounding areas.
 seo:
-  title_default: Together Assessments
-  title_template: "%s — Together Assessments"
-  description: Professional neurodiversity assessments for adults in the UK. ADHD
-    and autism assessments for North Lincolnshire and surrounding areas.
-  og_image: ~/assets/images/assessments/together-logo.png
-  robots_index: false
-  robots_follow: true
-  area_served: North Lincolnshire
-  social:
-    linkedin: ""
-    twitter: ""
-    facebook: ""
   business:
     founding_date: 2020-01-15
     legal_name: Together Assessments
@@ -35,5 +23,18 @@ seo:
       postal_code: ""
       latitude: 53.59
       longitude: -0.65
+  title_template: "%s — Together Assessments"
+  robots_follow: true
+  area_served: North Lincolnshire
+  social:
+    linkedin: ""
+    twitter: ""
+    facebook: ""
+  og_image: ~/assets/images/assessments/together-logo.png
+  google_verification_id: ""
+  title_default: Together Assessments
+  robots_index: false
+  description: Professional neurodiversity assessments for adults in the UK. ADHD
+    and autism assessments for North Lincolnshire and surrounding areas.
 analytics:
   ga4_id: ""
