@@ -33,7 +33,7 @@ seo:
   og_image: ~/assets/images/assessments/together-logo.png
   google_verification_id: ""
   title_default: Together Assessments
-  robots_index: false
+  robots_index: true
   description: Professional neurodiversity assessments for adults in the UK. ADHD
     and autism assessments for North Lincolnshire and surrounding areas.
 analytics:
