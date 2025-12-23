@@ -10,8 +10,11 @@ import { generateBreadcrumbs } from '~/utils/breadcrumbs';
 import { generateWebPageSchema } from '~/utils/schema-generators';
 
 import { blogListRobots, getStaticPathsBlogCategory } from '~/utils/blog';
+import { getSiteSettings } from '~/utils/site-settings';
 
 export const prerender = true;
+
+const { site } = getSiteSettings();
 
 export const getStaticPaths = (async ({ paginate }) => {
   return await getStaticPathsBlogCategory({ paginate });
@@ -24,6 +27,7 @@ const currentPage = page.currentPage ?? 1;
 
 const metadata = {
   title: `Category: ${category.title}${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
+  description: `Browse articles in the "${category.title}" category from ${site.name}. Insights on ADHD, autism, and neurodiversity.`,
   robots: {
     index: blogListRobots?.index,
     follow: blogListRobots?.follow,

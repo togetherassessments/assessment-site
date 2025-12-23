@@ -19,7 +19,9 @@ const { title, subheading, image, image_alt, body, google_form_link } = content.
 const htmlContent = body ? marked.parse(body) : null;
 
 const metadata = {
-  title: title,
+  title: content.data.seo_settings?.metaTitle || title,
+  description: content.data.seo_settings?.metaDescription,
+  ignoreTitleTemplate: !!content.data.seo_settings?.metaTitle,
 };
 
 // Breadcrumb schema

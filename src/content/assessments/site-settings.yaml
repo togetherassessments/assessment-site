@@ -23,7 +23,7 @@ seo:
       postal_code: ""
       latitude: 53.59
       longitude: -0.65
-  title_template: "%s — Together Assessments"
+  title_template: "%s | Together Assessments"
   robots_follow: true
   area_served: North Lincolnshire
   social:

@@ -36,7 +36,9 @@ const htmlContent = body ? marked.parse(body) : null;
 const mailtoLink = `mailto:${settings.site.email}?subject=${encodeURIComponent(settings.site.name + ' - Enquiry')}`;
 
 const metadata = {
-  title: title,
+  title: content.data.seo_settings?.metaTitle || title,
+  description: content.data.seo_settings?.metaDescription,
+  ignoreTitleTemplate: !!content.data.seo_settings?.metaTitle,
 };
 
 // Breadcrumb schema

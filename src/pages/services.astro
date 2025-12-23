@@ -96,7 +96,9 @@ const webPageSchema = generateWebPageSchema(
 );
 
 const metadata = {
-  title: title,
+  title: topContent.data.seo_settings?.metaTitle || title,
+  description: topContent.data.seo_settings?.metaDescription,
+  ignoreTitleTemplate: !!topContent.data.seo_settings?.metaTitle,
 };
 ---
 

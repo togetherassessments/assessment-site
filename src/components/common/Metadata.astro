@@ -13,7 +13,7 @@ const settings = getSiteSettings();
 
 // SEO defaults from site-settings
 const defaultTitle = settings.seo?.title_default || settings.site.name;
-const titleTemplate = settings.seo?.title_template || `%s — ${settings.site.name}`;
+const titleTemplate = settings.seo?.title_template || `%s | ${settings.site.name}`;
 const defaultDescription = settings.seo?.description || '';
 const robotsIndex = settings.seo?.robots_index ?? false;
 const robotsFollow = settings.seo?.robots_follow ?? true;

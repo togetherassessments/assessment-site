@@ -4,22 +4,21 @@ import TextPageContent from '~/components/widgets/TextPageContent.astro';
 import StructuredData from '~/components/common/StructuredData.astro';
 import { generateBreadcrumbs } from '~/utils/breadcrumbs';
 import { generateWebPageSchema } from '~/utils/schema-generators';
+import { getTextPageSeo } from '~/utils/content';
+
+const seo = await getTextPageSeo('safeguarding');
 
 const metadata = {
-  title: 'Safeguarding',
+  title: seo.metaTitle || seo.title,
+  description: seo.metaDescription,
+  ignoreTitleTemplate: !!seo.metaTitle,
 };
 
 // Breadcrumb schema
-const breadcrumbSchema = generateBreadcrumbs(Astro.url.pathname, Astro.site!, 'Safeguarding');
+const breadcrumbSchema = generateBreadcrumbs(Astro.url.pathname, Astro.site!, seo.title);
 
 // WebPage schema
-const webPageSchema = generateWebPageSchema(
-  Astro.url,
-  'Safeguarding',
-  undefined,
-  undefined,
-  `${Astro.url.href}#breadcrumb`
-);
+const webPageSchema = generateWebPageSchema(Astro.url, seo.title, undefined, undefined, `${Astro.url.href}#breadcrumb`);
 ---
 
 <Layout metadata={metadata}>

@@ -2,6 +2,31 @@
  * Content processing utilities for SEO
  */
 
+import { getCollection } from 'astro:content';
+
+/**
+ * Fetch SEO settings for a text page by slug
+ * Returns the seo_settings object with metaTitle and metaDescription if defined
+ */
+export async function getTextPageSeo(slug: string): Promise<{
+  title: string;
+  metaTitle?: string;
+  metaDescription?: string;
+}> {
+  const textPages = await getCollection('text_pages');
+  const page = textPages.find((p) => p.data.slug === slug);
+
+  if (!page) {
+    throw new Error(`Text page not found: ${slug}`);
+  }
+
+  return {
+    title: page.data.title,
+    metaTitle: page.data.seo_settings?.metaTitle,
+    metaDescription: page.data.seo_settings?.metaDescription,
+  };
+}
+
 /**
  * Count words in content for Article schema wordCount property
  */

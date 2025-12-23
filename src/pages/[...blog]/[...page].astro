@@ -10,8 +10,11 @@ import { generateBreadcrumbs } from '~/utils/breadcrumbs';
 import { generateWebPageSchema } from '~/utils/schema-generators';
 
 import { blogListRobots, getStaticPathsBlogList } from '~/utils/blog';
+import { getSiteSettings } from '~/utils/site-settings';
 
 export const prerender = true;
+
+const { site } = getSiteSettings();
 
 export const getStaticPaths = (async ({ paginate }) => {
   return await getStaticPathsBlogList({ paginate });
@@ -24,6 +27,7 @@ const currentPage = page.currentPage ?? 1;
 
 const metadata = {
   title: `Blog${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
+  description: `Read articles about ADHD, autism, and neurodiversity assessments. Insights, guides, and updates from ${site.name}.`,
   robots: {
     index: blogListRobots?.index,
     follow: blogListRobots?.follow,
