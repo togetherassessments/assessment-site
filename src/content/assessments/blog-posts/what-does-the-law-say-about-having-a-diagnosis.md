@@ -49,7 +49,7 @@ Teachers and support staff should make adjustments based on observed needs. This
 
 ## Social care and benefits
 
-For social care, local councils must assess anyone who may need support under the [Care Act 2014](https://www.legislation.gov.uk/ukpga/2014/23/contents/enacted). They must look at what you can and cannot do safely, not just at your diagnosis.
+For social care, local councils must assess anyone who may need support under the [Care Act 2014](https://www.legislation.gov.uk/ukpga/2014/23/contents/enacted). They must look at what you can and cannot do safely, not just at your diagnosis or non diagnosis.
 
 When applying for [Personal Independence Payment (PIP)](https://www.gov.uk/pip), a diagnosis can support your claim, but it is not required. Decisions are based on how your condition affects daily life.
 
@@ -71,10 +71,10 @@ Even so, the law focuses on impact, not labels. Under the Equality Act, people a
 
 The NHS Constitution sets out your rights when using NHS services. These include the right to:  
 
-- access care based on need and clinical judgement  
-- be treated with dignity and respect  
-- have information kept safe and shared only when lawful  
-- receive clear communication about care and treatment  
-- complain and be listened to  
+* access care based on need and clinical judgement  
+* be treated with dignity and respect  
+* have information kept safe and shared only when lawful  
+* receive clear communication about care and treatment  
+* complain and be listened to  
 
 These rights apply to everyone, including autistic and ADHD adults, with or without a diagnosis.
