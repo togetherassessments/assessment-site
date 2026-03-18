@@ -59,6 +59,8 @@ If you need help from adult social services, you can ask for a needs assessment 
 
 The government’s [National Autism Strategy](https://www.gov.uk/government/publications/national-strategy-for-autistic-children-young-people-and-adults-2021-to-2026) sets out how services should improve access to diagnosis and support. It does not require a formal diagnosis to be considered under this strategy, instead describing autism as "a lifelong developmental disability that affects how people perceive, communicate and interact with others".
 
+STOMP stands for Stopping Over Medication of People with a learning disability, autism, or both. It is a national [NHS England project](https://www.england.nhs.uk/learning-disabilities/improving-health/stomp-stamp/#:~:text=NHS%20England%20%C2%BB%20Stopping%20over%20medication%20of,treatment%20and%20appropriate%20medication%20in%20paediatrics%20(STAMP)) aimed at reducing the unnecessary use of medicines used to manage behaviour, to improve the quality of life for autistic people. 
+
 ## Why the name still matters
 
 If two people have the same needs, why does a diagnosis matter? In many ways, it should not. What matters is the right support.  
