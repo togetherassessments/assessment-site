@@ -92,27 +92,22 @@ See [Editorial Workflow](#editorial-workflow) section for details.
 
 ## Publishing Mode
 
-**Current Mode**: Simple Publishing (one-click publish)
+**Current Mode**: Editorial Workflow (multi-stage review)
 
-The CMS is configured with **simple publishing mode**, which means content is published directly to production when saved. This provides immediate publishing without review stages.
+The CMS is configured with **editorial workflow mode**, which means content goes through Draft → In Review → Ready stages before being published. This provides a controlled review process for all 3 sites.
 
-### Simple Publishing Workflow
+### Reverting to Simple Publishing
 
-1. **Edit content** in the CMS
-2. **Click "Publish"** - Content commits directly to main branch
-3. **Build triggers** automatically
-4. **Content goes live** immediately
+If you want to disable the review stages and return to one-click publishing:
 
-### Switching to Editorial Workflow
-
-If you need a multi-stage review process before publishing (useful for teams or quality control), you can enable Editorial Workflow mode:
-
-**To enable Editorial Workflow**:
+**To disable Editorial Workflow**:
 1. Edit `public/admin/config.template.yml`
-2. Uncomment line 32: `publish_mode: editorial_workflow`
-3. Restart dev server: `npm run dev:assessments`
+2. Comment out or remove line 32: `publish_mode: editorial_workflow`
+3. Regenerate site configs
 
-### Editorial Workflow (Alternative Mode - Currently Disabled)
+**Note**: Editorial workflow does not function locally with the Decap proxy server — it only works in production with the GitHub backend.
+
+### Editorial Workflow Stages
 
 When Editorial Workflow is enabled, the CMS uses a three-stage process before publishing:
 
