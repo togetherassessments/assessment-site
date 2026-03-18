@@ -49,7 +49,7 @@ Teachers and support staff should make adjustments based on observed needs. This
 
 ## Social care and benefits
 
-For social care, local councils must assess anyone who may need support under the [Care Act 2014](https://www.legislation.gov.uk/ukpga/2014/23/contents/enacted). They must look at what you can and cannot do safely, not just at your diagnosis.
+For social care, local councils must assess anyone who may need support under the [Care Act 2014](https://www.legislation.gov.uk/ukpga/2014/23/contents/enacted). They must look at what you can and cannot do safely, not just at your diagnosis or non diagnosis.
 
 When applying for [Personal Independence Payment (PIP)](https://www.gov.uk/pip), a diagnosis can support your claim, but it is not required. Decisions are based on how your condition affects daily life.
 
@@ -58,6 +58,8 @@ If you need help from adult social services, you can ask for a needs assessment 
 ## National guidance and STOMP
 
 The government’s [National Autism Strategy](https://www.gov.uk/government/publications/national-strategy-for-autistic-children-young-people-and-adults-2021-to-2026) sets out how services should improve access to diagnosis and support. It does not require a formal diagnosis to be considered under this strategy, instead describing autism as "a lifelong developmental disability that affects how people perceive, communicate and interact with others".
+
+STOMP stands for Stopping Over Medication of People with a learning disability, autism, or both. It is a national [NHS England project](https://www.england.nhs.uk/learning-disabilities/improving-health/stomp-stamp/#:~:text=NHS%20England%20%C2%BB%20Stopping%20over%20medication%20of,treatment%20and%20appropriate%20medication%20in%20paediatrics%20(STAMP)) aimed at reducing the unnecessary use of medicines used to manage behaviour, to improve the quality of life for autistic people. 
 
 ## Why the name still matters
 
@@ -71,10 +73,10 @@ Even so, the law focuses on impact, not labels. Under the Equality Act, people a
 
 The NHS Constitution sets out your rights when using NHS services. These include the right to:  
 
-- access care based on need and clinical judgement  
-- be treated with dignity and respect  
-- have information kept safe and shared only when lawful  
-- receive clear communication about care and treatment  
-- complain and be listened to  
+* access care based on need and clinical judgement  
+* be treated with dignity and respect  
+* have information kept safe and shared only when lawful  
+* receive clear communication about care and treatment  
+* complain and be listened to  
 
 These rights apply to everyone, including autistic and ADHD adults, with or without a diagnosis.
