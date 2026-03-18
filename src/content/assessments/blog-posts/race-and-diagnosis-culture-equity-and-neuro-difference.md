@@ -17,9 +17,13 @@ seo_settings:
     autism and ADHD, and how assessments can be more inclusive and equitable.
   metaTitle: Race and diagnosis in autism and ADHD assessments
 ---
-This post explores how race and culture influence the journey to diagnosis and support for neurodevelopmental differences such as autism and ADHD. It looks at the origins of concepts like autism and Asperger’s, how racialised people are often under-diagnosed or misdiagnosed, and what this means for equity and inclusion in assessment. It also considers how culture shapes how neurodevelopmental differences are seen and why systemic racism within medicine continues to affect who receives help.
+**A Note on Language**\
+Discussions of race and culture can be difficult with words quickly changing meaning and usage. Throughout this post, we use the term 'racialised' this is with the intention of acknowledging that though the impact of how one's race is perceived is real with tangible life impacts, it is also a social construct which is placed upon people, devoid of innate meaning or boundaries. As language and our knowledge change, this word might become inappropriate, but is used at the time of writing with thought through intention. 
+
+This post explores how race and culture influence the journey to diagnosis and support for neurodevelopmental differences such as autism and ADHD. It looks at the origins of concepts like autism and Asperger’s, how racialised people are often underdiagnosed or misdiagnosed, and what this means for equity and inclusion in assessment. It also considers how culture shapes how neurodevelopmental differences are seen and why systemic racism within medicine continues to affect who receives help.
 
 ## The origins of autism and Asperger’s
+
 The term Asperger’s was introduced by Hans Asperger in 1944 to describe white boys in Nazi-Germany who had patterns of behaviour and focused interests, but who still faced social and communication differences. Over time, diagnostic manuals merged Asperger’s into the broader category of autism spectrum disorder.
 
 Both autism and ADHD were defined in Western, white, racist, and middle-class contexts. The research and diagnostic tools were developed mainly in Europe and North America based on white cis men/boys. They reflect Western ideas and gendered norms about communication, behaviour, and learning rather than universal truths about human difference. This history means that current diagnostic systems carry built-in cultural bias.
@@ -57,17 +61,18 @@ This history contributes to the under-representation of racial diversity in both
 ## Barriers at every stage
 
 Barriers to fair diagnosis appear throughout the process:
-- Screening tools are often normed on white populations  
-- Teachers and clinicians may interpret the same behaviour differently depending on race  
-- Structural inequality limits who can self-fund private assessments  
-- Advocacy requires time, language, confidence, and sometimes self-funding that not everyone is granted  
-- Healthcare settings are rarely culturally safe spaces
+
+* Screening tools are often normed on white populations  
+* Teachers and clinicians may interpret the same behaviour differently depending on race  
+* Structural inequality limits who can self-fund private assessments  
+* Advocacy requires time, language, confidence, and sometimes self-funding that not everyone is granted  
+* Healthcare settings are rarely experienced as culturally safe spaces
 
 The result is a system that privileges those already trusted within it and excludes those who are not.
 
 ## Bias within tools and technology
 
-Even the tools considered “gold-standard” are not neutral. Some computerised ADHD assessments use facial-tracking or gaze-analysis software. Research by Joy Buolamwini at the MIT Media Lab found that commercial facial recognition systems were far less accurate for darker-skinned faces. This highlights how technology can reproduce racial bias within supposedly objective measures.
+Even the tools considered “gold-standard” are not neutral. Some computerised assessments use facial-tracking or gaze-analysis software. Research by Joy Buolamwini at the MIT Media Lab found that commercial facial recognition systems were far less accurate for darker-skinned faces. This highlights how technology can reproduce racial bias within supposedly objective measures.
 
 As an assessor, I know that the tools available are flawed. I can promise to question the tools I use, discuss them openly with you, and look for ways to make assessments more equitable and transparent.
 
@@ -75,7 +80,7 @@ As an assessor, I know that the tools available are flawed. I can promise to que
 
 Because racialised people are less likely to be identified or supported, their perspectives are also missing from research, policy, and service design. This creates a loop where systems continue to centre white experience as the default. Increasing representation in clinical roles, research, and service leadership is vital to break that cycle.
 
-It is also important to state clearly that both I and my supervisor are white. The frameworks we use come from traditions shaped by white, Western norms. Recognising that bias is not an apology—it is a responsibility. Our role is to question those systems, be transparent about their limits, and work with you in ways that respect your lived experience.
+It is also important to state clearly that both my supervisor and I are white. The frameworks we use come from traditions shaped by white, Western norms. Recognising that bias is not an apology—it is a responsibility. Our role is to question those systems, be transparent about their limits, and work with you in ways that respect your lived experience.
 
 ## Moving towards equity
 
