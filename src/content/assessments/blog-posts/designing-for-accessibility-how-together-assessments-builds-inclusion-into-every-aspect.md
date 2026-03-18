@@ -20,15 +20,15 @@ seo_settings:
 ---
 At Together Assessments, accessibility isn’t an afterthought – it’s a starting point. From the very first sketches of the logo to the structure of each webpage, every decision has been guided by the question:  
 
-> “How can this design make things easier, clearer, and more comfortable for neurodivergent adults?”
+“How can this design make things easier, clearer, and more comfortable and welcoming for neurodivergent adults?”
 
-
-## Visual Accessibility: Design that Works for Everyone
+## Visual Accessibility: Design for Everyone
 
 Our logo and brand colours were chosen with colour-blind accessibility in mind. Text contrast ratios meet WCAG standards, and speech-to-text is available throughout the website. Where images appear, text descriptions (alt-text) ensure that screen readers can convey the same meaning to every visitor.
 
-We’ve also avoided placing important text directly over images, ensuring that words remain crisp, high-contrast, and easy to read — regardless of device, theme, or lighting conditions.
+The logo was designed with hair characteristics more commonly socially associated with females, as research suggests that gender-neutral designs are often interpreted as being male. But the full gender expression and spectrum is welcome and wanted.
 
+We’ve also avoided placing important text directly over images, ensuring that words remain crisp, high-contrast, and easy to read — regardless of device, theme, or lighting conditions.
 
 ## Fonts Developed for Neurodiverse Readers
 
@@ -41,7 +41,6 @@ Font choice makes a world of difference for readability. Our website offers seve
 * **Fast Syldexia**, an adapted “fast font” version of Sylexiad, was developed in-house following open-source accessibility research and can be especially helpful for people with ADHD.
 * **Bespoke title fonts** were designed by Adriana, blending principles from Sylexiad, OpenDyslexic, and the Braille Institute’s Atkinson Hyperlegible font to create an aesthetic that remains accessible and clear.\
   [Learn about Hyperlegible](https://www.brailleinstitute.org/freefont/)
-
 
 ## User-Controlled Accessibility Settings
 
@@ -60,20 +59,17 @@ These settings are especially helpful for neurodivergent adults, whose sensory, 
 
 It's important for people to see from the start that this is a space where needs are considered and identities are both welcomed and celebrated.
 
-
 ## Ethical Design: Grounded in Equity and Transparency
 
 Our approach to accessibility is deeply connected to our wider ethics of equity and inclusion. Accessibility isn’t a compliance box to tick – it’s part of how we express respect, fairness, and care for those we serve.
 
 Behind the scenes, we’ve implemented robust information-security, data-protection, and AI-use policies that safeguard client privacy and autonomy. Every tool, from screen-reader compatibility to data storage, is assessed through the lens of dignity and inclusion.
 
-
 ## Co-Production and Continuous Improvement
 
 We recognise that accessibility is not a one-time achievement but an ongoing process. While we’ve worked hard to embed best practice throughout our design, we know there will always be more to learn.
 
 That’s why we’re committed to co-producing future updates with service users. Feedback from people who use the site – especially those with lived experience of neurodivergence or disability – is central to how we evolve. We invite visitors to share what works well, what doesn’t, and what could make the experience even better.
-
 
 ## In Summary
 
